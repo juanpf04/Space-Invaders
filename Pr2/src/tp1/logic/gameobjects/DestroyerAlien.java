@@ -22,9 +22,8 @@ public class DestroyerAlien {
 	private AlienManager alienManager;
 
 	//TODO fill your code
-	public DestroyerAlien(Position pos,Game game, AlienManager alienManager) 
-	{
-		//prueba
+	public DestroyerAlien(Position pos,Game game, AlienManager alienManager) {
+		
 		this.pos = pos;
 		this.game = game;
 		this.speed = game.getLevel().getNumCyclesToMoveOneCell();
