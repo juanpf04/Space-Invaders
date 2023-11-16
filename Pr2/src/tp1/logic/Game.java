@@ -16,7 +16,7 @@ import tp1.logic.lists.BombList;
 import tp1.logic.lists.DestroyerAlienList;
 import tp1.view.Messages;
 
-public class Game {
+public class Game implements GameStatus {
 
 	public static final int DIM_X = 9;
 	public static final int DIM_Y = 8;
@@ -36,6 +36,7 @@ public class Game {
 	private int points;
 	private Ufo ufo;
 	private ShockWave shockWave;
+	private boolean exit;
 	
 	
 	public Game(Level level, long seed) {
@@ -59,10 +60,11 @@ public class Game {
 		this.regularAlienList = this.alienManager.initializeRegularAliens();
 		this.destroyerAlienList = this.alienManager.initializeDestroyerAliens();
 		this.bombList = new BombList(this.level);
+		this.exit = false;
 	}
 	
-	
-	public static String list() {
+	@Override
+	public String infoToString() {
 		StringBuilder list = new StringBuilder();
 		
 		list.append(Messages.ucmShipDescription(Messages.UCMSHIP_DESCRIPTION, UCMShip.DAMAGE, UCMShip.LIVES)).append(Messages.LINE_SEPARATOR)
@@ -73,7 +75,7 @@ public class Game {
 		return list.toString();
 	} 
 	
-	
+	@Override
 	public String stateToString() {
 		StringBuilder state = new StringBuilder();
 		
@@ -84,7 +86,7 @@ public class Game {
 		return state.toString();
 	} 
 
-	
+	@Override
 	public int getCycle() {
 		
 		return this.cycle;
@@ -96,13 +98,13 @@ public class Game {
 		this.cycle++;
 	}
 	
-	
+	@Override
 	public int getRemainingAliens() {
 		
 		return this.alienManager.getRemainingAliens();
 	}
 
-	
+	@Override
 	public String positionToString(int col, int row) {
 		Position pos = new Position(col,row);
 		String symbol = "";
@@ -128,14 +130,24 @@ public class Game {
 		return symbol;
 	}
 
+	public boolean isFinished() {
+		
+		return this.exit || this.playerWin() || this.aliensWin();
+	}
 	
+	public void exit() {
+		
+		this.exit = true;
+	}
+	
+	@Override
 	public boolean playerWin() {
 		
 		return this.ucmShip.isAlive() 
 				&& this.getRemainingAliens() == 0;
 	}
 
-	
+	@Override
 	public boolean aliensWin() {
 		
 		return this.getRemainingAliens() > 0 
