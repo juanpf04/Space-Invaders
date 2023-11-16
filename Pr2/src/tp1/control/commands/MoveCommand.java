@@ -56,7 +56,7 @@ public class MoveCommand extends Command {
 		
 		if(commandWords.length == 2 && this.matchCommandName(commandWords[0])) {
 			command = this;
-			this.move = Move.valueOf(commandWords[1].toUpperCase());
+			this.move = Move.valueOf(commandWords[1].toUpperCase()); // revisar error de longitud
 		}
 		
 		return command;
