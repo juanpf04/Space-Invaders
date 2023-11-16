@@ -11,8 +11,11 @@ public class CommandGenerator {
 		new HelpCommand(),
 		new MoveCommand(),
 		new ExitCommand(),
-		new NoneCommand()
-		//TODO fill with your code
+		new NoneCommand(),
+		new ListCommand(),
+		new ResetCommand(),
+		new ShootCommand(),
+		new ShockWaveCommand()
 	);
 
 	public static Command parse(String[] commandWords) {		
@@ -32,7 +35,7 @@ public class CommandGenerator {
 		
 		for (Command c: availableCommands) {
 			
-			commands.append(c.getHelp()).append(Messages.LINE_SEPARATOR);
+			commands.append(c.getDetails()).append(": ").append(c.getHelp()).append(Messages.LINE_SEPARATOR);
 		}
 		
 		return commands.toString();

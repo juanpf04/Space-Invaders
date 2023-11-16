@@ -39,8 +39,12 @@ public class MoveCommand extends Command {
 	public ExecutionResult execute(Game game) {
 		ExecutionResult result = new ExecutionResult(Messages.MOVEMENT_ERROR);
 
-		if(game.moveUCMShip(move))
+		// comprobar si es un movimiento valido
+		
+		if(game.moveUCMShip(move)) {
+			game.update();
 			result = new ExecutionResult(true);
+		}
 		
 		return result;
 	}
@@ -50,8 +54,10 @@ public class MoveCommand extends Command {
 	public Command parse(String[] commandWords) {
 		Command command = null;
 		
-		if(commandWords.length == 2 && this.matchCommandName(commandWords[0]))
+		if(commandWords.length == 2 && this.matchCommandName(commandWords[0])) {
 			command = this;
+			this.move = Move.valueOf(commandWords[1].toUpperCase());
+		}
 		
 		return command;
 	}
