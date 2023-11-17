@@ -31,5 +31,16 @@ public class NoneCommand extends NoParamsCommand{
 		protected String getHelp() {
 			return Messages.COMMAND_NONE_HELP;
 		}
-
+		
+		@Override
+		public Command parse(String[] commandWords) {
+			Command command = parse(commandWords);
+			
+			if(commandWords[0].length() == 0)
+				command =  this;
+			
+			return command;
+		}
+		
+		
 	}
