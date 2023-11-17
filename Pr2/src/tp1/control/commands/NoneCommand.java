@@ -34,7 +34,7 @@ public class NoneCommand extends NoParamsCommand{
 		
 		@Override
 		public Command parse(String[] commandWords) {
-			Command command = parse(commandWords);
+			Command command = super.parse(commandWords);
 			
 			if(commandWords[0].length() == 0)
 				command =  this;
