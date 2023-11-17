@@ -49,4 +49,12 @@ public enum Move {
 		
 		return move;
 	}
+	
+	public boolean validMove(String dir) {
+		
+		return dir == "LEFT" ||dir == "LLEFT" ||
+				dir == "RIGHT" ||dir == "RRIGHT" ||
+				dir == "UP" ||dir == "DOWN" ||
+				dir == "NONE";
+	}
 }
