@@ -5,7 +5,7 @@ import tp1.logic.Game;
 import tp1.logic.Move;
 import tp1.logic.Position;
 
-public class AlienShip extends EnemyShip{
+public abstract class AlienShip extends EnemyShip{
 
 	protected AlienManager alienManager;
 	

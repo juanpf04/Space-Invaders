@@ -4,7 +4,7 @@ import tp1.logic.Game;
 import tp1.logic.Move;
 import tp1.logic.Position;
 
-public class EnemyShip extends Ship{
+public abstract class EnemyShip extends Ship{
 
 	protected int points;
 	
@@ -13,6 +13,5 @@ public class EnemyShip extends Ship{
 		this.points = points;
 	}
 
-	
 	
 }

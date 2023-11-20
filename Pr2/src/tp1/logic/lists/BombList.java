@@ -47,7 +47,7 @@ public class BombList {
 	 */
 	public String showbombInPos(Position pos) {
 		
-		return this.objects[this.bombInPos(pos)].symbol();
+		return this.objects[this.bombInPos(pos)].getSymbol();
 	}
 
 	/**

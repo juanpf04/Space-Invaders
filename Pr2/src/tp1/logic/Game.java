@@ -81,7 +81,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	public String stateToString() {
 		StringBuilder state = new StringBuilder();
 		
-		state.append(Messages.life(this.ucmShip.getLives())).append(Messages.LINE_SEPARATOR)
+		state.append(Messages.life(this.ucmShip.getLife())).append(Messages.LINE_SEPARATOR)
 		.append(Messages.points(this.points)).append(Messages.LINE_SEPARATOR)
 		.append(Messages.shockWaveStatus(this.shockWave.stateToString())).append(Messages.LINE_SEPARATOR);	
 		
@@ -115,7 +115,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 			symbol = this.destroyerAlienList.showAlienInPos(pos);
 		
 		else if(this.ucmShip.isOnPosition(pos))
-			symbol = this.ucmShip.symbol();
+			symbol = this.ucmShip.getSymbol();
 		
 		else if(this.ufo.inPos(pos))
 			symbol = this.ufo.symbol();

@@ -6,30 +6,24 @@ import tp1.logic.Position;
 import tp1.view.Messages;
 import tp1.logic.gameobjects.DestroyerAlien;
 
-public class Bomb {
+public class Bomb extends EnemyWeapon {
 
 	private Move dir;
-	private Game game;
-	private Position pos;
 	private DestroyerAlien destroyerAlien;
 	
 	public Bomb(Position pos, Game game, DestroyerAlien destroyerAlien) {
+		super(game, pos); // Game No lo usamos debido a que le pasamos el laser y la nave como parametro para no hacer un for en la lista
 		this.dir = Move.DOWN;
-		this.game = game; // No lo usamos debido a que le pasamos el laser y la nave como parametro para no hacer un for en la lista
-		this.pos = new Position(pos);
 		this.destroyerAlien = destroyerAlien;
 	}
 	
-	/**
-	 * returns the String that represents the bomb symbol.
-	 * @return the String that represents the bomb symbol.
-	 */
-	public String symbol() {
+	@Override
+	public String getSymbol() {
 		
 		return Messages.BOMB_SYMBOL;
 	}
 
-	
+	@Override
 	public void onDelete() {
 		
 		this.destroyerAlien.deleteBomb();

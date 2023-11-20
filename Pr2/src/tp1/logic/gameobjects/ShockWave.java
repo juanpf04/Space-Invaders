@@ -7,7 +7,7 @@ import tp1.logic.lists.RegularAlienList;
  * Class that represents the shockWave
  * 
  */
-public class ShockWave {
+public class ShockWave extends UCMWeapon{
 
 	private boolean enabled;
 	

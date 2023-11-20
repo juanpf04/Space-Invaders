@@ -4,7 +4,7 @@ import tp1.logic.Game;
 import tp1.logic.Move;
 import tp1.logic.Position;
 
-public class Ship extends GameObject{
+public abstract class Ship extends GameObject{
 	
 	protected int damage;
 	protected Move dir;

@@ -16,7 +16,7 @@ public class UCMShip extends Ship{
 	}
 	
 	@Override
-	public String symbol() {
+	public String getSymbol() {
 		
 		if(super.isAlive())
 			return Messages.UCMSHIP_SYMBOL;
@@ -24,10 +24,7 @@ public class UCMShip extends Ship{
 		return Messages.UCMSHIP_DEAD_SYMBOL;
 	}
 	
-	/**
-	 * Methods that updates the position of the ship
-	 * @param move the move that wants to make
-	 */
+	
 	public void performMovement(Move move) {
 		
 		this.pos = this.pos.newPos(move);
@@ -50,11 +47,7 @@ public class UCMShip extends Ship{
 		this.game.addObject(ucmlaser);
 	}
 
-	public int getLives() {
-		
-		return super.life;
-	}
-
+	
 	public boolean receiveAttack(Bomb bomb) {
 		boolean recieveAttack = bomb.inPos(this.pos);
 		

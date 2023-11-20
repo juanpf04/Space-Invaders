@@ -10,7 +10,7 @@ public abstract class GameObject implements GameItem {
 	protected Game game;
 	
 	public GameObject(Game game, Position pos, int life) {	
-		this.pos = pos;
+		this.pos = new Position(pos);
 		this.game = game;
 		this.life = life;
 	}
@@ -20,11 +20,13 @@ public abstract class GameObject implements GameItem {
 		return this.life > 0;
 	}
 
-	protected int getLife() {
+	public int getLife() { // estaba protected y lo cambie a public, no se si podemos
 		return this.life;
 	}
 
 	//TODO fill with your code
+	
+	@Override
 	public boolean isOnPosition(Position pos) {
 		
 		return this.pos.equals(pos);

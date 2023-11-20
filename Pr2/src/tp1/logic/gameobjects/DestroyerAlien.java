@@ -6,7 +6,7 @@ import tp1.logic.Move;
 import tp1.logic.Position;
 import tp1.view.Messages;
 
-public class DestroyerAlien {
+public class DestroyerAlien extends AlienShip{
 	
 	public static final int DAMAGE = 1;
 	public static final int LIVES = 1;
