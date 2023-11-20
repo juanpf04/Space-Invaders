@@ -33,7 +33,7 @@ public class RegularAlien extends AlienShip{
 	 */
 	public String symbol() {
 		
-		return Messages.status(Messages.REGULAR_ALIEN_SYMBOL, this.lives);
+		return Messages.status(Messages.REGULAR_ALIEN_SYMBOL, this.life);
 	}
 	
 	/**
@@ -115,13 +115,13 @@ public class RegularAlien extends AlienShip{
 	 */
 	public boolean isAlive() {
 		
-		return this.lives > 0;
+		return this.life > 0;
 	}
 
 	
 	public void decreaseLive() {
 		
-		this.lives--;
+		this.life--;
 		if(!this.isAlive()) {
 			if(this.isInBorder()) 
 				this.alienManager.disableOnBorder();

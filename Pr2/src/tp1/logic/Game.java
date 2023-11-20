@@ -114,7 +114,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		else if(this.destroyerAlienList.alienInPos(pos) != -1)
 			symbol = this.destroyerAlienList.showAlienInPos(pos);
 		
-		else if(this.ucmShip.inPos(pos))
+		else if(this.ucmShip.isOnPosition(pos))
 			symbol = this.ucmShip.symbol();
 		
 		else if(this.ufo.inPos(pos))

@@ -5,8 +5,11 @@ import tp1.logic.Move;
 import tp1.logic.Position;
 
 public class Weapon extends GameObject {
-	public Weapon(Game game, Position pos)
-	{
-		super(game, pos);
+	
+	public Weapon(Game game, Position pos) {
+		super(game, pos, 0);
 	}
+
+	
+	
 }

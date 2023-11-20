@@ -15,13 +15,10 @@ public class UCMShip extends Ship{
 		super(game, pos, LIVES, DAMAGE, null);
 	}
 	
-	/**
-	 * returns the String that represents the ship symbol.
-	 * @return the String that represents the ship symbol.
-	 */
+	@Override
 	public String symbol() {
 		
-		if(this.isAlive())
+		if(super.isAlive())
 			return Messages.UCMSHIP_SYMBOL;
 		
 		return Messages.UCMSHIP_DEAD_SYMBOL;
@@ -47,21 +44,6 @@ public class UCMShip extends Ship{
 		return pos.validPos(move);
 	}
 	
-	/**
-	 * Checks if the position is the same as the position given
-	 * @param pos the position received
-	 * @return <code>true</code> if the position is the same as the position given
-	 */
-	public boolean inPos(Position pos) {
-		
-		return this.pos.equals(pos);
-	}
-
-	public boolean isAlive() {
-		
-		return this.lives != 0;
-	}
-
 	public void shootLaser() {
 		
 		UCMLaser ucmlaser = new UCMLaser(this.game, this.pos);
@@ -70,14 +52,14 @@ public class UCMShip extends Ship{
 
 	public int getLives() {
 		
-		return this.lives;
+		return super.life;
 	}
 
 	public boolean receiveAttack(Bomb bomb) {
 		boolean recieveAttack = bomb.inPos(this.pos);
 		
 		if(recieveAttack)
-			this.lives--;
+			super.life--;
 		
 		return recieveAttack;
 	}

@@ -26,7 +26,7 @@ public class Ufo extends EnemyShip{
 	 */
 	public String symbol() {
 		
-		return Messages.status(Messages.UFO_SYMBOL, this.lives);
+		return Messages.status(Messages.UFO_SYMBOL, super.life);
 	}
 	
 	
@@ -76,7 +76,7 @@ public class Ufo extends EnemyShip{
 		
 		this.enabled = false;
 		this.pos = new Position(Game.DIM_X, 0);
-		this.lives = LIVES;
+		super.life = LIVES;
 	}
 
 	/**
@@ -119,16 +119,9 @@ public class Ufo extends EnemyShip{
 		return this.pos.equals(pos);
 	}
 	
-
-	public boolean isAlive() {
-		
-		return this.lives > 0;
-	}
-
-	
 	public void decreaseLive() {
 		
-		this.lives--;
+		super.life--;
 		if(!this.isAlive()) {
 			this.onDelete();
 			this.game.enableShockWave();
