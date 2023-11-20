@@ -16,7 +16,7 @@ import tp1.logic.lists.BombList;
 import tp1.logic.lists.DestroyerAlienList;
 import tp1.view.Messages;
 
-public class Game implements GameStatus {
+public class Game implements GameModel, GameStatus, GameWorld {
 
 	public static final int DIM_X = 9;
 	public static final int DIM_Y = 8;
@@ -53,13 +53,15 @@ public class Game implements GameStatus {
 		this.cycle = 0;
 		this.points = 0;
 		this.ucmShip = new UCMShip(this, new Position(DIM_X / 2, DIM_Y - 1));
-		this.ucmLaser = null;
-		this.ufo = new Ufo(this);
 		this.shockWave = new ShockWave();
 		this.alienManager = new AlienManager(this);
+		//
+		this.ucmLaser = null;
+		this.ufo = new Ufo(this);
 		this.regularAlienList = this.alienManager.initializeRegularAliens();
 		this.destroyerAlienList = this.alienManager.initializeDestroyerAliens();
 		this.bombList = new BombList(this.level);
+		// cambiar por el container
 		this.exit = false;
 	}
 	
@@ -90,12 +92,6 @@ public class Game implements GameStatus {
 	public int getCycle() {
 		
 		return this.cycle;
-	}
-	
-	
-	public void increaseCycles() {
-		
-		this.cycle++;
 	}
 	
 	@Override
@@ -130,11 +126,13 @@ public class Game implements GameStatus {
 		return symbol;
 	}
 
+	@Override
 	public boolean isFinished() {
 		
 		return this.exit || this.playerWin() || this.aliensWin();
 	}
 	
+	@Override
 	public void exit() {
 		
 		this.exit = true;
@@ -166,8 +164,8 @@ public class Game implements GameStatus {
 		return this.level;
 	}
 	
-	
-	public boolean moveUCMShip(Move move) {
+	@Override
+	public boolean move(Move move) {
 		boolean canMove = this.ucmShip.validPos(move) && this.ucmShip.canMove(move);
 		
 		if(canMove) 
@@ -176,7 +174,7 @@ public class Game implements GameStatus {
 		return canMove;
 	}
 	
-	
+	@Override
 	public boolean shootLaser() {
 		boolean canShoot = this.laserIsEnable();
 		
@@ -216,7 +214,7 @@ public class Game implements GameStatus {
 		this.ucmLaser = ucmlaser;
 	}
 
-	
+	@Override
 	public void reset() {
 		
 		this.initialize();
@@ -234,7 +232,7 @@ public class Game implements GameStatus {
 		this.shockWave.enable();
 	}
 
-
+	@Override
 	public boolean shootShockWave() {
 		boolean canShoot = this.shockWave.isEnabled();
 		
@@ -244,7 +242,7 @@ public class Game implements GameStatus {
 		return canShoot;
 	}
 
-
+	@Override
 	public void update() {
 		
 		this.regularAlienList.automaticMove();	
@@ -274,7 +272,7 @@ public class Game implements GameStatus {
 		
 		this.bombList.performAttack(this.ucmShip);
 		
-		this.increaseCycles();
+		this.cycle++;
 	}
 
 
