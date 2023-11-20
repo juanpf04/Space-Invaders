@@ -23,8 +23,9 @@ public class CommandGenerator {
 		
 		for (Command c: availableCommands) {
 			
-			if(command == null)
-				command = c.parse(commandWords);
+			command = c.parse(commandWords);
+			if(command != null)
+				return command;
 		}
 		
 		return command;

@@ -41,7 +41,7 @@ public class MoveCommand extends Command {
 
 		// comprobar si es un movimiento valido
 		
-		if(game.moveUCMShip(move)) {
+		if(game.move(move)) {
 			game.update();
 			result = new ExecutionResult(true);
 		}
