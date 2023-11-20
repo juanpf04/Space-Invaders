@@ -20,11 +20,8 @@ public class Ufo extends EnemyShip{
 	}
 	
 
-	/**
-	 * returns the String that represents the ufo symbol.
-	 * @return the String that represents the ufo symbol.
-	 */
-	public String symbol() {
+	@Override
+	public String getSymbol() {
 		
 		return Messages.status(Messages.UFO_SYMBOL, super.life);
 	}
@@ -107,16 +104,6 @@ public class Ufo extends EnemyShip{
 	public boolean receiveAttack(UCMLaser ucmLaser) {
 		
 		return ucmLaser.inPos(this.pos);
-	}
-
-	/**
-	 * Checks if the position is the same as the position given
-	 * @param pos the position received
-	 * @return <code>true</code> if the position is the same as the position given
-	 */
-	public boolean inPos(Position pos) {
-		
-		return this.pos.equals(pos);
 	}
 	
 	public void decreaseLive() {

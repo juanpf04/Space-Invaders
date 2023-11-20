@@ -117,8 +117,8 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		else if(this.ucmShip.isOnPosition(pos))
 			symbol = this.ucmShip.getSymbol();
 		
-		else if(this.ufo.inPos(pos))
-			symbol = this.ufo.symbol();
+		else if(this.ufo.isOnPosition(pos))
+			symbol = this.ufo.getSymbol();
 		
 		else if(this.bombList.bombInPos(pos) != -1)
 			symbol = this.bombList.showbombInPos(pos);
