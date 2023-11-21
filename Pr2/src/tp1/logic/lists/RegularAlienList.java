@@ -32,7 +32,7 @@ public class RegularAlienList {
 	public int alienInPos(Position pos) {
 		int i = 0;
 		
-		while(i < this.size && !this.objects[i].inPos(pos)) {
+		while(i < this.size && !this.objects[i].isOnPosition(pos)) {
 			
 			i++;
 		}
@@ -50,7 +50,7 @@ public class RegularAlienList {
 	 */
 	public String showAlienInPos(Position pos) {
 		
-		return this.objects[this.alienInPos(pos)].symbol();
+		return this.objects[this.alienInPos(pos)].getSymbol();
 	}
 
 	/**

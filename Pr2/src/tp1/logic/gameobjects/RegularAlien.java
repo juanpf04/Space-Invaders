@@ -27,11 +27,8 @@ public class RegularAlien extends AlienShip{
 		this.cyclesToMove = this.speed;
 	}
 	
-	/**
-	 * returns the String that represents the regular alien symbol.
-	 * @return the String that represents the regular alien symbol.
-	 */
-	public String symbol() {
+	@Override
+	public String getSymbol() {
 		
 		return Messages.status(Messages.REGULAR_ALIEN_SYMBOL, this.life);
 	}
@@ -73,16 +70,6 @@ public class RegularAlien extends AlienShip{
 
 		return this.pos.inFinalRow();
 	}
-
-	/**
-	 * Methods that updates the position of the regular alien
-	 * @param move the move that wants to make
-	 */
-	private void performMovement(Move dir) {
-		
-		this.pos = this.pos.newPos(dir);
-	}
-
 	
 	private boolean isInBorder() {
 		
@@ -91,33 +78,13 @@ public class RegularAlien extends AlienShip{
 
 	
 	public boolean receiveAttack(UCMLaser laser) {
-		boolean recieveAttack = laser.inPos(this.pos);
+		boolean recieveAttack = laser.isOnPosition(this.pos);
 		
 		if(recieveAttack)
 			this.decreaseLive();
 		
 		return recieveAttack;
 	}
-
-	/**
-	 * Checks if the position is the same as the position given
-	 * @param pos the position received
-	 * @return <code>true</code> if the position is the same as the position given
-	 */
-	public boolean inPos(Position pos) {
-		
-		return this.pos.equals(pos);
-	}
-	
-	/**
-	 * Checks if 
-	 * @return <code>true</code> if 
-	 */
-	public boolean isAlive() {
-		
-		return this.life > 0;
-	}
-
 	
 	public void decreaseLive() {
 		

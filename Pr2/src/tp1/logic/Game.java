@@ -105,8 +105,8 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		Position pos = new Position(col,row);
 		String symbol = "";
 		
-		if(!this.laserIsEnable() && this.ucmLaser.inPos(pos)) 
-			symbol = this.ucmLaser.symbol();
+		if(!this.laserIsEnable() && this.ucmLaser.isOnPosition(pos)) 
+			symbol = this.ucmLaser.getSymbol();
 		
 		else if(this.regularAlienList.alienInPos(pos) != -1)
 			symbol = this.regularAlienList.showAlienInPos(pos);

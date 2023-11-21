@@ -34,11 +34,8 @@ public class DestroyerAlien extends AlienShip{
 		this.bombEnabled = true;
 	}
 	
-	/**
-	 * returns the String that represents the destroyer alien symbol.
-	 * @return the String that represents the destroyer alien symbol.
-	 */
-	public String symbol() {
+	@Override
+	public String getSymbol() {
 		
 		return Messages.status(Messages.DESTROYER_ALIEN_SYMBOL, this.lives);
 	}
@@ -83,16 +80,6 @@ public class DestroyerAlien extends AlienShip{
 
 		return this.pos.inFinalRow();
 	}
-
-	/**
-	 * Methods that updates the position of the destroyer alien
-	 * @param move the move that wants to make
-	 */
-	private void performMovement(Move dir) {
-		
-		this.pos = this.pos.newPos(dir);
-	}
-
 	
 	private boolean isInBorder() {
 		
@@ -101,30 +88,13 @@ public class DestroyerAlien extends AlienShip{
 
 	
 	public boolean receiveAttack(UCMLaser laser) {
-		boolean recieveAttack = laser.inPos(this.pos);
+		boolean recieveAttack = laser.isOnPosition(this.pos);
 		
 		if(recieveAttack)
 			this.decreaseLive();
 		
 		return recieveAttack;
 	}
-
-	/**
-	 * Checks if the position is the same as the position given
-	 * @param pos the position received
-	 * @return <code>true</code> if the position is the same as the position given
-	 */
-	public boolean inPos(Position pos) {
-		
-		return this.pos.equals(pos);
-	}
-	
-
-	public boolean isAlive() {
-		
-		return this.lives > 0;
-	}
-
 	
 	public void decreaseLive() {
 		
@@ -147,8 +117,8 @@ public class DestroyerAlien extends AlienShip{
 		this.bombEnabled = true;
 	}
 
-	
-	private void computerAction() {
+	@Override
+	public void computerAction() {
 		
 		if(this.bombEnabled && this.canGenerateRandomShoot()) {
 			

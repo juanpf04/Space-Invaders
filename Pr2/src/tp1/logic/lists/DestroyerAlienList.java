@@ -28,7 +28,7 @@ public class DestroyerAlienList {
 	public int alienInPos(Position pos) {
 		int i = 0;
 		
-		while(i < this.size && !this.objects[i].inPos(pos)) {
+		while(i < this.size && !this.objects[i].isOnPosition(pos)) {
 			
 			i++;
 		}
@@ -46,7 +46,7 @@ public class DestroyerAlienList {
 	 */
 	public String showAlienInPos(Position pos) {
 		
-		return this.objects[this.alienInPos(pos)].symbol();
+		return this.objects[this.alienInPos(pos)].getSymbol();
 	}
 
 	/**

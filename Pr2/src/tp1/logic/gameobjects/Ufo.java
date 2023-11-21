@@ -26,7 +26,7 @@ public class Ufo extends EnemyShip{
 		return Messages.status(Messages.UFO_SYMBOL, super.life);
 	}
 	
-	
+	@Override
 	public void computerAction() {
 		if(!enabled && canGenerateRandomUfo()) {
 			enable();	
@@ -58,16 +58,6 @@ public class Ufo extends EnemyShip{
 	
 		return !this.pos.posValida();
 	}
-
-	/**
-	 * Methods that updates the position of the ufo
-	 * @param move the move that wants to make
-	 */
-	private void performMovement(Move dir) {
-		
-		this.pos = this.pos.newPos(dir);
-	}
-
 	
 	public void onDelete() {
 		
@@ -103,7 +93,7 @@ public class Ufo extends EnemyShip{
 	
 	public boolean receiveAttack(UCMLaser ucmLaser) {
 		
-		return ucmLaser.inPos(this.pos);
+		return ucmLaser.isOnPosition(this.pos);
 	}
 	
 	public void decreaseLive() {

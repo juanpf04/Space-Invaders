@@ -19,11 +19,8 @@ public class UCMLaser extends UCMWeapon{
 		this.dir = Move.UP;
 	}
 	
-	/**
-	 * returns the String that represents the laser symbol.
-	 * @return the String that represents the laser symbol.
-	 */
-	public String symbol() {
+	@Override
+	public String getSymbol() {
 		
 		return Messages.LASER_SYMBOL;
 	}
@@ -58,25 +55,6 @@ public class UCMLaser extends UCMWeapon{
 	private boolean isOut() {
 	
 		return !this.pos.posValida();
-	}
-
-	/**
-	 * Methods that updates the position of the laser
-	 * @param move the move that wants to make
-	 */
-	private void performMovement(Move dir) {
-		
-		this.pos = this.pos.newPos(dir);
-	}
-
-	/**
-	 * Checks if the position is the same as the position given
-	 * @param pos the position received
-	 * @return <code>true</code> if the position is the same as the position given
-	 */
-	public boolean inPos(Position pos) {
-		
-		return this.pos.equals(pos);
 	}
 
 	/**

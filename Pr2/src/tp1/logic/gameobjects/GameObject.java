@@ -1,6 +1,7 @@
 package tp1.logic.gameobjects;
 
 import tp1.logic.Game;
+import tp1.logic.Move;
 import tp1.logic.Position;
 
 public abstract class GameObject implements GameItem {
@@ -20,11 +21,14 @@ public abstract class GameObject implements GameItem {
 		return this.life > 0;
 	}
 
-	public int getLife() { // estaba protected y lo cambie a public, no se si podemos
+	protected int getLife() {
 		return this.life;
 	}
 
-	//TODO fill with your code
+	protected void performMovement(Move move) {
+		
+		this.pos = this.pos.newPos(move);
+	}
 	
 	@Override
 	public boolean isOnPosition(Position pos) {

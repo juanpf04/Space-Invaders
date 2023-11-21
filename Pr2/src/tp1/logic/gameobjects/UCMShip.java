@@ -24,10 +24,13 @@ public class UCMShip extends Ship{
 		return Messages.UCMSHIP_DEAD_SYMBOL;
 	}
 	
+	public int getLife() { 
+		return super.getLife();
+	}
 	
 	public void performMovement(Move move) {
 		
-		this.pos = this.pos.newPos(move);
+		super.performMovement(move);
 	}
 	
 	public boolean canMove(Move move) {

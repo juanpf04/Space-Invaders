@@ -29,12 +29,10 @@ public class Bomb extends EnemyWeapon {
 		this.destroyerAlien.deleteBomb();
 	}
 
-	/**
-	 *  Implements the automatic movement of the bomb	
-	 */
+	@Override
 	public void automaticMove () {
 		if(!this.destroyerAlien.bombEnabled()) {
-			performMovement(dir);
+			super.performMovement(dir);
 			if(isOut())
 				die();
 		}
@@ -50,15 +48,6 @@ public class Bomb extends EnemyWeapon {
 	public boolean isOut() {
 	
 		return !this.pos.posValida();
-	}
-
-	/**
-	 * Methods that updates the position of the bomb
-	 * @param move the move that wants to make
-	 */
-	private void performMovement(Move dir) {
-		
-		this.pos = this.pos.newPos(dir);
 	}
 
 	/**
