@@ -6,11 +6,9 @@ import tp1.logic.Position;
 
 public abstract class Weapon extends GameObject {
 	
-	public Weapon(Game game, Position pos) {
-		super(game, pos, 0);
+	public Weapon(Game game, Position pos, int life) {
+		super(game, pos, life);
 	}
 
 	
-	@Override
-	public void automaticMove() {}
 }

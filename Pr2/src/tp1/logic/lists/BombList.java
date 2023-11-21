@@ -29,7 +29,7 @@ public class BombList {
 	public int bombInPos(Position pos) {
 		int i = 0;
 		
-		while(i < this.size && !this.objects[i].inPos(pos)) {
+		while(i < this.size && !this.objects[i].isOnPosition(pos)) {
 			
 			i++;
 		}

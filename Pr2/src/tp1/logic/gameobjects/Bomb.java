@@ -12,9 +12,8 @@ public class Bomb extends EnemyWeapon {
 	private DestroyerAlien destroyerAlien;
 	
 	public Bomb(Position pos, Game game, DestroyerAlien destroyerAlien) {
-		super(game, pos); // Game No lo usamos debido a que le pasamos el laser y la nave como parametro para no hacer un for en la lista
+		super(game, pos, 1);
 		this.dir = Move.DOWN;
-		this.destroyerAlien = destroyerAlien;
 	}
 	
 	@Override
@@ -80,16 +79,6 @@ public class Bomb extends EnemyWeapon {
 			this.die();
 		
 		return attack;
-	}
-	
-	/**
-	 * Checks if the position is the same as the position given
-	 * @param pos the position received
-	 * @return <code>true</code> if the position is the same as the position given
-	 */
-	public boolean inPos(Position pos) {
-		
-		return this.pos.equals(pos);
 	}
 	
 	/**
