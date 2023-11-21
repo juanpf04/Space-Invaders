@@ -8,12 +8,10 @@ import tp1.logic.gameobjects.DestroyerAlien;
 
 public class Bomb extends EnemyWeapon {
 
-	private Move dir;
 	private DestroyerAlien destroyerAlien;
 	
 	public Bomb(Position pos, Game game, DestroyerAlien destroyerAlien) {
-		super(game, pos, 1);
-		this.dir = Move.DOWN;
+		super(game, pos, 1, Move.DOWN);
 	}
 	
 	@Override
@@ -66,26 +64,6 @@ public class Bomb extends EnemyWeapon {
 			this.die();
 		
 		return attack;
-	}
-	
-	/**
-	 * 
-	 * @param other ship under attack by the bomb
-	 * @return <code>true</code>
-	 */
-	private boolean weaponAttack(UCMShip other) {
-		
-		return other.receiveAttack(this);	
-	}
-	
-	/**
-	 * 
-	 * @param other laser under attack by the bomb
-	 * @return <code>true</code>
-	 */
-	private boolean weaponAttack(UCMLaser other) {
-		
-		return other.receiveAttack(this);	
 	}
 
 }

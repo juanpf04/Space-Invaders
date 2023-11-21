@@ -33,20 +33,6 @@ public class UCMLaser extends UCMWeapon{
 		game.enableLaser();
 	}
 	
-	private void die() {
-		
-		this.onDelete();
-	}
-
-	/**
-	 * Checks if the position isn't on board
-	 * @return <code>true</code> if the position isn't on board
-	 */
-	private boolean isOut() {
-	
-		return !this.pos.posValida();
-	}
-
 	/**
 	 * Method that implements the attack by the laser to a regular alien.
 	 * It checks whether both objects are alive and in the same position.
@@ -131,7 +117,7 @@ public class UCMLaser extends UCMWeapon{
 	 * @return <code>true</code> if the attack has been made
 	 */
 	public boolean receiveAttack(Bomb bomb) {
-			boolean recieveAttack = bomb.inPos(this.pos);
+			boolean recieveAttack = bomb.isOnPosition(this.pos);
 		
 		if(recieveAttack)
 			this.die();
