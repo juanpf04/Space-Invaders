@@ -235,7 +235,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 
 	@Override
 	public boolean shootShockWave() {
-		boolean canShoot = this.shockWave.isEnabled();
+		boolean canShoot = this.shockWave.isAlive();
 		
 		if(canShoot)
 			this.shockWave.performAttack(this.regularAlienList, this.destroyerAlienList);

@@ -31,14 +31,14 @@ public class RegularAlien extends AlienShip{
 		boolean recieveAttack = laser.isOnPosition(this.pos);
 		
 		if(recieveAttack)
-			this.decreaseLive();
+			this.decreaseLife();
 		
 		return recieveAttack;
 	}
 	
-	public void decreaseLive() {
+	public void decreaseLife() {
 		
-		this.life--;
+		super.decreaseLife();
 		if(!this.isAlive()) {
 			if(this.isInBorder()) 
 				this.alienManager.disableOnBorder();
@@ -46,6 +46,24 @@ public class RegularAlien extends AlienShip{
 			this.alienManager.decreaseRemainingAliens();
 			this.game.addPoints(POINTS);
 		}
+	}
+
+	@Override
+	protected int getDamage() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	protected int getArmour() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void onDelete() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

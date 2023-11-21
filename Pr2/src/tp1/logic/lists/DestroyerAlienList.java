@@ -117,7 +117,7 @@ public class DestroyerAlienList {
 		int i = 0;
 
 		while ( i < this.length()) {
-			objects[i].decreaseLive();
+			objects[i].decreaseLife();
 			
 			if (!objects[i].isAlive()) {
 				this.remove(i);

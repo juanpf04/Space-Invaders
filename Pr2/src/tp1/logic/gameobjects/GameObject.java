@@ -11,7 +11,7 @@ public abstract class GameObject implements GameItem {
 	protected Game game;
 	
 	public GameObject(Game game, Position pos, int life) {	
-		this.pos = new Position(pos);
+		this.pos = pos;
 		this.game = game;
 		this.life = life;
 	}
@@ -19,6 +19,10 @@ public abstract class GameObject implements GameItem {
 	@Override
 	public boolean isAlive() {
 		return this.life > 0;
+	}
+	
+	protected void decreaseLife() {
+		this.life--;
 	}
 
 	protected int getLife() {
@@ -28,11 +32,6 @@ public abstract class GameObject implements GameItem {
 	protected void performMovement(Move move) {
 		
 		this.pos = this.pos.newPos(move);
-	}
-	
-	protected void die() {
-		
-		this.onDelete();
 	}
 	
 	public boolean isOut() {

@@ -40,14 +40,15 @@ public class DestroyerAlien extends AlienShip{
 		boolean recieveAttack = laser.isOnPosition(this.pos);
 		
 		if(recieveAttack)
-			this.decreaseLive();
+			this.decreaseLife();
 		
 		return recieveAttack;
 	}
 	
-	public void decreaseLive() {
+	@Override
+	public void decreaseLife() {
 		
-		this.life--;
+		super.decreaseLife();
 		if(!this.isAlive()) {
 			this.alienManager.decreaseRemainingAliens();
 			this.game.addPoints(POINTS);
@@ -81,6 +82,24 @@ public class DestroyerAlien extends AlienShip{
 	private boolean canGenerateRandomShoot(){
 		
 		return game.getRandom().nextDouble() < game.getLevel().getShootFrequency();
+	}
+
+	@Override
+	protected int getDamage() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	protected int getArmour() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void onDelete() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

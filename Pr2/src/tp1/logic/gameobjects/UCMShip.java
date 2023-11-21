@@ -52,12 +52,36 @@ public class UCMShip extends Ship{
 
 	
 	public boolean receiveAttack(Bomb bomb) {
-		boolean recieveAttack = bomb.inPos(this.pos);
+		boolean recieveAttack = bomb.isOnPosition(this.pos);
 		
 		if(recieveAttack)
-			super.life--;
+			super.decreaseLife();
 		
 		return recieveAttack;
+	}
+
+	@Override
+	protected int getDamage() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	protected int getArmour() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void onDelete() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void automaticMove() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -10,15 +10,22 @@ public abstract class EnemyWeapon extends Weapon {
 		super(game, pos, life, dir);
 	}
 	
-	
-	protected boolean weaponAttack(UCMShip other) {
+	public boolean performAttack(UCMShip other) {
+		boolean attack = other.receiveAttack(this);
 		
-		return other.receiveAttack(this);	
+		if(attack)
+			this.die();
+		
+		return attack;
 	}
 	
-	
-	protected boolean weaponAttack(UCMWeapon other) {
+	public boolean performAttack(UCMWeapon other) {
+		boolean attack = other.receiveAttack(this);
 		
-		return other.receiveAttack(this);	
+		if(attack)
+			this.die();
+		
+		return attack;
 	}
+	
 }

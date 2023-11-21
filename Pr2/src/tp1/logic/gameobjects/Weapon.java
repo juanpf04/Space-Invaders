@@ -19,4 +19,9 @@ public abstract class Weapon extends GameObject {
 		if(isOut())
 			die();
 	}
+	
+	protected void die() {
+		
+		this.onDelete();
+	}
 }

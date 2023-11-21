@@ -12,60 +12,47 @@ public class ShockWave extends UCMWeapon{
 	public static final int DAMAGE = 1;
 	public static final int LIFE = 1;
 	
-	private boolean enabled;
-	
 	public ShockWave() {
-		super(null,null, 0);
-		
-		this.enabled = false; 
+		super(null,null, LIFE, null);
 	}
-	
-	/**
-	 *  Change enabled to true
-	 */
+
 	public void enable() {
 		
-		this.enabled = true;
-	}
-	
-	/**
-	 *  Change enable to false
-	 */
-	public void disable() {
-		
-		this.enabled = false;
+		super.life = LIFE;
 	}
 
-	/**
-	 * returns enabled corresponding the shockWave
-	 * @return <code>true</code> if enabled is true
-	 */
-	public boolean isEnabled() {
-		
-		return this.enabled;
-	}
-
-	/**
-	 *  Method that implements the attack by the shockWave to all regular aliens and all destroyer aliens.
-	 */
 	public void performAttack(RegularAlienList regularAlienList, DestroyerAlienList destroyerAlienList) {
-		this.disable();
+		super.die();
 		
 		regularAlienList.allRecieveAttack();
 		destroyerAlienList.allRecieveAttack();
 	}
 
-	/**
-	 * returns the String that represents the shockWave status.
-	 * @return the String that represents the shockWave status.
-	 */
 	public String stateToString() {
 		String state = "OFF";
 		
-		if(this.isEnabled())
+		if(super.isAlive())
 			state = "ON";
 		
 		return state;
+	}
+
+	@Override
+	protected String getSymbol() {return null;}
+
+	@Override
+	protected int getDamage() {
+		return DAMAGE;
+	}
+
+	@Override
+	protected int getArmour() {
+		return LIFE;
+	}
+
+	@Override
+	public void onDelete() {
+		super.decreaseLife();
 	}
 
 }

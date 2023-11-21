@@ -8,6 +8,9 @@ import tp1.logic.gameobjects.DestroyerAlien;
 
 public class Bomb extends EnemyWeapon {
 
+	public static final int DAMAGE = 1;
+	public static final int LIFE = 1;
+	
 	private DestroyerAlien destroyerAlien;
 	
 	public Bomb(Position pos, Game game, DestroyerAlien destroyerAlien) {
@@ -32,38 +35,14 @@ public class Bomb extends EnemyWeapon {
 			super.automaticMove();
 		}
 	}
-	
 
-	/**
-	 * Method that implements the attack by the bomb to a ship.
-	 * It checks whether both objects are alive and in the same position.
-	 * If so call the "actual" attack method {@link weaponAttack}.
-	 * @param other the ship possibly under attack
-	 * @return <code>true</code> if the ship has been attacked by the bomb.
-	 */
-	public boolean performAttack(UCMShip other) {
-		boolean attack = this.weaponAttack(other);
-		
-		if(attack)
-			this.die();
-		
-		return attack;
-	}
-	
-	/**
-	 * Method that implements the attack by the bomb to a laser.
-	 * It checks whether both objects are alive and in the same position.
-	 * If so call the "actual" attack method {@link weaponAttack}.
-	 * @param other the laser possibly under attack
-	 * @return <code>true</code> if the laser has been attacked by the bomb.
-	 */
-	public boolean performAttack(UCMLaser other) {
-		boolean attack = this.weaponAttack(other);
-		
-		if(attack)
-			this.die();
-		
-		return attack;
+	@Override
+	protected int getDamage() {
+		return DAMAGE;
 	}
 
+	@Override
+	protected int getArmour() {
+		return LIFE;
+	}
 }

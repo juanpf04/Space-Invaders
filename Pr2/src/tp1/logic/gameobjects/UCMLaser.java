@@ -12,11 +12,11 @@ import tp1.view.Messages;
  */
 public class UCMLaser extends UCMWeapon{
 	
-	protected Move dir;
+	public static final int DAMAGE = 1;
+	public static final int LIFE = 1;
 	
 	public UCMLaser(Game game, Position pos) {
-		super(game, pos);
-		this.dir = Move.UP;
+		super(game, pos, LIFE,Move.UP);
 	}
 	
 	@Override
@@ -25,104 +25,20 @@ public class UCMLaser extends UCMWeapon{
 		return Messages.LASER_SYMBOL;
 	}
 	
-	/**
-	 *  Method called when the laser disappears from the board
-	 */
+	@Override
+	protected int getDamage() {
+		return DAMAGE;
+	}
+
+	@Override
+	protected int getArmour() {
+		return LIFE;
+	}
+
+	@Override
 	public void onDelete() {
 		
 		game.enableLaser();
-	}
-	
-	/**
-	 * Method that implements the attack by the laser to a regular alien.
-	 * It checks whether both objects are alive and in the same position.
-	 * If so call the "actual" attack method {@link weaponAttack}.
-	 * @param other the regular alien possibly under attack
-	 * @return <code>true</code> if the alien has been attacked by the laser.
-	 */
-	public boolean performAttack(RegularAlien other) {
-		boolean attack = this.weaponAttack(other);
-		
-		if(attack)
-			this.die();
-		
-		return attack;
-	}
-
-	/**
-	 * Method that implements the attack by the laser to a destroyer alien.
-	 * It checks whether both objects are alive and in the same position.
-	 * If so call the "actual" attack method {@link weaponAttack}.
-	 * @param other the destroyer alien possibly under attack
-	 * @return <code>true</code> if the alien has been attacked by the laser.
-	 */
-	public boolean performAttack(DestroyerAlien other) {
-		boolean attack = this.weaponAttack(other);
-		
-		if(attack)
-			this.die();
-		
-		return attack;
-	}
-	
-	/**
-	 * Method that implements the attack by the laser to a ufo.
-	 * It checks whether both objects are alive and in the same position.
-	 * If so call the "actual" attack method {@link weaponAttack}.
-	 * @param other the ufo possibly under attack
-	 * @return <code>true</code> if the ufo has been attacked by the laser.
-	 */
-	public boolean performAttack(Ufo other) {
-		boolean attack = this.weaponAttack(other);
-		
-		if(attack)
-			this.die();
-		
-		return attack;
-	}
-
-	/**
-	 * 
-	 * @param other regular alien under attack by the laser
-	 * @return <code>true</code>
-	 */
-	private boolean weaponAttack(RegularAlien other) {
-		
-		return other.receiveAttack(this);	
-	}
-
-	/**
-	 * 
-	 * @param other destroyer alien under attack by the laser
-	 * @return <code>true</code>
-	 */
-	private boolean weaponAttack(DestroyerAlien other) {
-		
-		return other.receiveAttack(this);	
-	}
-	
-	/**
-	 * 
-	 * @param other ufo under attack by the laser
-	 * @return <code>true</code>
-	 */
-	private boolean weaponAttack(Ufo other) {
-		
-		return other.receiveAttack(this);	
-	}
-	
-	/**
-	 * Method to implement the effect of bomb attack on a laser
-	 * @param weapon the received bomb
-	 * @return <code>true</code> if the attack has been made
-	 */
-	public boolean receiveAttack(Bomb bomb) {
-			boolean recieveAttack = bomb.isOnPosition(this.pos);
-		
-		if(recieveAttack)
-			this.die();
-		
-		return recieveAttack;
 	}
 
 }

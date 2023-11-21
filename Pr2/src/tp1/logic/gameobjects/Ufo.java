@@ -48,14 +48,7 @@ public class Ufo extends EnemyShip{
 		this.enabled = true;
 	}
 
-	/**
-	 * Checks if the position isn't on board
-	 * @return <code>true</code> if the position isn't on board
-	 */
-	private boolean isOut() {
 	
-		return !this.pos.posValida();
-	}
 	
 	public void onDelete() {
 		
@@ -64,11 +57,7 @@ public class Ufo extends EnemyShip{
 		super.life = LIVES;
 	}
 
-	/**
-	 * Checks if the game should generate an ufo.
-	 * 
-	 * @return <code>true</code> if an ufo should be generated.
-	 */
+	
 	private boolean canGenerateRandomUfo(){
 		
 		return game.getRandom().nextDouble() < game.getLevel().getUfoFrequency();
@@ -84,7 +73,7 @@ public class Ufo extends EnemyShip{
 	public void checkAttack(UCMLaser ucmLaser) {
 		
 		if(ucmLaser.performAttack(this)) {
-			this.decreaseLive();
+			this.decreaseLife();
 		}
 	}
 	
@@ -94,14 +83,29 @@ public class Ufo extends EnemyShip{
 		return ucmLaser.isOnPosition(this.pos);
 	}
 	
-	public void decreaseLive() {
+	@Override
+	public void decreaseLife() {
 		
-		super.life--;
+		super.decreaseLife();
 		if(!this.isAlive()) {
 			this.onDelete();
 			this.game.enableShockWave();
 			this.game.addPoints(POINTS);
 		}
+	}
+
+
+	@Override
+	protected int getDamage() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	protected int getArmour() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
