@@ -9,9 +9,11 @@ import tp1.logic.lists.RegularAlienList;
  */
 public class ShockWave extends UCMWeapon{
 
+	public static final int DAMAGE = 1;
 	private boolean enabled;
 	
 	public ShockWave() {
+		super(null,null);
 		
 		this.enabled = false; 
 	}
@@ -63,5 +65,17 @@ public class ShockWave extends UCMWeapon{
 		
 		return state;
 	}
+
+	@Override
+	protected String getSymbol() {return null;}
+
+	@Override
+	protected int getDamage() {return DAMAGE;}
+
+	@Override
+	protected int getArmour() {return 0;}
+
+	@Override
+	public void onDelete() {}
 
 }

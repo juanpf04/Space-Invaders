@@ -12,80 +12,29 @@ public class DestroyerAlien extends AlienShip{
 	public static final int LIVES = 1;
 	public static final int POINTS = 10;
 	
-	private int cyclesToMove;
-	private int speed;
-	private Move dir;
-	private Position pos;
-	private int lives;
-	private Game game;
 	private boolean bombEnabled;
-	private AlienManager alienManager;
 
 	//TODO fill your code
 	public DestroyerAlien(Position pos,Game game, AlienManager alienManager) {
 		
-		this.pos = pos;
-		this.game = game;
-		this.speed = game.getLevel().getNumCyclesToMoveOneCell();
-		this.cyclesToMove = this.speed;
-		this.dir = Move.LEFT;
-		this.lives = LIVES;
-		this.alienManager = alienManager;
+		super(game, pos, LIVES, DAMAGE, Move.LEFT, alienManager);
 		this.bombEnabled = true;
 	}
 	
 	@Override
 	public String getSymbol() {
 		
-		return Messages.status(Messages.DESTROYER_ALIEN_SYMBOL, this.lives);
+		return Messages.status(Messages.DESTROYER_ALIEN_SYMBOL, this.life);
 	}
 	
-	/**
-	 *  Implements the automatic movement of the destroyer alien	
-	 */
+	@Override
 	public void automaticMove() {
 		
-		if(this.cyclesToMove == 0)
-		{
-			this.performMovement(this.dir);
-			this.cyclesToMove = this.speed; 
-			if(this.isInBorder())
-				this.alienManager.shipOnBorder();
-				
-		}
-		else if(this.alienManager.onBorder())
-			this.descent();
-		
-		else
-			this.cyclesToMove--;
+		super.automaticMove();
 		
 		if(this.isAlive())
 			this.computerAction();
 	}
-
-	
-	private void descent() {
-		
-		this.performMovement(Move.DOWN);
-		this.dir = this.dir.flip();
-		this.game.checkLaserAttack(this);
-		if(this.isAlive())
-			this.alienManager.decreaseOnBorder();
-		if(this.isInFinalRow())
-			this.alienManager.isInFinalRow();
-	}
-
-	
-	private boolean isInFinalRow() {
-
-		return this.pos.inFinalRow();
-	}
-	
-	private boolean isInBorder() {
-		
-		return this.pos.isInBorder();
-	}
-
 	
 	public boolean receiveAttack(UCMLaser laser) {
 		boolean recieveAttack = laser.isOnPosition(this.pos);
@@ -98,7 +47,7 @@ public class DestroyerAlien extends AlienShip{
 	
 	public void decreaseLive() {
 		
-		this.lives--;
+		this.life--;
 		if(!this.isAlive()) {
 			this.alienManager.decreaseRemainingAliens();
 			this.game.addPoints(POINTS);

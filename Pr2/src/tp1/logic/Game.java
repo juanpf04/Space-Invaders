@@ -2,6 +2,7 @@ package tp1.logic;
 
 import java.util.Random;
 import tp1.logic.gameobjects.UCMShip;
+import tp1.logic.gameobjects.AlienShip;
 import tp1.logic.gameobjects.Bomb;
 import tp1.logic.gameobjects.RegularAlien;
 import tp1.logic.gameobjects.ShockWave;
@@ -276,17 +277,9 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 
 
-	public void checkLaserAttack(DestroyerAlien destroyerAlien) {
+	public void checkLaserAttack(AlienShip alienShip) {
 		
 		if(!this.laserIsEnable())
-			this.ucmLaser.performAttack(destroyerAlien);
+			this.ucmLaser.performAttack(alienShip);
 	}
-
-
-	public void checkLaserAttack(RegularAlien regularAlien) {
-		
-		if(!this.laserIsEnable())
-			this.ucmLaser.performAttack(regularAlien);
-	}
-	
 }

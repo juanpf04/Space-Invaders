@@ -11,5 +11,6 @@ public abstract class Weapon extends GameObject {
 	}
 
 	
-	
+	@Override
+	public void automaticMove() {}
 }

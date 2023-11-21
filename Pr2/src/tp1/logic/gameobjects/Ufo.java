@@ -15,7 +15,7 @@ public class Ufo extends EnemyShip{
 	private boolean enabled;
 	
 	public Ufo(Game game) {
-		super(game, new Position(Game.DIM_X, 0), LIVES, DAMAGE, Move.LEFT, POINTS);
+		super(game, new Position(Game.DIM_X, 0), LIVES, DAMAGE, Move.LEFT);
 		this.enabled = false;
 	}
 	
@@ -33,9 +33,7 @@ public class Ufo extends EnemyShip{
 		}
 	}
 	
-	/**
-	 *  Implements the automatic movement of the ufo
-	 */
+	@Override
 	public void automaticMove () {
 		if(this.isEnable()) {
 			performMovement(dir);
