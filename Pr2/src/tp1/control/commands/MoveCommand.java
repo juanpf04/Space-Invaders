@@ -1,7 +1,7 @@
 package tp1.control.commands;
 
 import tp1.control.ExecutionResult;
-import tp1.logic.Game;
+import tp1.logic.GameModel;
 import tp1.logic.Move;
 import tp1.view.Messages;
 
@@ -36,7 +36,7 @@ public class MoveCommand extends Command {
 	}
 
 	@Override
-	public ExecutionResult execute(Game game) {
+	public ExecutionResult execute(GameModel game) {
 		ExecutionResult result = new ExecutionResult(Messages.MOVEMENT_ERROR);
 
 		// comprobar si es un movimiento valido
