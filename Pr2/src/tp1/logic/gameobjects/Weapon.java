@@ -10,5 +10,10 @@ public abstract class Weapon extends GameObject {
 		super(game, pos, life);
 	}
 
-	
+	@Override
+	public void automaticMove () {
+		performMovement(dir);
+		if(isOut())
+			die();
+	}
 }

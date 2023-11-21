@@ -32,16 +32,6 @@ public class UCMLaser extends UCMWeapon{
 		
 		game.enableLaser();
 	}
-
-	/**
-	 *  Implements the automatic movement of the laser	
-	 */
-	public void automaticMove () {
-		performMovement(dir);
-		if(isOut())
-			die();
-	}
-
 	
 	private void die() {
 		

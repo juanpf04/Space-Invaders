@@ -193,7 +193,7 @@ public class Messages {
 		return Messages.UCM_DESCRIPTION.formatted(ucmShipDescription, damage, endurance);
 	}
 
-public static final String LIFE = "Life: %d";
+	public static final String LIFE = "Life: %d";
 	
 	public static final String life(int lives) {
 		return Messages.LIFE.formatted(lives);

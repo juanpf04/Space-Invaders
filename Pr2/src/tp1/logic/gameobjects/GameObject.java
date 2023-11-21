@@ -30,6 +30,17 @@ public abstract class GameObject implements GameItem {
 		this.pos = this.pos.newPos(move);
 	}
 	
+	protected void die() {
+		
+		this.onDelete();
+	}
+	
+	public boolean isOut() {
+	
+		return !this.pos.posValida();
+	}
+
+	
 	@Override
 	public boolean isOnPosition(Position pos) {
 		

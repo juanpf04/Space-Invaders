@@ -31,23 +31,10 @@ public class Bomb extends EnemyWeapon {
 	@Override
 	public void automaticMove () {
 		if(!this.destroyerAlien.bombEnabled()) {
-			super.performMovement(dir);
-			if(isOut())
-				die();
+			super.automaticMove();
 		}
 	}
 	
-	
-	private void die() {
-		
-		this.onDelete();
-	}
-
-	
-	public boolean isOut() {
-	
-		return !this.pos.posValida();
-	}
 
 	/**
 	 * Method that implements the attack by the bomb to a ship.
