@@ -15,7 +15,7 @@ public class ShockWave extends UCMWeapon{
 	private boolean enabled;
 	
 	public ShockWave() {
-		super(null,null);
+		super(null,null, 0);
 		
 		this.enabled = false; 
 	}
