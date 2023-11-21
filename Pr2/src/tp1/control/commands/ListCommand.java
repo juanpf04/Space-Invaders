@@ -1,13 +1,13 @@
 package tp1.control.commands;
 
 import tp1.control.ExecutionResult;
-import tp1.logic.Game;
+import tp1.logic.GameModel;
 import tp1.view.Messages;
 
 public class ListCommand extends NoParamsCommand{
 		  		
 		@Override
-		public ExecutionResult execute(Game game) {
+		public ExecutionResult execute(GameModel game) {
 			System.out.println(game.infoToString());
 			return new ExecutionResult(false);
 		}

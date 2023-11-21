@@ -10,4 +10,5 @@ public interface GameModel {
 	public boolean shootShockWave();
 	public void reset();
 	public void exit();
+	public String infoToString(); // tb esta en status
 }
