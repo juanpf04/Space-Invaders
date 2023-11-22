@@ -15,6 +15,7 @@ public abstract class Ship extends GameObject{
 		this.dir = dir;
 	}
 
-	
+	public abstract String getInfo();
+	public abstract String getDescription();
 	
 }
