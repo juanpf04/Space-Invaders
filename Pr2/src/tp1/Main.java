@@ -59,9 +59,9 @@ public class Main {
 				} catch (NumberFormatException nfe) {
 					System.out.println(String.format(Messages.SEED_NOT_A_NUMBER_ERROR, seedParam));
 					usage();
-				} catch (Exception e) {
+				} /*catch (Exception e) {
 					System.out.println(error(e.getMessage()));
-				}
+				}*/
 			}
 		}
 	}

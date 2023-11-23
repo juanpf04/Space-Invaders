@@ -25,7 +25,7 @@ public class CommandGenerator {
 			
 			command = c.parse(commandWords);
 			if(command != null)
-				return command;
+				return command;//
 		}
 		
 		return command;
