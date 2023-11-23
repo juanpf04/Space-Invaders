@@ -38,8 +38,6 @@ public class MoveCommand extends Command {
 	@Override
 	public ExecutionResult execute(GameModel game) {
 		ExecutionResult result = new ExecutionResult(Messages.MOVEMENT_ERROR);
-
-		// comprobar si es un movimiento valido
 		
 		if(game.move(move)) {
 			game.update();
@@ -54,10 +52,8 @@ public class MoveCommand extends Command {
 	public Command parse(String[] commandWords) {
 		Command command = null;
 		
-		if(commandWords.length == 2 && this.matchCommandName(commandWords[0])) {
-			command = this;
-			this.move = Move.valueOf(commandWords[1].toUpperCase());
-		}
+		if(commandWords.length == 2 && this.matchCommandName(commandWords[0]) && Move.validMove(commandWords[1])) 
+			command = new MoveCommand(Move.valueOf(commandWords[1].toUpperCase()));
 		
 		return command;
 	}

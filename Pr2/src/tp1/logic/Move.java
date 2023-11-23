@@ -50,11 +50,13 @@ public enum Move {
 		return move;
 	}
 	
-	public boolean validMove(String dir) {
+	public static boolean validMove(String dir) {
 		
-		return dir == "LEFT" ||dir == "LLEFT" ||
-				dir == "RIGHT" ||dir == "RRIGHT" ||
-				dir == "UP" ||dir == "DOWN" ||
-				dir == "NONE";
+		for(Move m: Move.values()) {
+			
+			if(dir.equalsIgnoreCase(m.name())) return true;
+		}
+		
+		return false;
 	}
 }
