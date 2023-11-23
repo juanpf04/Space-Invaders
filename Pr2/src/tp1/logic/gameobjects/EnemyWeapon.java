@@ -18,14 +18,10 @@ public abstract class EnemyWeapon extends Weapon {
 		
 		return attack;
 	}
+	@Override
+	public boolean receiveAttack(UCMWeapon other) { return other.isOnPosition(this.pos);}
+	@Override
+	public boolean weaponAttack(GameObject other) {return false;}
 	
-	public boolean performAttack(UCMWeapon other) {
-		boolean attack = other.receiveAttack(this);
-		
-		if(attack)
-			this.die();
-		
-		return attack;
-	}
 	
 }

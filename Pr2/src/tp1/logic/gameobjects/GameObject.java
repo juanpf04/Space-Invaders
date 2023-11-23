@@ -59,11 +59,10 @@ public abstract class GameObject implements GameItem {
 	
 	@Override
 	public boolean performAttack(GameItem other) {return false;}
-	
 	@Override
 	public boolean receiveAttack(EnemyWeapon weapon) {return false;}
 
 	@Override
-	public boolean receiveAttack(UCMWeapon weapon) {return false;}
+	public boolean receiveAttack(UCMWeapon weapon) {return false;} // weapon.isOnPosition(pos);}
 
 }

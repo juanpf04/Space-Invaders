@@ -18,6 +18,13 @@ public abstract class UCMWeapon extends Weapon {
 		
 		return attack;
 	}
+	public boolean performAttack(EnemyWeapon other)
+	{
+		boolean attack = other.receiveAttack(this);
+		if(attack)
+			this.die();
+		return attack;
+	}
 	
 	public boolean receiveAttack(EnemyWeapon other) {
 		boolean recieveAttack = other.isOnPosition(this.pos);
