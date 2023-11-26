@@ -94,33 +94,8 @@ public class Game implements GameModel, GameStatus, GameWorld {
 
 	@Override
 	public String positionToString(int col, int row) {
-		return null;
-		//return container.toString(new Position(col, row));
+		return container.toString(new Position(col, row));
 	}
-//	public String positionToString(int col, int row) {
-//		Position pos = new Position(col,row);
-//		String symbol = "";
-//		
-//		if(!this.laserIsEnable() && this.ucmLaser.isOnPosition(pos)) 
-//			symbol = this.ucmLaser.getSymbol();
-//		
-//		else if(this.regularAlienList.alienInPos(pos) != -1)
-//			symbol = this.regularAlienList.showAlienInPos(pos);
-//		
-//		else if(this.destroyerAlienList.alienInPos(pos) != -1)
-//			symbol = this.destroyerAlienList.showAlienInPos(pos);
-//		
-//		else if(this.player.isOnPosition(pos))
-//			symbol = this.player.getSymbol();
-//		
-//		else if(this.ufo.isOnPosition(pos))
-//			symbol = this.ufo.getSymbol();
-//		
-//		else if(this.bombList.bombInPos(pos) != -1)
-//			symbol = this.bombList.showbombInPos(pos);
-//		
-//		return symbol;
-//	}
 
 	@Override
 	public boolean isFinished() {
@@ -200,7 +175,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	public void reset() {
 		
 		this.initGame();
-	}
+	} 
 
 	
 	public void receivePoints(int points) {

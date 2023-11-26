@@ -33,6 +33,21 @@ public class GameObjectContainer {
 		// TODO fill with your code
 	}
 
+	public String toString(Position position) {
+		int i = 0;
+		String s = "";
+		
+		while(i < objects.size() && !this.objects.get(i).isOnPosition(position)) {
+			
+			i++;
+		}
+		
+		if(i < objects.size())
+			s = this.objects.get(i).getSymbol();
+			
+		return null;
+	}
+
 	//TODO fill with your code
 	
 }
