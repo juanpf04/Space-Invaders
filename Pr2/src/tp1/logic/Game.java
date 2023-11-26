@@ -6,7 +6,8 @@ import tp1.logic.gameobjects.AlienShip;
 import tp1.logic.gameobjects.Bomb;
 import tp1.logic.gameobjects.RegularAlien;
 import tp1.logic.gameobjects.ShockWave;
-import tp1.logic.gameobjects.DestroyerAlien; 
+import tp1.logic.gameobjects.DestroyerAlien;
+import tp1.logic.gameobjects.GameObject;
 import tp1.logic.gameobjects.UCMLaser;
 import tp1.logic.gameobjects.Ufo;
 import tp1.logic.Level;
@@ -27,16 +28,11 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	private Random random;
 	private Level level;
 	private long seed;
-	private int cycle;
-	private UCMShip ucmShip;
-	private UCMLaser ucmLaser;
-	private RegularAlienList regularAlienList;
-	private DestroyerAlienList destroyerAlienList;
-	private BombList bombList;
+	private int currentCycle;
+	private GameObjectContainer container;
+	private UCMShip player;
 	private AlienManager alienManager;
 	private int points;
-	private Ufo ufo;
-	private ShockWave shockWave;
 	private boolean exit;
 	
 	
@@ -44,26 +40,20 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		
 		this.level = level;
 		this.seed = seed;
-		this.initialize();
+		this.initGame();
 	}
 	
 	
-	private final void initialize() {
+	private final void initGame() {
 		
 		this.random = new Random(this.seed);
-		this.cycle = 0;
+		this.currentCycle = 0;
 		this.points = 0;
-		this.ucmShip = new UCMShip(this, new Position(DIM_X / 2, DIM_Y - 1));
-		this.shockWave = new ShockWave();
-		this.alienManager = new AlienManager(this);
-		//
-		this.ucmLaser = null;
-		this.ufo = new Ufo(this);
-		this.regularAlienList = this.alienManager.initializeRegularAliens();
-		this.destroyerAlienList = this.alienManager.initializeDestroyerAliens();
-		this.bombList = new BombList(this.level);
-		// cambiar por el container
 		this.exit = false;
+		this.alienManager = new AlienManager(this);
+		this.player = new UCMShip(this, new Position(DIM_X / 2, DIM_Y - 1));
+		this.container = alienManager.initialize();
+		//container.add(player);
 	}
 	
 	@Override
@@ -82,7 +72,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	public String stateToString() {
 		StringBuilder state = new StringBuilder();
 		
-		state.append(Messages.life(this.ucmShip.getLife())).append(Messages.LINE_SEPARATOR)
+		state.append(Messages.life(this.player.getLife())).append(Messages.LINE_SEPARATOR)
 		.append(Messages.points(this.points)).append(Messages.LINE_SEPARATOR)
 		.append(Messages.shockWaveStatus(this.shockWave.stateToString())).append(Messages.LINE_SEPARATOR);	
 		
@@ -92,7 +82,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	@Override
 	public int getCycle() {
 		
-		return this.cycle;
+		return this.currentCycle;
 	}
 	
 	@Override
@@ -103,29 +93,33 @@ public class Game implements GameModel, GameStatus, GameWorld {
 
 	@Override
 	public String positionToString(int col, int row) {
-		Position pos = new Position(col,row);
-		String symbol = "";
-		
-		if(!this.laserIsEnable() && this.ucmLaser.isOnPosition(pos)) 
-			symbol = this.ucmLaser.getSymbol();
-		
-		else if(this.regularAlienList.alienInPos(pos) != -1)
-			symbol = this.regularAlienList.showAlienInPos(pos);
-		
-		else if(this.destroyerAlienList.alienInPos(pos) != -1)
-			symbol = this.destroyerAlienList.showAlienInPos(pos);
-		
-		else if(this.ucmShip.isOnPosition(pos))
-			symbol = this.ucmShip.getSymbol();
-		
-		else if(this.ufo.isOnPosition(pos))
-			symbol = this.ufo.getSymbol();
-		
-		else if(this.bombList.bombInPos(pos) != -1)
-			symbol = this.bombList.showbombInPos(pos);
-		
-		return symbol;
+		return null;
+		//return container.toString(new Position(col, row));
 	}
+//	public String positionToString(int col, int row) {
+//		Position pos = new Position(col,row);
+//		String symbol = "";
+//		
+//		if(!this.laserIsEnable() && this.ucmLaser.isOnPosition(pos)) 
+//			symbol = this.ucmLaser.getSymbol();
+//		
+//		else if(this.regularAlienList.alienInPos(pos) != -1)
+//			symbol = this.regularAlienList.showAlienInPos(pos);
+//		
+//		else if(this.destroyerAlienList.alienInPos(pos) != -1)
+//			symbol = this.destroyerAlienList.showAlienInPos(pos);
+//		
+//		else if(this.player.isOnPosition(pos))
+//			symbol = this.player.getSymbol();
+//		
+//		else if(this.ufo.isOnPosition(pos))
+//			symbol = this.ufo.getSymbol();
+//		
+//		else if(this.bombList.bombInPos(pos) != -1)
+//			symbol = this.bombList.showbombInPos(pos);
+//		
+//		return symbol;
+//	}
 
 	@Override
 	public boolean isFinished() {
@@ -142,7 +136,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	@Override
 	public boolean playerWin() {
 		
-		return this.ucmShip.isAlive() 
+		return this.player.isAlive() 
 				&& this.getRemainingAliens() == 0;
 	}
 
@@ -150,7 +144,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	public boolean aliensWin() {
 		
 		return this.getRemainingAliens() > 0 
-				&& !this.ucmShip.isAlive() || this.alienManager.squadInFinalRow();
+				&& !this.player.isAlive() || this.alienManager.squadInFinalRow();
 	}
 
 
@@ -167,10 +161,10 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	
 	@Override
 	public boolean move(Move move) {
-		boolean canMove = this.ucmShip.validPos(move) && this.ucmShip.canMove(move);
+		boolean canMove = this.player.validPos(move) && this.player.canMove(move);
 		
 		if(canMove) 
-			this.ucmShip.performMovement(move);
+			this.player.performMovement(move);
 		
 		return canMove;
 	}
@@ -180,7 +174,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		boolean canShoot = this.laserIsEnable();
 		
 		if(canShoot)
-			this.ucmShip.shootLaser();
+			this.player.shootLaser();
 		
 		return canShoot;
 	}
@@ -204,21 +198,14 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 	
 	
-	public void addObject(Bomb bomb) {
-		
-		this.bombList.addObject(bomb);
-	}
-	
-	
-	public void addObject(UCMLaser ucmlaser) {
-
-		this.ucmLaser = ucmlaser;
+	public void addObject(GameObject object) {
+	    this.container.add(object);
 	}
 
 	@Override
 	public void reset() {
 		
-		this.initialize();
+		this.initGame();
 	}
 
 	
@@ -243,37 +230,44 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		return canShoot;
 	}
 
+//	@Override
+//	public void update() {
+//		
+//		this.regularAlienList.automaticMove();	
+//		this.destroyerAlienList.automaticMove();
+//		
+//		this.ufo.computerAction();
+//		this.ufo.automaticMove();
+//		
+//		this.bombList.automaticMove();
+//		
+//		if(!this.laserIsEnable())
+//			this.bombList.performAttack(this.ucmLaser);
+//		
+//		this.moveLaser();
+//		
+//		if(!this.laserIsEnable())  {
+//			this.regularAlienList.checkLaserAttack(this.ucmLaser);
+//			if(!this.laserIsEnable()) {
+//				this.destroyerAlienList.checkLaserAttack(this.ucmLaser);
+//				if(!this.laserIsEnable()) {
+//					this.ucmLaser.performAttack(ufo);
+//					if(!this.laserIsEnable())
+//						this.bombList.performAttack(this.ucmLaser);		
+//				}
+//			}
+//		}
+//		
+//		this.bombList.performAttack(this.player);
+//		
+//		this.currentCycle++;
+//	}
+	
 	@Override
 	public void update() {
-		
-		this.regularAlienList.automaticMove();	
-		this.destroyerAlienList.automaticMove();
-		
-		this.ufo.computerAction();
-		this.ufo.automaticMove();
-		
-		this.bombList.automaticMove();
-		
-		if(!this.laserIsEnable())
-			this.bombList.performAttack(this.ucmLaser);
-		
-		this.moveLaser();
-		
-		if(!this.laserIsEnable())  {
-			this.regularAlienList.checkLaserAttack(this.ucmLaser);
-			if(!this.laserIsEnable()) {
-				this.destroyerAlienList.checkLaserAttack(this.ucmLaser);
-				if(!this.laserIsEnable()) {
-					this.ufo.checkAttack(this.ucmLaser);
-					if(!this.laserIsEnable())
-						this.bombList.performAttack(this.ucmLaser);		
-				}
-			}
-		}
-		
-		this.bombList.performAttack(this.ucmShip);
-		
-		this.cycle++;
+	    this.currentCycle++;
+	    this.container.computerActions();
+	    this.container.automaticMoves();
 	}
 
 

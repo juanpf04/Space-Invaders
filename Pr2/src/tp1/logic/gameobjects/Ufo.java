@@ -70,19 +70,6 @@ public class Ufo extends EnemyShip{
 	}
 
 	
-	public void checkAttack(UCMLaser ucmLaser) {
-		
-		if(ucmLaser.performAttack(this)) {
-			this.decreaseLife();
-		}
-	}
-	
-	
-	public boolean receiveAttack(UCMLaser ucmLaser) {
-		
-		return ucmLaser.isOnPosition(this.pos);
-	}
-	
 	@Override
 	public void decreaseLife() {
 		
@@ -97,15 +84,26 @@ public class Ufo extends EnemyShip{
 
 	@Override
 	protected int getDamage() {
-		// TODO Auto-generated method stub
-		return 0;
+		return DAMAGE;
+	}
+
+	@Override
+	protected int getArmour() {
+		return LIVES;
 	}
 
 
 	@Override
-	protected int getArmour() {
+	public String getInfo() {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
+	}
+
+
+	@Override
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

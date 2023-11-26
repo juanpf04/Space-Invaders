@@ -24,6 +24,7 @@ public class UCMShip extends Ship{
 		return Messages.UCMSHIP_DEAD_SYMBOL;
 	}
 	
+	
 	public int getLife() { 
 		return super.getLife();
 	}
@@ -51,8 +52,8 @@ public class UCMShip extends Ship{
 	}
 
 	
-	public boolean receiveAttack(Bomb bomb) {
-		boolean recieveAttack = bomb.isOnPosition(this.pos);
+	public boolean receiveAttack(EnemyWeapon other) {
+		boolean recieveAttack = other.isAlive() && other.isOnPosition(this.pos);
 		
 		if(recieveAttack)
 			super.decreaseLife();
@@ -62,26 +63,27 @@ public class UCMShip extends Ship{
 
 	@Override
 	protected int getDamage() {
-		// TODO Auto-generated method stub
-		return 0;
+		return DAMAGE;
 	}
 
 	@Override
 	protected int getArmour() {
-		// TODO Auto-generated method stub
-		return 0;
+		return LIVES;
 	}
 
 	@Override
-	public void onDelete() {
+	public void automaticMove() {}
+
+	@Override
+	public String getInfo() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void automaticMove() {
+	public String getDescription() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }

@@ -33,6 +33,43 @@ public class AlienManager {
 		
 	// INITIALIZER METHODS
 	
+	public  GameObjectContainer initialize() {
+		this.remainingAliens = 0;
+		GameObjectContainer container = new GameObjectContainer();
+		
+		initializeUfo(container);
+		initializeRegularAliens(container);
+		initializeDestroyerAliens(container);
+		
+		//TODO fill with your code
+		
+		
+		return container;
+	}
+	
+	private void initializeUfo(GameObjectContainer container) {
+		//container.add(new Ufo(game));
+	}
+	
+	private void initializeRegularAliens (GameObjectContainer container) {
+
+		//TODO fill with your code
+		//		container.add(new RegularAlien(....));
+	}
+	
+	private void initializeDestroyerAliens(GameObjectContainer container) {
+		//TODO fill with your code
+	}
+
+	private void costumedInitialization(GameObjectContainer container, InitialConfiguration conf) {
+		for (String shipDescription : conf.getShipDescription()) {
+			String[] words = shipDescription.toLowerCase().trim().split("\\s+");
+			//AlienShip ship = ...
+			container.add(ship);
+			this.remainingAliens++;
+		}
+	}
+	
 	/**
 	 * Initializes the list of regular aliens
 	 * @return the initial list of regular aliens according to the current level

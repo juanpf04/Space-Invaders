@@ -10,22 +10,7 @@ public abstract class UCMWeapon extends Weapon {
 		super(game, pos, life, dir);
 	}
 	
-	public boolean performAttack(EnemyShip other) {
-		boolean attack = other.receiveAttack(this);
-		
-		if(attack)
-			this.die();
-		
-		return attack;
-	}
-	public boolean performAttack(EnemyWeapon other)
-	{
-		boolean attack = other.receiveAttack(this);
-		if(attack)
-			this.die();
-		return attack;
-	}
-	
+	@Override
 	public boolean receiveAttack(EnemyWeapon other) {
 		boolean recieveAttack = other.isOnPosition(this.pos);
 	
@@ -33,5 +18,11 @@ public abstract class UCMWeapon extends Weapon {
 		this.die();
 	
 	return recieveAttack;
-}
+	}
+	
+	@Override
+	public boolean weaponAttack(GameObject other) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

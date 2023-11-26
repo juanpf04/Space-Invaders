@@ -36,15 +36,6 @@ public class DestroyerAlien extends AlienShip{
 			this.computerAction();
 	}
 	
-	public boolean receiveAttack(UCMLaser laser) {
-		boolean recieveAttack = laser.isOnPosition(this.pos);
-		
-		if(recieveAttack)
-			this.decreaseLife();
-		
-		return recieveAttack;
-	}
-	
 	@Override
 	public void decreaseLife() {
 		
@@ -86,20 +77,24 @@ public class DestroyerAlien extends AlienShip{
 
 	@Override
 	protected int getDamage() {
-		// TODO Auto-generated method stub
-		return 0;
+		return DAMAGE;
 	}
 
 	@Override
 	protected int getArmour() {
-		// TODO Auto-generated method stub
-		return 0;
+		return LIVES;
 	}
 
 	@Override
-	public void onDelete() {
+	public String getInfo() {
 		// TODO Auto-generated method stub
-		
+		return null;
+	}
+
+	@Override
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

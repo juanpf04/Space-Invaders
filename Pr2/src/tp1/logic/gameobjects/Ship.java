@@ -18,4 +18,6 @@ public abstract class Ship extends GameObject{
 	public abstract String getInfo();
 	public abstract String getDescription();
 	
+	@Override
+	public void onDelete() {}
 }

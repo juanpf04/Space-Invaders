@@ -19,9 +19,15 @@ public abstract class EnemyWeapon extends Weapon {
 		return attack;
 	}
 	@Override
-	public boolean receiveAttack(UCMWeapon other) { return other.isOnPosition(this.pos);}
+	public boolean receiveAttack(UCMWeapon other) { 
+		return other.isOnPosition(this.pos);
+	}
+	
 	@Override
-	public boolean weaponAttack(GameObject other) {return false;}
+	public boolean weaponAttack(GameObject other) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 	
 }
