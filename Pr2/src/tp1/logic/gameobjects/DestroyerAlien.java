@@ -42,7 +42,7 @@ public class DestroyerAlien extends AlienShip{
 		super.decreaseLife();
 		if(!this.isAlive()) {
 			this.alienManager.decreaseRemainingAliens();
-			this.game.addPoints(POINTS);
+			this.game.receivePoints(POINTS);
 		}
 	}
 

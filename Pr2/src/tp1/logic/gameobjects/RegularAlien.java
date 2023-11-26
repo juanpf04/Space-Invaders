@@ -35,7 +35,7 @@ public class RegularAlien extends AlienShip{
 				this.alienManager.disableOnBorder();
 				
 			this.alienManager.decreaseRemainingAliens();
-			this.game.addPoints(POINTS);
+			this.game.receivePoints(POINTS);
 		}
 	}
 

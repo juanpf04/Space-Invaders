@@ -77,7 +77,7 @@ public class Ufo extends EnemyShip{
 		if(!this.isAlive()) {
 			this.onDelete();
 			this.game.enableShockWave();
-			this.game.addPoints(POINTS);
+			this.game.receivePoints(POINTS);
 		}
 	}
 

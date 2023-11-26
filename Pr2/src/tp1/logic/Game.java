@@ -34,7 +34,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	private AlienManager alienManager;
 	private int points;
 	private boolean exit;
-	
+	private boolean laserEnabled;
 	
 	public Game(Level level, long seed) {
 		
@@ -46,6 +46,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	
 	private final void initGame() {
 		
+		this.laserEnabled = true;
 		this.random = new Random(this.seed);
 		this.currentCycle = 0;
 		this.points = 0;
@@ -182,21 +183,14 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	
 	public boolean laserIsEnable() {
 		
-		return this.ucmLaser == null;
+		return laserEnabled;
 	}
 	
 	
 	public void enableLaser() {
 		
-		this.ucmLaser = null;
+		this.laserEnabled = true;
 	}
-	
-	
-	public void moveLaser() {
-		if(!this.laserIsEnable())
-			this.ucmLaser.automaticMove();
-	}
-	
 	
 	public void addObject(GameObject object) {
 	    this.container.add(object);
@@ -209,7 +203,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 
 	
-	public void addPoints(int points) {
+	public void receivePoints(int points) {
 		
 		this.points += points;
 	}

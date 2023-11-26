@@ -2,6 +2,7 @@ package tp1.logic;
 
 import tp1.logic.gameobjects.DestroyerAlien;
 import tp1.logic.gameobjects.RegularAlien;
+import tp1.logic.gameobjects.Ufo;
 import tp1.logic.lists.DestroyerAlienList;
 import tp1.logic.lists.RegularAlienList;
 import tp1.logic.Game;
@@ -25,7 +26,6 @@ public class AlienManager {
 	public AlienManager(Game game) {
 		this.game = game;
 		this.level = this.game.getLevel();
-		this.remainingAliens = this.level.getNumRegularAliens() + this.level.getNumDestroyerAliens();
 		this.onBorder = false;
 		this.shipsOnBorder = 0;
 		this.squadInFinalRow = false;
@@ -41,65 +41,30 @@ public class AlienManager {
 		initializeRegularAliens(container);
 		initializeDestroyerAliens(container);
 		
-		//TODO fill with your code
-		
-		
 		return container;
 	}
 	
 	private void initializeUfo(GameObjectContainer container) {
-		//container.add(new Ufo(game));
+		container.add(new Ufo(game));
 	}
 	
 	private void initializeRegularAliens (GameObjectContainer container) {
 
-		//TODO fill with your code
-		//		container.add(new RegularAlien(....));
+		for(int i = 0; i < this.level.getNumRegularAliens()/this.level.getNumRowsRegularAliens(); i++) {
+			for(int j = 0; j < this.level.getNumRowsRegularAliens(); j++) {
+				container.add(new RegularAlien(new Position(2 + i, 1 + j) , this.game, this));
+				this.remainingAliens++;
+			}
+		}
 	}
 	
 	private void initializeDestroyerAliens(GameObjectContainer container) {
-		//TODO fill with your code
-	}
-
-	private void costumedInitialization(GameObjectContainer container, InitialConfiguration conf) {
-		for (String shipDescription : conf.getShipDescription()) {
-			String[] words = shipDescription.toLowerCase().trim().split("\\s+");
-			//AlienShip ship = ...
-			container.add(ship);
-			this.remainingAliens++;
-		}
-	}
-	
-	/**
-	 * Initializes the list of regular aliens
-	 * @return the initial list of regular aliens according to the current level
-	 */
-	protected RegularAlienList initializeRegularAliens() {
-		RegularAlienList regularAlienList = new RegularAlienList(this.level);
-		
-		for(int i = 0; i < this.level.getNumRegularAliens()/this.level.getNumRowsRegularAliens(); i++) {
-			for(int j = 0; j < this.level.getNumRowsRegularAliens(); j++) {
-				regularAlienList.addObject(new RegularAlien(new Position(2 + i, 1 + j) , this.game, this));
-			}
-		}
-		
-		return regularAlienList;
-	}
-
-	/**
-	 * Initializes the list of destroyer aliens
-	 * @return the initial list of destroyer aliens according to the current level
-	 */
-	protected  DestroyerAlienList initializeDestroyerAliens() {
-		DestroyerAlienList destroyerAlienList = new DestroyerAlienList(this.level);
 		int a = 4 / this.level.getNumDestroyerAliens();
 		
-		for(int i = 0; i < this.level.getNumDestroyerAliens(); i++) {
-				
-			destroyerAlienList.addObject(new DestroyerAlien(new Position(a + 1 + i, 1 + this.level.getNumRowsRegularAliens()) , this.game, this));
+		for(int i = 0; i < this.level.getNumDestroyerAliens(); i++) {		
+			container.add(new DestroyerAlien(new Position(a + 1 + i, 1 + this.level.getNumRowsRegularAliens()) , this.game, this));
+			this.remainingAliens++;
 		}
-		
-		return destroyerAlienList;
 	}
 
 	
