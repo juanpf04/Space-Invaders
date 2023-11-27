@@ -22,15 +22,26 @@ public class GameObjectContainer {
 	}
 
 	public void automaticMoves() {
-		for (int i=0;i<objects.size();i++) {
-				GameObject object = objects.get(i);
-			//TODO fill with your code
+		int i = 0;
+
+		while ( i < objects.size()) {
+			
+			GameObject object = objects.get(i);
+			object.computerAction();
+			
+			if (!objects[i].isAlive()) {
+				this.remove(i);
+			}
+			else
+				i++;
 		}
-		//TODO fill with your code
 	}
 
 	public void computerActions() {
-		// TODO fill with your code
+		for (int i=0;i<objects.size();i++) {
+			GameObject object = objects.get(i);
+			object.computerAction();
+		}
 	}
 
 	public String toString(Position position) {

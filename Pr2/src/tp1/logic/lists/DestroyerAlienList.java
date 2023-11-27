@@ -53,18 +53,7 @@ public class DestroyerAlienList {
 	 *  Implements the automatic movement of all the destroyer aliens	
 	 */
 	public void automaticMove() {
-		int i = 0;
-
-		while ( i < this.length()) {
-			
-			this.objects[i].automaticMove();
-			
-			if (!objects[i].isAlive()) {
-				this.remove(i);
-			}
-			else
-				i++;
-		}
+		
 	}
 
 	
