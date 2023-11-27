@@ -1,7 +1,7 @@
 package tp1.logic.gameobjects;
 
-import tp1.logic.lists.DestroyerAlienList;
-import tp1.logic.lists.RegularAlienList;
+import tp1.logic.GameObjectContainer;
+import tp1.logic.Move;
 /**
  * 
  * Class that represents the shockWave
@@ -11,21 +11,28 @@ public class ShockWave extends UCMWeapon{
 
 	public static final int DAMAGE = 1;
 	public static final int LIFE = 1;
+	private boolean enabled;
 	
 	public ShockWave() {
-		super(null,null, LIFE, null);
+		super(null,null, LIFE, Move.NONE);
+		this.enabled = false;
 	}
+	
 
 	public void enable() {
 		
-		super.life = LIFE;
+		this.enabled = true;
+	}
+	
+	public void disable() {
+		
+		this.enabled = false;
 	}
 
-	public void performAttack(RegularAlienList regularAlienList, DestroyerAlienList destroyerAlienList) {
-		super.die();
+	public void performAttack(GameObjectContainer container) {
+		this.disable();
 		
-		regularAlienList.allRecieveAttack();
-		destroyerAlienList.allRecieveAttack();
+		container.algo;
 	}
 
 	public String stateToString() {

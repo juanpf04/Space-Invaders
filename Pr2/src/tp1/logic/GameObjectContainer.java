@@ -3,6 +3,7 @@ package tp1.logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import tp1.logic.gameobjects.Bomb;
 import tp1.logic.gameobjects.GameObject;
 
 public class GameObjectContainer {
@@ -27,13 +28,12 @@ public class GameObjectContainer {
 		while ( i < objects.size()) {
 			
 			GameObject object = objects.get(i);
-			object.computerAction();
+			object.automaticMove();
 			
-			if (!objects[i].isAlive()) {
-				this.remove(i);
+			if (object.isAlive()) {
+				this.remove(object);
 			}
-			else
-				i++;
+			else i++;
 		}
 	}
 
@@ -46,19 +46,17 @@ public class GameObjectContainer {
 
 	public String toString(Position position) {
 		int i = 0;
-		String s = "";
-		
-		while(i < objects.size() && !this.objects.get(i).isOnPosition(position)) {
-			
+		String box = "";
+		GameObject object = objects.get(i);
+		while(i < objects.size() && !object.isOnPosition(position)) {
+			object = objects.get(i);
 			i++;
 		}
 		
 		if(i < objects.size())
-			s = this.objects.get(i).getSymbol();
+			box = object.getSymbol();
 			
-		return null;
+		return box;
 	}
-
-	//TODO fill with your code
 	
 }

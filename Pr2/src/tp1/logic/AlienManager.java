@@ -3,8 +3,7 @@ package tp1.logic;
 import tp1.logic.gameobjects.DestroyerAlien;
 import tp1.logic.gameobjects.RegularAlien;
 import tp1.logic.gameobjects.Ufo;
-import tp1.logic.lists.DestroyerAlienList;
-import tp1.logic.lists.RegularAlienList;
+import tp1.logic.GameObjectContainer;
 import tp1.logic.Game;
 
 /**
