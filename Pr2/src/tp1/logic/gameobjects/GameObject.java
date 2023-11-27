@@ -55,8 +55,6 @@ public abstract class GameObject implements GameItem {
 	public abstract void automaticMove();
 	public void computerAction() {};
 	
-	//TODO fill with your code
-	
 	@Override
 	public boolean performAttack(GameItem other) {return false;}
 	@Override

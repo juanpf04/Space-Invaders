@@ -13,9 +13,7 @@ import tp1.logic.gameobjects.Ufo;
 import tp1.logic.Level;
 import tp1.logic.AlienManager;
 import tp1.logic.gameobjects.Ufo; 
-import tp1.logic.lists.RegularAlienList;
-import tp1.logic.lists.BombList;
-import tp1.logic.lists.DestroyerAlienList;
+import tp1.logic.GameObjectContainer;
 import tp1.view.Messages;
 
 public class Game implements GameModel, GameStatus, GameWorld {
@@ -191,12 +189,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 
 	@Override
 	public boolean shootShockWave() {
-		boolean canShoot = this.shockWave.isAlive();
-		
-		if(canShoot)
-			this.shockWave.performAttack(this.regularAlienList, this.destroyerAlienList);
-		
-		return canShoot;
+		return this.container.shootShockWave();
 	}
 
 //	@Override

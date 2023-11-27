@@ -32,7 +32,7 @@ public class ShockWave extends UCMWeapon{
 	public void performAttack(GameObjectContainer container) {
 		this.disable();
 		
-		container.algo;
+		container.alienReceiveAttack(this);
 	}
 
 	public String stateToString() {
@@ -45,7 +45,7 @@ public class ShockWave extends UCMWeapon{
 	}
 
 	@Override
-	protected String getSymbol() {return null;}
+	protected String getSymbol() {return "";}
 
 	@Override
 	protected int getDamage() {

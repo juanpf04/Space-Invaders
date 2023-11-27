@@ -5,6 +5,7 @@ import java.util.List;
 
 import tp1.logic.gameobjects.Bomb;
 import tp1.logic.gameobjects.GameObject;
+import tp1.logic.gameobjects.ShockWave;
 
 public class GameObjectContainer {
 
@@ -30,10 +31,10 @@ public class GameObjectContainer {
 			GameObject object = objects.get(i);
 			object.automaticMove();
 			
-			if (object.isAlive()) {
+			if (!object.isAlive()) 
 				this.remove(object);
-			}
-			else i++;
+			else 
+				i++;
 		}
 	}
 
@@ -57,6 +58,30 @@ public class GameObjectContainer {
 			box = object.getSymbol();
 			
 		return box;
+	}
+
+	public void alienReceiveAttack(ShockWave shockWave) {
+		int i = 0;
+
+		while ( i < objects.size() && shockWave.isAlive()) {
+			
+			GameObject object = objects.get(i);
+			shockWave.performAttack(object);
+			
+			if (!object.isAlive()) 
+				this.remove(object);
+			else 
+				i++;
+		}
+	}
+
+	public boolean shootShockWave() {
+		boolean canShoot = this.shockWave.isAlive();
+		
+		if(canShoot)
+			this.shockWave.performAttack(this.regularAlienList, this.destroyerAlienList);
+		
+		return canShoot;
 	}
 	
 }
