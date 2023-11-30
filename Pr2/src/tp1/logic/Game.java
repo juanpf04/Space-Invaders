@@ -52,13 +52,13 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		this.alienManager = new AlienManager(this);
 		this.player = new UCMShip(this, new Position(DIM_X / 2, DIM_Y - 1));
 		this.container = alienManager.initialize();
-		//container.add(player);
+		this.container.add(player);
 	}
 	
 	@Override
 	public String infoToString() {
 		StringBuilder list = new StringBuilder();
-		
+										// cambiar en un futuro
 		list.append(Messages.ucmShipDescription(Messages.UCMSHIP_DESCRIPTION, UCMShip.DAMAGE, UCMShip.LIVES)).append(Messages.LINE_SEPARATOR)
 		.append(Messages.alienDescription(Messages.REGULAR_ALIEN_DESCRIPTION, RegularAlien.POINTS, RegularAlien.DAMAGE, RegularAlien.LIVES)).append(Messages.LINE_SEPARATOR)
 		.append(Messages.alienDescription(Messages.DESTROYER_ALIEN_DESCRIPTION, DestroyerAlien.POINTS, DestroyerAlien.DAMAGE, DestroyerAlien.LIVES)).append(Messages.LINE_SEPARATOR)	
@@ -73,7 +73,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		
 		state.append(Messages.life(this.player.getLife())).append(Messages.LINE_SEPARATOR)
 		.append(Messages.points(this.points)).append(Messages.LINE_SEPARATOR)
-		.append(Messages.shockWaveStatus(this.shockWave.stateToString())).append(Messages.LINE_SEPARATOR);	
+		.append(Messages.shockWaveStatus(this.player.shockWaveState())).append(Messages.LINE_SEPARATOR);	
 		
 		return state.toString();
 	} 

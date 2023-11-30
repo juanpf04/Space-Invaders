@@ -50,6 +50,10 @@ public abstract class GameObject implements GameItem {
 	protected abstract int getDamage();
 	protected abstract int getArmour();
 	
+	@Override
+	public String toString() {
+		return getSymbol();
+	}
 			
 	public abstract void onDelete();
 	public abstract void automaticMove();

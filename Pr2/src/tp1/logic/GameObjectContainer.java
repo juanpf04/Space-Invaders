@@ -24,12 +24,18 @@ public class GameObjectContainer {
 	}
 
 	public void automaticMoves() {
-		int i = 0;
+		for (int i=0;i<objects.size();i++) {
+			GameObject object = objects.get(i);
+			object.automaticMove();
+		}
+		this.deleteDeads();
+	}
 
+	private void deleteDeads() {
+		int i = 0;
 		while ( i < objects.size()) {
 			
 			GameObject object = objects.get(i);
-			object.automaticMove();
 			
 			if (!object.isAlive()) 
 				this.remove(object);
@@ -37,7 +43,7 @@ public class GameObjectContainer {
 				i++;
 		}
 	}
-
+	
 	public void computerActions() {
 		for (int i=0;i<objects.size();i++) {
 			GameObject object = objects.get(i);
@@ -55,7 +61,7 @@ public class GameObjectContainer {
 		}
 		
 		if(i < objects.size())
-			box = object.getSymbol();
+			box = object.toString();
 			
 		return box;
 	}

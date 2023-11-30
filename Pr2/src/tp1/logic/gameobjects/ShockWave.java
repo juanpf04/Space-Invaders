@@ -35,15 +35,6 @@ public class ShockWave extends UCMWeapon{
 		container.alienReceiveAttack(this);
 	}
 
-	public String stateToString() {
-		String state = "OFF";
-		
-		if(super.isAlive())
-			state = "ON";
-		
-		return state;
-	}
-
 	@Override
 	protected String getSymbol() {return "";}
 

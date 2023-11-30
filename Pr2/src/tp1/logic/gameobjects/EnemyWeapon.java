@@ -11,7 +11,7 @@ public abstract class EnemyWeapon extends Weapon {
 	}
 	
 	public boolean performAttack(UCMShip other) {
-		boolean attack = other.receiveAttack(this);
+		boolean attack = this.weaponAttack(other);
 		
 		if(attack)
 			this.die();

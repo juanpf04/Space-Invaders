@@ -51,14 +51,13 @@ public class RegularAlien extends AlienShip{
 
 	@Override
 	public String getInfo() {
-		// TODO Auto-generated method stub
-		return null;
+		return Messages.alienDescription(this.getDescription(), RegularAlien.POINTS, RegularAlien.DAMAGE, RegularAlien.LIVES);
 	}
+
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		return Messages.REGULAR_ALIEN_DESCRIPTION;
 	}
 
 }

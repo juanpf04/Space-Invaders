@@ -9,10 +9,12 @@ public class UCMShip extends Ship{
 	
 	public static final int DAMAGE = 1;
 	public static final int LIVES = 3;
+	private boolean shockWaveEnabled;
 	
 	public UCMShip(Game game, Position pos) {
 		
 		super(game, pos, LIVES, DAMAGE, null);
+		this.shockWaveEnabled = false;
 	}
 	
 	@Override
@@ -76,14 +78,21 @@ public class UCMShip extends Ship{
 
 	@Override
 	public String getInfo() {
-		// TODO Auto-generated method stub
-		return null;
+		return Messages.ucmShipDescription(this.getDescription(), UCMShip.DAMAGE, UCMShip.LIVES);
 	}
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		return Messages.UCMSHIP_DESCRIPTION;
+	}
+
+	public String shockWaveState() {
+		String state = "OFF";
+		
+		if(this.shockWaveEnabled)
+			state = "ON";
+		
+		return state;
 	}
 
 }

@@ -95,15 +95,13 @@ public class Ufo extends EnemyShip{
 
 	@Override
 	public String getInfo() {
-		// TODO Auto-generated method stub
-		return null;
+		return Messages.alienDescription(this.getDescription(), RegularAlien.POINTS, RegularAlien.DAMAGE, RegularAlien.LIVES);
 	}
 
 
 	@Override
 	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		return Messages.UFO_DESCRIPTION;
 	}
 
 }
