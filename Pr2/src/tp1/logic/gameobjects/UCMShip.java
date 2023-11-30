@@ -85,6 +85,11 @@ public class UCMShip extends Ship{
 	public String getDescription() {
 		return Messages.UCMSHIP_DESCRIPTION;
 	}
+	public void shootShockWave()
+	{
+		ShockWave shockwave = new ShockWave();
+		this.game.addObject(shockwave);
+	}
 
 	public String shockWaveState() {
 		String state = "OFF";

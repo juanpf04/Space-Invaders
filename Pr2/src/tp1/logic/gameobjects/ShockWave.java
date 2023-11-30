@@ -2,6 +2,8 @@ package tp1.logic.gameobjects;
 
 import tp1.logic.GameObjectContainer;
 import tp1.logic.Move;
+import tp1.logic.Game;
+
 /**
  * 
  * Class that represents the shockWave
@@ -10,11 +12,9 @@ import tp1.logic.Move;
 public class ShockWave extends UCMWeapon{
 
 	public static final int DAMAGE = 1;
-	public static final int LIFE = 1;
 	private boolean enabled;
-	
 	public ShockWave() {
-		super(null,null, LIFE, Move.NONE);
+		super(null,null, Game.getRemainingAliens(), Move.NONE);
 		this.enabled = false;
 	}
 	
