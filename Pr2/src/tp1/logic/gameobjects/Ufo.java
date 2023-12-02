@@ -28,6 +28,26 @@ public class Ufo extends EnemyShip{
 	}
 	
 	@Override
+	public String getDescription() {
+		return Messages.UFO_DESCRIPTION;
+	}
+	
+	@Override
+	protected int getDamage() {
+		return DAMAGE;
+	}
+
+	@Override
+	protected int getArmour() {
+		return LIVES;
+	}
+
+	@Override
+	public int getPoints() {
+		return POINTS;
+	}
+	
+	@Override
 	public void computerAction() {
 		if(!enabled && canGenerateRandomUfo()) {
 			enable();	
@@ -80,29 +100,6 @@ public class Ufo extends EnemyShip{
 			this.game.enableShockWave();
 			this.game.receivePoints(POINTS);
 		}
-	}
-
-
-	@Override
-	protected int getDamage() {
-		return DAMAGE;
-	}
-
-	@Override
-	protected int getArmour() {
-		return LIVES;
-	}
-
-
-	@Override
-	public String getInfo() {
-		return Messages.alienDescription(this.getDescription(), RegularAlien.POINTS, RegularAlien.DAMAGE, RegularAlien.LIVES);
-	}
-
-
-	@Override
-	public String getDescription() {
-		return Messages.UFO_DESCRIPTION;
 	}
 
 }

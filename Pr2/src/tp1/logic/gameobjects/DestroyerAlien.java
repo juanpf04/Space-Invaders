@@ -28,6 +28,26 @@ public class DestroyerAlien extends AlienShip{
 	}
 	
 	@Override
+	protected int getDamage() {
+		return DAMAGE;
+	}
+
+	@Override
+	protected int getArmour() {
+		return LIVES;
+	}
+
+	@Override
+	public int getPoints() {
+		return POINTS;
+	}
+
+	@Override
+	public String getDescription() {
+		return Messages.REGULAR_ALIEN_DESCRIPTION;
+	}
+	
+	@Override
 	public void automaticMove() {
 		
 		super.automaticMove();
@@ -73,27 +93,6 @@ public class DestroyerAlien extends AlienShip{
 	private boolean canGenerateRandomShoot(){
 		
 		return game.getRandom().nextDouble() < game.getLevel().getShootFrequency();
-	}
-
-	@Override
-	protected int getDamage() {
-		return DAMAGE;
-	}
-
-	@Override
-	protected int getArmour() {
-		return LIVES;
-	}
-
-	@Override
-	public String getInfo() {
-		return Messages.alienDescription(this.getDescription(), RegularAlien.POINTS, RegularAlien.DAMAGE, RegularAlien.LIVES);
-	}
-
-
-	@Override
-	public String getDescription() {
-		return Messages.REGULAR_ALIEN_DESCRIPTION;
 	}
 	
 }

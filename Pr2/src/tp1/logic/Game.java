@@ -231,11 +231,4 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	    this.container.computerActions();
 	    this.container.automaticMoves();
 	}
-
-
-	public void checkLaserAttack(AlienShip alienShip) {
-		
-		if(!this.laserIsEnable())
-			this.ucmLaser.performAttack(alienShip);
-	}
 }

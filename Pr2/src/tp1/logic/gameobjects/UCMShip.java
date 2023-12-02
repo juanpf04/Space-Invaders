@@ -26,11 +26,32 @@ public class UCMShip extends Ship{
 		return Messages.UCMSHIP_DEAD_SYMBOL;
 	}
 	
+	@Override
+	public String getDescription() {
+		return Messages.UCMSHIP_DESCRIPTION;
+	}
 	
+	@Override
+	protected int getDamage() {
+		return DAMAGE;
+	}
+
+	@Override
+	protected int getArmour() {
+		return LIVES;
+	}
+	
+	@Override
+	public String getInfo() {
+		return Messages.ucmShipDescription(getDescription(), getDamage(), getArmour());
+	}
+	
+	@Override
 	public int getLife() { 
 		return super.getLife();
 	}
 	
+	@Override
 	public void performMovement(Move move) {
 		
 		super.performMovement(move);
@@ -63,28 +84,11 @@ public class UCMShip extends Ship{
 		return recieveAttack;
 	}
 
-	@Override
-	protected int getDamage() {
-		return DAMAGE;
-	}
-
-	@Override
-	protected int getArmour() {
-		return LIVES;
-	}
 
 	@Override
 	public void automaticMove() {}
 
-	@Override
-	public String getInfo() {
-		return Messages.ucmShipDescription(this.getDescription(), UCMShip.DAMAGE, UCMShip.LIVES);
-	}
-
-	@Override
-	public String getDescription() {
-		return Messages.UCMSHIP_DESCRIPTION;
-	}
+	
 	public void shootShockWave()
 	{
 		ShockWave shockwave = new ShockWave();

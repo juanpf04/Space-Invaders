@@ -3,6 +3,7 @@ package tp1.logic.gameobjects;
 import tp1.logic.GameWorld;
 import tp1.logic.Move;
 import tp1.logic.Position;
+import tp1.view.Messages;
 
 public abstract class EnemyShip extends Ship {
 	
@@ -13,5 +14,12 @@ public abstract class EnemyShip extends Ship {
 	@Override
 	public boolean receiveAttack(UCMWeapon other) { 
 		return other.isOnPosition(this.pos);
+	}
+	
+	protected abstract int getPoints();
+	
+	@Override
+	public String getInfo() {
+		return Messages.alienDescription(getDescription(), getPoints(), getDamage(), getArmour());
 	}
 }

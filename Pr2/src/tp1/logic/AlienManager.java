@@ -4,7 +4,7 @@ import tp1.logic.gameobjects.DestroyerAlien;
 import tp1.logic.gameobjects.RegularAlien;
 import tp1.logic.gameobjects.Ufo;
 import tp1.logic.GameObjectContainer;
-import tp1.logic.Game;
+import tp1.logic.GameWorld;
 
 /**
  * 
@@ -15,14 +15,14 @@ import tp1.logic.Game;
 public class AlienManager {
 	
 	private Level level;
-	private Game game;
+	private GameWorld game;
 	private int remainingAliens;
 	
 	private boolean squadInFinalRow;
 	private int shipsOnBorder;
 	private boolean onBorder;
 
-	public AlienManager(Game game) {
+	public AlienManager(GameWorld game) {
 		this.game = game;
 		this.level = this.game.getLevel();
 		this.onBorder = false;

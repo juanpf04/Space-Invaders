@@ -27,6 +27,26 @@ public class RegularAlien extends AlienShip{
 		return Messages.status(Messages.REGULAR_ALIEN_SYMBOL, this.life);
 	}
 	
+	@Override
+	protected int getDamage() {
+		return DAMAGE;
+	}
+	
+	@Override
+	protected int getArmour() {
+		return LIVES;
+	}
+	
+	@Override
+	public int getPoints() {
+		return POINTS;
+	}
+
+	@Override
+	public String getDescription() {
+		return Messages.REGULAR_ALIEN_DESCRIPTION;
+	}
+	
 	public void decreaseLife() {
 		
 		super.decreaseLife();
@@ -37,27 +57,6 @@ public class RegularAlien extends AlienShip{
 			this.alienManager.decreaseRemainingAliens();
 			this.game.receivePoints(POINTS);
 		}
-	}
-
-	@Override
-	protected int getDamage() {
-		return DAMAGE;
-	}
-
-	@Override
-	protected int getArmour() {
-		return LIVES;
-	}
-
-	@Override
-	public String getInfo() {
-		return Messages.alienDescription(this.getDescription(), RegularAlien.POINTS, RegularAlien.DAMAGE, RegularAlien.LIVES);
-	}
-
-
-	@Override
-	public String getDescription() {
-		return Messages.REGULAR_ALIEN_DESCRIPTION;
 	}
 
 }
