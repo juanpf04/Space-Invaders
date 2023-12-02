@@ -1,7 +1,7 @@
 package tp1.logic.gameobjects;
 
 import tp1.logic.AlienManager;
-import tp1.logic.Game;
+import tp1.logic.GameWorld;
 import tp1.logic.Move;
 import tp1.logic.Position;
 import tp1.view.Messages;
@@ -15,7 +15,7 @@ public class DestroyerAlien extends AlienShip{
 	private boolean bombEnabled;
 
 	//TODO fill your code
-	public DestroyerAlien(Position pos,Game game, AlienManager alienManager) {
+	public DestroyerAlien(Position pos, GameWorld game, AlienManager alienManager) {
 		
 		super(game, pos, LIVES, DAMAGE, Move.LEFT, alienManager);
 		this.bombEnabled = true;

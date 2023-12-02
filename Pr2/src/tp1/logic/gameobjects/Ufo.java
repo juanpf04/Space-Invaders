@@ -1,6 +1,7 @@
 package tp1.logic.gameobjects;
 
 import tp1.logic.Game;
+import tp1.logic.GameWorld;
 import tp1.logic.Move;
 import tp1.logic.Position;
 import tp1.view.Messages;
@@ -14,7 +15,7 @@ public class Ufo extends EnemyShip{
 	
 	private boolean enabled;
 	
-	public Ufo(Game game) {
+	public Ufo(GameWorld game) {
 		super(game, new Position(Game.DIM_X, 0), LIVES, DAMAGE, Move.LEFT);
 		this.enabled = false;
 	}

@@ -36,9 +36,9 @@ public class AlienManager {
 		this.remainingAliens = 0;
 		GameObjectContainer container = new GameObjectContainer();
 		
-		initializeUfo(container);
 		initializeRegularAliens(container);
 		initializeDestroyerAliens(container);
+		initializeUfo(container);
 		
 		return container;
 	}

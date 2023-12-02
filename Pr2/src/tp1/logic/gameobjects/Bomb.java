@@ -1,6 +1,6 @@
 package tp1.logic.gameobjects;
 
-import tp1.logic.Game;
+import tp1.logic.GameWorld;
 import tp1.logic.Move;
 import tp1.logic.Position;
 import tp1.view.Messages;
@@ -13,7 +13,7 @@ public class Bomb extends EnemyWeapon {
 	
 	private DestroyerAlien destroyerAlien;
 	
-	public Bomb(Position pos, Game game, DestroyerAlien destroyerAlien) {
+	public Bomb(Position pos, GameWorld game, DestroyerAlien destroyerAlien) {
 		super(game, pos, 1, Move.DOWN);
 	}
 	

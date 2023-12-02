@@ -1,7 +1,7 @@
 package tp1.logic.gameobjects;
 
 import tp1.logic.Position;
-import tp1.logic.Game;
+import tp1.logic.GameWorld;
 import tp1.view.Messages;
 import tp1.logic.Move;
 
@@ -11,7 +11,7 @@ public class UCMShip extends Ship{
 	public static final int LIVES = 3;
 	private boolean shockWaveEnabled;
 	
-	public UCMShip(Game game, Position pos) {
+	public UCMShip(GameWorld game, Position pos) {
 		
 		super(game, pos, LIVES, DAMAGE, null);
 		this.shockWaveEnabled = false;
