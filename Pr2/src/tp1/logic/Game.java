@@ -144,25 +144,13 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 	
 	@Override
+	public boolean shootShockWave() {
+		return this.player.shootShockWave();
+	}
+	
+	@Override
 	public boolean shootLaser() {
-		boolean canShoot = this.laserIsEnable();
-		
-		if(canShoot)
-			this.player.shootLaser();
-		
-		return canShoot;
-	}
-	
-	
-	public boolean laserIsEnable() {
-		
-		return laserEnabled;
-	}
-	
-	
-	public void enableLaser() {
-		
-		this.laserEnabled = true;
+		return this.player.shootLaser();
 	}
 	
 	public void addObject(GameObject object) {
@@ -171,7 +159,6 @@ public class Game implements GameModel, GameStatus, GameWorld {
 
 	@Override
 	public void reset() {
-		
 		this.initGame();
 	} 
 
@@ -179,17 +166,6 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	public void receivePoints(int points) {
 		
 		this.points += points;
-	}
-
-
-	public void enableShockWave() {
-		
-		this.shockWave.enable();
-	}
-
-	@Override
-	public boolean shootShockWave() {
-		return this.container.shootShockWave();
 	}
 
 //	@Override

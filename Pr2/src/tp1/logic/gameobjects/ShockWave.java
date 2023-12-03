@@ -1,38 +1,15 @@
 package tp1.logic.gameobjects;
 
 import tp1.logic.GameObjectContainer;
+import tp1.logic.GameWorld;
 import tp1.logic.Move;
-import tp1.logic.Game;
 
-/**
- * 
- * Class that represents the shockWave
- * 
- */
 public class ShockWave extends UCMWeapon{
 
 	public static final int DAMAGE = 1;
-	private boolean enabled;
-	public ShockWave() {
-		super(null,null, Game.getRemainingAliens(), Move.NONE);
-		this.enabled = false;
-	}
-	
 
-	public void enable() {
-		
-		this.enabled = true;
-	}
-	
-	public void disable() {
-		
-		this.enabled = false;
-	}
-
-	public void performAttack(GameObjectContainer container) {
-		this.disable();
-		
-		container.alienReceiveAttack(this);
+	public ShockWave(GameWorld game) {
+		super(game,null, game.getRemainingAliens(), Move.NONE);
 	}
 
 	@Override
@@ -45,7 +22,7 @@ public class ShockWave extends UCMWeapon{
 
 	@Override
 	protected int getArmour() {
-		return LIFE;
+		return game.getRemainingAliens();
 	}
 
 	@Override
@@ -53,4 +30,6 @@ public class ShockWave extends UCMWeapon{
 		super.decreaseLife();
 	}
 
+	@Override
+	public void automaticMove() {}
 }

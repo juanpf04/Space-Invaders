@@ -1,6 +1,7 @@
 package tp1.logic;
 
 import tp1.logic.Move;
+import java.util.Objects;
 import tp1.logic.Game;
 /**
  * 
@@ -22,78 +23,63 @@ public class Position {
 		this.row = pos.getRow();
 	}
 	
-	/**
-	 * Checks if the position is the same as the position given
-	 * @param pos the position received
-	 * @return <code>true</code> if the position is the same as the position given
-	 */
-	public boolean equals(Position pos) {
-		
-		return this.col == pos.getCol() && this.row == pos.getRow();
-	}
 	
-	/**
-	 * Methods that returns the new position after the move
-	 * @param move the move that wants to make
-	 * @return the new position after the move
-	 */
-	public Position newPos(Move move) {
-		return new Position(this.col + move.getX(), this.row + move.getY());
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(col, row);
 	}
 
-	/**
-	 * Checks if the position is a valid position
-	 * @return <code>true</code> if the position is a valid position
-	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Position other = (Position) obj;
+		return this.getCol() == other.getCol() && this.getRow() == other.getRow();
+	}
+
+//	public boolean equals(Position pos) {
+//		
+//		return this.col == pos.getCol() && this.row == pos.getRow();
+//	}
+	
+	public Position newPos(Move move) {
+		return new Position(this.getCol() + move.getX(), this.getRow() + move.getY());
+	}
+
 	public boolean posValida() {
 		
-		return this.col <= Game.DIM_Y && this.row <= Game.DIM_X && this.col >= 0 && this.row >= 0;
+		return this.getCol() < Game.DIM_X && this.getRow() < Game.DIM_Y && this.getCol() >= 0 && this.getRow() >= 0;
 	}
 	
-	/**
-	 * Returns column corresponding the Position
-	 * @return column
-	 */
+	
 	private int getCol() {
 		
 		return this.col;
 	}
 
-	/**
-	 * Returns row corresponding the Position
-	 * @return row
-	 */
 	private int getRow() {
 		
 		return this.row;
 	}
 	
-	/**
-	 * Checks if the position after the move is a valid position
-	 * @param move the move that wants to make
-	 * @return <code>true</code> if the position after the move is a valid position
-	 */
 	public boolean validPos(Move move) {
 		
 		return this.newPos(move).posValida();
 	}
 	
-	/**
-	 * Checks if the position is in border of the board
-	 * @return <code>true</code> if the position is in border of the board
-	 */
 	public boolean isInBorder() {
 		
-		return this.col == 0 || this.col == Game.DIM_Y;
+		return this.getCol() == 0 || this.getCol() == Game.DIM_X - 1;
 	}
 
-	/**
-	 * Checks if the position is in final row
-	 * @return <code>true</code> if the position is in final row
-	 */
 	public boolean inFinalRow() {
 		
-		return this.row == 7;
+		return this.getRow() == Game.DIM_Y - 1;
 	}
 
 }

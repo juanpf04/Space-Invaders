@@ -12,5 +12,6 @@ public interface GameWorld {
 	public void receivePoints(int points);
 	public void enableShockWave();
 	public void enableLaser();
+	public int getRemainingAliens();
 	
 }

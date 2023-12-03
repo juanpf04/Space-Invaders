@@ -10,6 +10,7 @@ public class UCMShip extends Ship{
 	public static final int DAMAGE = 1;
 	public static final int LIVES = 3;
 	private boolean shockWaveEnabled;
+	private boolean laserEnabled;
 	
 	public UCMShip(GameWorld game, Position pos) {
 		
@@ -68,12 +69,46 @@ public class UCMShip extends Ship{
 		return pos.validPos(move);
 	}
 	
-	public void shootLaser() {
-		
-		UCMLaser ucmlaser = new UCMLaser(this.game, this.pos);
-		this.game.addObject(ucmlaser);
+	private boolean shockWaveIsEnable() {
+		return this.shockWaveEnabled;
 	}
 
+	private boolean laserIsEnable() {
+		return this.laserEnabled;
+	}
+	
+	public boolean shootLaser() {
+		boolean shoot = this.laserIsEnable();
+		
+		if(shoot) {
+			UCMLaser ucmLaser = new UCMLaser(this.game, this.pos);
+			this.game.addObject(ucmLaser);
+			this.laserEnabled = false;			
+		}
+		
+		return shoot;
+	}
+
+	public boolean shootShockWave() {
+		boolean shoot = this.shockWaveIsEnable();
+		
+		if(shoot) {
+			ShockWave shockWave = new ShockWave(this.game);
+			this.game.addObject(shockWave);
+			this.shockWaveEnabled = false;			
+		}
+		
+		return shoot;
+	}
+
+	public String shockWaveState() {
+		String state = "OFF";
+		
+		if(this.shockWaveIsEnable())
+			state = "ON";
+		
+		return state;
+	}
 	
 	public boolean receiveAttack(EnemyWeapon other) {
 		boolean recieveAttack = other.isAlive() && other.isOnPosition(this.pos);
@@ -84,24 +119,7 @@ public class UCMShip extends Ship{
 		return recieveAttack;
 	}
 
-
 	@Override
 	public void automaticMove() {}
-
-	
-	public void shootShockWave()
-	{
-		ShockWave shockwave = new ShockWave();
-		this.game.addObject(shockwave);
-	}
-
-	public String shockWaveState() {
-		String state = "OFF";
-		
-		if(this.shockWaveEnabled)
-			state = "ON";
-		
-		return state;
-	}
 
 }

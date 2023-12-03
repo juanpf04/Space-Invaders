@@ -24,7 +24,7 @@ public class Ufo extends EnemyShip{
 	@Override
 	public String getSymbol() {
 		
-		return Messages.status(Messages.UFO_SYMBOL, super.life);
+		return Messages.status(Messages.UFO_SYMBOL, super.getLife());
 	}
 	
 	@Override
