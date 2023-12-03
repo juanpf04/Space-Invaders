@@ -8,7 +8,7 @@ public class ShootCommand extends NoParamsCommand{
 		  		
 		@Override
 		public ExecutionResult execute(GameModel game) {
-			ExecutionResult result = new ExecutionResult(Messages.SHOCKWAVE_ERROR);
+			ExecutionResult result = new ExecutionResult(Messages.LASER_ERROR);
 			
 			if(game.shootLaser()) {
 				game.update();

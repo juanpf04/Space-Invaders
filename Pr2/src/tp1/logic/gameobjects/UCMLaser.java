@@ -21,7 +21,6 @@ public class UCMLaser extends UCMWeapon{
 	
 	@Override
 	public String getSymbol() {
-		
 		return Messages.LASER_SYMBOL;
 	}
 	
@@ -37,7 +36,6 @@ public class UCMLaser extends UCMWeapon{
 
 	@Override
 	public void onDelete() {
-		
 		game.enableLaser();
 	}
 
