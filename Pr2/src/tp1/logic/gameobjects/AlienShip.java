@@ -40,7 +40,7 @@ public abstract class AlienShip extends EnemyShip{
 		
 		this.performMovement(Move.DOWN);
 		this.dir = this.dir.flip();
-		//this.game.checkLaserAttack(this);
+		this.game.checkLaserAttack(this);
 		if(this.isAlive())
 			this.alienManager.decreaseOnBorder();
 		if(this.isInFinalRow())

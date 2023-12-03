@@ -16,6 +16,7 @@ public class UCMShip extends Ship{
 		
 		super(game, pos, LIVES, DAMAGE, null);
 		this.shockWaveEnabled = false;
+		this.laserEnabled = true;
 	}
 	
 	@Override

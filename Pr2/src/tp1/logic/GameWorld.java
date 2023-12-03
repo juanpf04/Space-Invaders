@@ -2,6 +2,7 @@ package tp1.logic;
 
 import java.util.Random;
 
+import tp1.logic.gameobjects.AlienShip;
 import tp1.logic.gameobjects.GameObject;
 
 public interface GameWorld {
@@ -13,5 +14,6 @@ public interface GameWorld {
 	public void enableShockWave();
 	public void enableLaser();
 	public int getRemainingAliens();
+	public void checkLaserAttack(AlienShip alienShip);
 	
 }

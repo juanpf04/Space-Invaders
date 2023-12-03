@@ -15,6 +15,7 @@ public class Bomb extends EnemyWeapon {
 	
 	public Bomb(Position pos, GameWorld game, DestroyerAlien destroyerAlien) {
 		super(game, pos, 1, Move.DOWN);
+		this.destroyerAlien = destroyerAlien;
 	}
 	
 	@Override

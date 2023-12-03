@@ -80,13 +80,11 @@ public class Game implements GameModel, GameStatus, GameWorld {
 
 	@Override
 	public int getCycle() {
-		
 		return this.currentCycle;
 	}
 	
 	@Override
 	public int getRemainingAliens() {
-		
 		return this.alienManager.getRemainingAliens();
 	}
 
@@ -97,39 +95,33 @@ public class Game implements GameModel, GameStatus, GameWorld {
 
 	@Override
 	public boolean isFinished() {
-		
 		return this.exit || this.playerWin() || this.aliensWin();
 	}
 	
 	@Override
 	public void exit() {
-		
 		this.exit = true;
 	}
 	
 	@Override
 	public boolean playerWin() {
-		
 		return this.player.isAlive() 
 				&& this.getRemainingAliens() == 0;
 	}
 
 	@Override
 	public boolean aliensWin() {
-		
 		return this.getRemainingAliens() > 0 
 				&& !this.player.isAlive() || this.alienManager.squadInFinalRow();
 	}
 
 	@Override
 	public Random getRandom() {
-		
 		return this.random;
 	}
 
 	@Override
 	public Level getLevel() {
-		
 		return this.level;
 	}
 	
@@ -176,15 +168,18 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	    this.container.automaticMoves();
 	}
 
-
 	@Override
 	public void enableShockWave() {
 		this.player.enableShockWave();
 	}
 
-
 	@Override
 	public void enableLaser() {
 		this.player.enableLaser();
+	}
+
+	@Override
+	public void checkLaserAttack(AlienShip alienShip) {
+		this.container.performAttack(alienShip);
 	}
 }
