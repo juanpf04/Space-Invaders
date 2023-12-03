@@ -62,7 +62,7 @@ public class GameObjectContainer {
 			i++;
 		}
 		
-		if(i < objects.size())
+		if(object.isOnPosition(position))
 			box = object.toString();
 			
 		return box;
