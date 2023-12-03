@@ -19,10 +19,4 @@ public abstract class UCMWeapon extends Weapon {
 	
 	return recieveAttack;
 	}
-	
-	@Override
-	public boolean weaponAttack(GameObject other) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

@@ -10,23 +10,20 @@ public abstract class EnemyWeapon extends Weapon {
 		super(game, pos, life, dir);
 	}
 	
-	public boolean performAttack(UCMShip other) {
-		boolean attack = this.weaponAttack(other);
-		
-		if(attack)
-			this.die();
-		
-		return attack;
-	}
-	@Override
-	public boolean receiveAttack(UCMWeapon other) { 
-		return other.isOnPosition(this.pos);
-	}
 	
 	@Override
-	public boolean weaponAttack(GameObject other) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean performAttack(GameItem other)
+	{
+		boolean attacked = other.receiveAttack(this);
+		if(attacked) life = 0;
+		return attacked;
+	}
+	@Override
+	public boolean receiveAttack(UCMWeapon weapon)
+	{
+		boolean attacked = weapon.isOnPosition(this.pos);
+		if(attacked) life = 0;
+		return attacked;
 	}
 	
 	

@@ -25,21 +25,4 @@ public abstract class Weapon extends GameObject {
 		this.onDelete();
 	}
 	
-	public boolean weaponAttack(GameObject other) {
-		boolean attack = true;
-		
-		if(attack)
-			this.die();
-		
-		return attack;
-	}
-	
-	public boolean performAttack(GameObject other) {
-		boolean attack = this.weaponAttack(other);
-		
-		if(attack)
-			this.die();
-		
-		return attack;
-	}
 }

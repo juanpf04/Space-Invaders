@@ -22,7 +22,7 @@ public class UCMShip extends Ship{
 	@Override
 	public String getSymbol() {
 		
-		if(super.isAlive())
+		if(this.isAlive())
 			return Messages.UCMSHIP_SYMBOL;
 		
 		return Messages.UCMSHIP_DEAD_SYMBOL;
@@ -123,7 +123,7 @@ public class UCMShip extends Ship{
 		boolean recieveAttack = other.isAlive() && other.isOnPosition(this.pos);
 		
 		if(recieveAttack)
-			super.decreaseLife();
+			this.decreaseLife();
 		
 		return recieveAttack;
 	}

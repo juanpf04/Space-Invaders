@@ -38,5 +38,11 @@ public class UCMLaser extends UCMWeapon{
 	public void onDelete() {
 		game.enableLaser();
 	}
-
+	@Override 
+	public boolean performAttack(GameItem other)
+	{
+		boolean attacked = other.receiveAttack(this); // preguntar el DAMAGE
+		if(attacked) this.onDelete();
+		return attacked;
+	}
 }
