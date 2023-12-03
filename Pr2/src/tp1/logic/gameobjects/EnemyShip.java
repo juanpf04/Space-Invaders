@@ -11,15 +11,17 @@ public abstract class EnemyShip extends Ship {
 		super(game, pos, lives, damage, dir);
 	}
 	
-	@Override
-	public boolean receiveAttack(UCMWeapon other) { 
-		return other.isOnPosition(this.pos);
-	}
-	
 	protected abstract int getPoints();
 	
 	@Override
 	public String getInfo() {
 		return Messages.alienDescription(getDescription(), getPoints(), getDamage(), getArmour());
+	}
+	@Override
+	public boolean receiveAttack(UCMWeapon weapon)
+	{
+		boolean attacked = weapon.isOnPosition(this.pos);
+		if(attacked) life--;
+		return attacked;	
 	}
 }
