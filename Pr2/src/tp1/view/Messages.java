@@ -1,5 +1,6 @@
 package tp1.view;
 
+import tp1.control.InitialConfiguration;
 import tp1.logic.Level;
 
 /**
@@ -17,6 +18,8 @@ public class Messages {
 	public static final String USAGE_LEVEL_PARAM = "\t<level>: %s".formatted(Level.all(", "));
 
 	public static final String USAGE_SEED_PARAM = "\t<seed>: %s".formatted(Messages.SEED_NOT_A_NUMBER);
+
+	public static final String INITIAL_CONFIGURATION_ERROR = "Invalid initial configuration";
 
 	public static final String WELCOME = String.format("%s %s%n", GAME_NAME, VERSION);
 
@@ -38,7 +41,7 @@ public class Messages {
 
 	public static final String LINE_SEPARATOR = System.lineSeparator();
 
-	public static final String HELP_AVAILABLE_COMMANDS = "Available commands:";
+	public static final String HELP_AVAILABLE_COMMANDS = "Available commands: ";
 
 	public static final String HELP_DETAILS_COMMAND_HELP_SEPARATOR = ": ";
 
@@ -70,9 +73,11 @@ public class Messages {
 
 	public static final String UNEXPECTED_RUNTIME_ERROR = "Oops!";
 	
-	public static final String SCORE = "Score:";
+	public static final String SCORE = "Points:";
 
 	public static final String LASER_ERROR = "Laser cannot be shot";
+
+	public static final String SUPERLASER_ERROR = "Super laser cannot be shot";
 
 	public static final String SHOCKWAVE_ERROR = "ShockWave cannot be shot";
 	
@@ -95,9 +100,11 @@ public class Messages {
 
 	public static final String LASER_SYMBOL = "oo";
 
+	public static final String SUPERLASER_SYMBOL = "ǁǁ";
+
 	public static final String UCMSHIP_SYMBOL = "^__^";
 
-	public static final String UCMSHIP_DEAD_SYMBOL = "#--#";
+	public static final String UCMSHIP_DEAD_SYMBOL = "#──#";
 
 	public static final String UCMSHIP_DESCRIPTION = "[U]CM Ship";
 
@@ -141,12 +148,12 @@ public class Messages {
 	
 	public static final String COMMAND_RESET_NAME = "reset";
 	public static final String COMMAND_RESET_SHORTCUT = "r";
-	public static final String COMMAND_RESET_DETAILS = "[r]eset";
+	public static final String COMMAND_RESET_DETAILS = "[r]eset [<%s>]".formatted(InitialConfiguration.all("|"));
 	public static final String COMMAND_RESET_HELP = "resets the game";
 
 	public static final String COMMAND_SHOCKWAVE_NAME = "shockwave";
 	public static final String COMMAND_SHOCKWAVE_SHORTCUT = "w";
-	public static final String COMMAND_SHOCKWAVE_DETAILS = "sock[w]ave";
+	public static final String COMMAND_SHOCKWAVE_DETAILS = "shock[w]ave";
 	public static final String COMMAND_SHOCKWAVE_HELP = "player shoots a shockwave";
 
 	public static final String COMMAND_SHOOT_NAME = "shoot";
@@ -156,8 +163,13 @@ public class Messages {
 
 	public static final String COMMAND_NONE_NAME = "none";
 	public static final String COMMAND_NONE_SHORTCUT = "n";
-	public static final String COMMAND_NONE_DETAILS = "[n]one";
+	public static final String COMMAND_NONE_DETAILS = "[n]one | \"\"";
 	public static final String COMMAND_NONE_HELP = "user does not perform any action";
+
+	public static final String COMMAND_SUPERLASER_NAME = "superLaser";
+	public static final String COMMAND_SUPERLASER_SHORTCUT = "sl";
+	public static final String COMMAND_SUPERLASER_DETAILS = "[s]uper[L]aser";
+	public static final String COMMAND_SUPERLASER_HELP = "shoots a super laser when player has enough points";
 
 	/**
 	 * Formats an error message.
@@ -192,7 +204,7 @@ public class Messages {
 	public static final String ucmShipDescription(String ucmShipDescription, int damage, int endurance) {
 		return Messages.UCM_DESCRIPTION.formatted(ucmShipDescription, damage, endurance);
 	}
-
+	
 	public static final String LIFE = "Life: %d";
 	
 	public static final String life(int lives) {
@@ -210,5 +222,5 @@ public class Messages {
 	public static final String shockWaveStatus(String status) {
 		return Messages.SHOCKWAVE_STATUS.formatted(status);
 	}
-	
+
 }
