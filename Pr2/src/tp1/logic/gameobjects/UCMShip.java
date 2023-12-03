@@ -72,9 +72,17 @@ public class UCMShip extends Ship{
 	private boolean shockWaveIsEnable() {
 		return this.shockWaveEnabled;
 	}
+	
+	public void enableShockWave() {
+		this.shockWaveEnabled = true;
+	}
 
 	private boolean laserIsEnable() {
 		return this.laserEnabled;
+	}
+	
+	public void enableLaser() {
+		this.laserEnabled = true;
 	}
 	
 	public boolean shootLaser() {
@@ -121,5 +129,6 @@ public class UCMShip extends Ship{
 
 	@Override
 	public void automaticMove() {}
+
 
 }

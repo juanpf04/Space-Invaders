@@ -71,10 +71,8 @@ public class GameObjectContainer {
 		int i = 0;
 
 		while ( i < objects.size() && other.isAlive()) {
-			
 			GameObject object = objects.get(i);
 			other.performAttack(object);
-			
 			i++;
 		}
 		

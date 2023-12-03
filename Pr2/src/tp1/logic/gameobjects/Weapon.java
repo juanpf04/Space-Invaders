@@ -26,7 +26,7 @@ public abstract class Weapon extends GameObject {
 	}
 	
 	public boolean weaponAttack(GameObject other) {
-		boolean attack = other.receiveAttack(this);
+		boolean attack = true;
 		
 		if(attack)
 			this.die();

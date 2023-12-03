@@ -121,13 +121,13 @@ public class Game implements GameModel, GameStatus, GameWorld {
 				&& !this.player.isAlive() || this.alienManager.squadInFinalRow();
 	}
 
-
+	@Override
 	public Random getRandom() {
 		
 		return this.random;
 	}
 
-	
+	@Override
 	public Level getLevel() {
 		
 		return this.level;
@@ -153,6 +153,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		return this.player.shootLaser();
 	}
 	
+	@Override
 	public void addObject(GameObject object) {
 	    this.container.add(object);
 	}
@@ -161,50 +162,29 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	public void reset() {
 		this.initGame();
 	} 
-
 	
+	@Override
 	public void receivePoints(int points) {
 		
 		this.points += points;
 	}
-
-//	@Override
-//	public void update() {
-//		
-//		this.regularAlienList.automaticMove();	
-//		this.destroyerAlienList.automaticMove();
-//		
-//		this.ufo.computerAction();
-//		this.ufo.automaticMove();
-//		
-//		this.bombList.automaticMove();
-//		
-//		if(!this.laserIsEnable())
-//			this.bombList.performAttack(this.ucmLaser);
-//		
-//		this.moveLaser();
-//		
-//		if(!this.laserIsEnable())  {
-//			this.regularAlienList.checkLaserAttack(this.ucmLaser);
-//			if(!this.laserIsEnable()) {
-//				this.destroyerAlienList.checkLaserAttack(this.ucmLaser);
-//				if(!this.laserIsEnable()) {
-//					this.ucmLaser.performAttack(ufo);
-//					if(!this.laserIsEnable())
-//						this.bombList.performAttack(this.ucmLaser);		
-//				}
-//			}
-//		}
-//		
-//		this.bombList.performAttack(this.player);
-//		
-//		this.currentCycle++;
-//	}
 	
 	@Override
 	public void update() {
 	    this.currentCycle++;
 	    this.container.computerActions();
 	    this.container.automaticMoves();
+	}
+
+
+	@Override
+	public void enableShockWave() {
+		this.player.enableShockWave();
+	}
+
+
+	@Override
+	public void enableLaser() {
+		this.player.enableLaser();
 	}
 }
