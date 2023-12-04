@@ -69,11 +69,14 @@ public class Ufo extends EnemyShip{
 	
 	@Override
 	public void onDelete() {
-		super.onDelete();
-		this.game.enableShockWave();
+		if(!isOut()) { // revisar
+			this.game.enableShockWave();
+			super.onDelete();
+		}
 		this.enabled = false;
 		this.pos = new Position(Game.DIM_X, 0);
 		super.life = LIVES;
+		
 	}
 	
 	private boolean canGenerateRandomUfo(){

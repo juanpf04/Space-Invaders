@@ -2,13 +2,14 @@ package tp1.logic.gameobjects;
 
 import tp1.logic.GameWorld;
 import tp1.logic.Move;
+import tp1.logic.Position;
 
 public class ShockWave extends UCMWeapon{
 
 	public static final int DAMAGE = 1;
 
 	public ShockWave(GameWorld game) {
-		super(game,null, game.getRemainingAliens(), Move.NONE);
+		super(game,new Position(-1,-1), game.getRemainingAliens(), Move.NONE);
 	}
 
 	@Override
@@ -27,7 +28,7 @@ public class ShockWave extends UCMWeapon{
 	@Override
 	public void onDelete() {
 		game.enableShockWave();
-		super.decreaseLife();
+		life = 0;
 	}
 
 	@Override
