@@ -67,6 +67,11 @@ public class Ufo extends EnemyShip{
 		this.enabled = true;
 	}
 	
+	public boolean isEnable() {
+		
+		return this.enabled;
+	}
+	
 	@Override
 	public void onDelete() {
 		if(!isOut()) { // revisar
@@ -84,9 +89,6 @@ public class Ufo extends EnemyShip{
 		return game.getRandom().nextDouble() < game.getLevel().getUfoFrequency();
 	}
 	
-	public boolean isEnable() {
 	
-		return this.enabled;
-	}
 
 }
