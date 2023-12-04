@@ -1,6 +1,5 @@
 package tp1.logic.gameobjects;
 
-import tp1.logic.GameObjectContainer;
 import tp1.logic.GameWorld;
 import tp1.logic.Move;
 

@@ -23,8 +23,6 @@ public class Position {
 		this.row = pos.getRow();
 	}
 	
-	
-	
 	@Override
 	public int hashCode() {
 		return Objects.hash(col, row);
