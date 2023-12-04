@@ -18,10 +18,18 @@ public abstract class EnemyShip extends Ship {
 		return Messages.alienDescription(getDescription(), getPoints(), getDamage(), getArmour());
 	}
 	@Override
-	public boolean receiveAttack(UCMWeapon weapon)
-	{
+	public boolean receiveAttack(UCMWeapon weapon) {
 		boolean attacked = weapon.isOnPosition(this.pos);
-		if(attacked) life--;
+		if(attacked) {
+			life -= weapon.getDamage();
+			if(!isAlive())
+				onDelete();
+		}
 		return attacked;	
+	}
+	
+	@Override
+	public void onDelete() {
+		this.game.receivePoints(getPoints());
 	}
 }

@@ -23,8 +23,7 @@ public class RegularAlien extends AlienShip{
 	
 	@Override
 	public String getSymbol() {
-		
-		return Messages.status(Messages.REGULAR_ALIEN_SYMBOL, this.life);
+		return Messages.status(Messages.REGULAR_ALIEN_SYMBOL, getLife());
 	}
 	
 	@Override
@@ -47,16 +46,15 @@ public class RegularAlien extends AlienShip{
 		return Messages.REGULAR_ALIEN_DESCRIPTION;
 	}
 	
-	public void decreaseLife() {
+	@Override
+	public void onDelete() {
+		super.onDelete();
 		
-		super.decreaseLife();
-		if(!this.isAlive()) {
-			if(this.isInBorder()) 
-				this.alienManager.disableOnBorder();
-				
-			this.alienManager.decreaseRemainingAliens();
-			this.game.receivePoints(POINTS);
-		}
+		if(this.isInBorder()) 
+			this.alienManager.disableOnBorder();
+			
+		this.alienManager.decreaseRemainingAliens();
+		this.game.receivePoints(getPoints());	
 	}
 
 }

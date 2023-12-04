@@ -19,7 +19,6 @@ public class Ufo extends EnemyShip{
 		super(game, new Position(Game.DIM_X, 0), LIVES, DAMAGE, Move.LEFT);
 		this.enabled = false;
 	}
-	
 
 	@Override
 	public String getSymbol() {
@@ -63,43 +62,28 @@ public class Ufo extends EnemyShip{
 		}
 	}
 	
-	
 	private void enable() {
 		
 		this.enabled = true;
 	}
-
 	
-	
+	@Override
 	public void onDelete() {
-		
+		super.onDelete();
+		this.game.enableShockWave();
 		this.enabled = false;
 		this.pos = new Position(Game.DIM_X, 0);
 		super.life = LIVES;
 	}
-
 	
 	private boolean canGenerateRandomUfo(){
 		
 		return game.getRandom().nextDouble() < game.getLevel().getUfoFrequency();
 	}
-
 	
 	public boolean isEnable() {
 	
 		return this.enabled;
-	}
-
-	
-	@Override
-	public void decreaseLife() {
-		
-		super.decreaseLife();
-		if(!this.isAlive()) {
-			this.onDelete();
-			this.game.enableShockWave();
-			this.game.receivePoints(POINTS);
-		}
 	}
 
 }

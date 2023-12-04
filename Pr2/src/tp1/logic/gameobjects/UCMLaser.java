@@ -37,6 +37,7 @@ public class UCMLaser extends UCMWeapon{
 	@Override
 	public void onDelete() {
 		game.enableLaser();
+		this.life = 0;
 	}
 	@Override 
 	public boolean performAttack(GameItem other)

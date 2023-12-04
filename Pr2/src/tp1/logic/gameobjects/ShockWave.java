@@ -26,6 +26,7 @@ public class ShockWave extends UCMWeapon{
 
 	@Override
 	public void onDelete() {
+		game.enableShockWave();
 		super.decreaseLife();
 	}
 

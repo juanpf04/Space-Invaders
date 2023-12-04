@@ -23,8 +23,7 @@ public class DestroyerAlien extends AlienShip{
 	
 	@Override
 	public String getSymbol() {
-		
-		return Messages.status(Messages.DESTROYER_ALIEN_SYMBOL, this.life);
+		return Messages.status(Messages.DESTROYER_ALIEN_SYMBOL, getLife());
 	}
 	
 	@Override
@@ -57,22 +56,16 @@ public class DestroyerAlien extends AlienShip{
 	}
 	
 	@Override
-	public void decreaseLife() {
-		
-		super.decreaseLife();
-		if(!this.isAlive()) {
-			this.alienManager.decreaseRemainingAliens();
-			this.game.receivePoints(POINTS);
-		}
+	public void onDelete() {
+		super.onDelete();	
+		this.alienManager.decreaseRemainingAliens();
 	}
 
-	
 	public boolean bombEnabled() {
 		
 		return this.bombEnabled;
 	}
 
-	
 	public void deleteBomb() {
 		
 		this.bombEnabled = true;
@@ -88,7 +81,6 @@ public class DestroyerAlien extends AlienShip{
 		}
 			
 	}
-	
 	
 	private boolean canGenerateRandomShoot(){
 		

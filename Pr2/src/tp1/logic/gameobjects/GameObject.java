@@ -20,10 +20,6 @@ public abstract class GameObject implements GameItem {
 	public boolean isAlive() {
 		return this.life > 0;
 	}
-	
-	protected void decreaseLife() {
-		this.life--;
-	}
 
 	protected int getLife() {
 		return this.life;

@@ -76,8 +76,6 @@ public class GameObjectContainer {
 			other.performAttack(object);
 			i++;
 		}
-		
-		this.deleteDeads();
 	}
 
 	public void performAttack(AlienShip alienShip) {
@@ -88,8 +86,6 @@ public class GameObjectContainer {
 			object.performAttack(alienShip);
 			i++;
 		}
-		
-		this.deleteDeads();
 	}
 	
 }
