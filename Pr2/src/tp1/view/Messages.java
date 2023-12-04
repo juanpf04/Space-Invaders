@@ -57,10 +57,6 @@ public class Messages {
 
 	public static final String INVALID_COMMAND = "Invalid command";
 
-	public static final String NUMBER_OF_CYCLES = "Number of cycles:";
-
-	public static final String REMAINING_ALIENS = "Remaining aliens:";
-
 	public static final String GAME_OVER = "Game over";
 
 	public static final String PLAYER_QUITS = "Player leaves the game";
@@ -221,6 +217,19 @@ public class Messages {
 	
 	public static final String shockWaveStatus(String status) {
 		return Messages.SHOCKWAVE_STATUS.formatted(status);
+	}
+	
+
+	public static final String NUMBER_OF_CYCLES = "Number of cycles: %d";
+	
+	public static final String numberOfCycles(int cycles) {
+		return Messages.NUMBER_OF_CYCLES.formatted(cycles);
+	}
+
+	public static final String REMAINING_ALIENS = "Remaining aliens: %d";
+	
+	public static final String remainingAliens(int aliens) {
+		return Messages.REMAINING_ALIENS.formatted(aliens);
 	}
 
 }

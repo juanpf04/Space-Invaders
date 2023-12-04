@@ -9,7 +9,4 @@ public interface GameStatus {
 	public boolean playerWin();
 	public boolean aliensWin();
 
-	public int getCycle();
-	public int getRemainingAliens();
-
 }

@@ -27,19 +27,10 @@ public class BoardPrinter extends GamePrinter {
 	}
 		
 	/**
-	 * Builds a string that represent the game status
-	 * 
 	 * @return the string that represents the game status.
 	 */
 	protected String getInfo() {
-		StringBuilder buffer = new StringBuilder();
-		/* @formatter:off */
-		buffer
-		.append(Messages.NUMBER_OF_CYCLES).append(SPACE).append(game.getCycle()).append(NEW_LINE)
-		.append(game.stateToString())
-		.append(Messages.REMAINING_ALIENS).append(SPACE).append(game.getRemainingAliens()).append(NEW_LINE);
-		/* @formatter:on */
-		return buffer.toString();
+		return game.stateToString();
 	}
 
 	@Override

@@ -32,7 +32,6 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	private AlienManager alienManager;
 	private int points;
 	private boolean exit;
-	private boolean laserEnabled;
 	
 	public Game(Level level, long seed) {
 		
@@ -44,7 +43,6 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	
 	private final void initGame() {
 		
-		this.laserEnabled = true;
 		this.random = new Random(this.seed);
 		this.currentCycle = 0;
 		this.points = 0;
@@ -71,14 +69,17 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	public String stateToString() {
 		StringBuilder state = new StringBuilder();
 		
-		state.append(Messages.life(this.player.getLife())).append(Messages.LINE_SEPARATOR)
+		state
+		.append(Messages.numberOfCycles(this.getCycle())).append(Messages.LINE_SEPARATOR)
+		.append(Messages.life(this.player.getLife())).append(Messages.LINE_SEPARATOR)
 		.append(Messages.points(this.points)).append(Messages.LINE_SEPARATOR)
-		.append(Messages.shockWaveStatus(this.player.shockWaveState())).append(Messages.LINE_SEPARATOR);	
+		.append(Messages.shockWaveStatus(this.player.shockWaveState())).append(Messages.LINE_SEPARATOR)	
+		.append(Messages.remainingAliens(this.getRemainingAliens())).append(Messages.LINE_SEPARATOR);
 		
 		return state.toString();
 	} 
 
-	@Override
+	
 	public int getCycle() {
 		return this.currentCycle;
 	}
