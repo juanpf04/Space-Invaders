@@ -32,4 +32,5 @@ public class ShockWave extends UCMWeapon{
 
 	@Override
 	public void automaticMove() {}
+	
 }

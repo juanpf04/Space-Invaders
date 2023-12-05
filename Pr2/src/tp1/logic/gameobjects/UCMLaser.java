@@ -44,7 +44,10 @@ public class UCMLaser extends UCMWeapon{
 	public boolean performAttack(GameItem other)
 	{
 		boolean attacked = other.receiveAttack(this); 
-		if(attacked) die();
+		if(attacked) 
+			die();
+		
 		return attacked;
 	}
+	
 }

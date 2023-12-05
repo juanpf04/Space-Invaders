@@ -22,7 +22,6 @@ public class Ufo extends EnemyShip{
 
 	@Override
 	public String getSymbol() {
-		
 		return Messages.status(Messages.UFO_SYMBOL, super.getLife());
 	}
 	
@@ -48,8 +47,8 @@ public class Ufo extends EnemyShip{
 	
 	@Override
 	public void computerAction() {
-		if(!enabled && canGenerateRandomUfo()) {
-			enable();	
+		if(!this.isEnable() && this.canGenerateRandomUfo()) {
+			this.enable();	
 		}
 	}
 	
@@ -58,37 +57,37 @@ public class Ufo extends EnemyShip{
 		if(this.isEnable()) {
 			performMovement(dir);
 			if(isOut())
-				onDelete();
+				this.reset();
 		}
 	}
 	
+	private final void reset() {
+		this.disable();
+		this.pos = new Position(Game.DIM_X, 0);
+		super.life = LIVES;
+	}
+	
 	private void enable() {
-		
 		this.enabled = true;
 	}
 	
-	public boolean isEnable() {
-		
+	private void disable() {
+		this.enabled = false;
+	}
+	
+	private boolean isEnable() {
 		return this.enabled;
 	}
 	
 	@Override
 	public void onDelete() {
-		if(!isOut()) { // revisar
-			this.game.enableShockWave();
-			super.onDelete();
-		}
-		this.enabled = false;
-		this.pos = new Position(Game.DIM_X, 0);
-		super.life = LIVES;
-		
+		super.onDelete();
+		this.game.enableShockWave();
+		this.reset();
 	}
 	
-	private boolean canGenerateRandomUfo(){
-		
+	private boolean canGenerateRandomUfo() {
 		return game.getRandom().nextDouble() < game.getLevel().getUfoFrequency();
 	}
-	
-	
 
 }

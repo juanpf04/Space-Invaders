@@ -26,8 +26,7 @@ public abstract class AlienShip extends EnemyShip{
 			this.performMovement(this.dir);
 			this.cyclesToMove = this.speed; 
 			if(this.isInBorder())
-				this.alienManager.shipOnBorder();
-				
+				this.alienManager.shipOnBorder();	
 		}
 		else if(this.alienManager.onBorder())
 			this.descent();
@@ -48,12 +47,10 @@ public abstract class AlienShip extends EnemyShip{
 	}
 	
 	protected boolean isInFinalRow() {
-
 		return this.pos.inFinalRow();
 	}
 	
 	protected boolean isInBorder() {
-		
 		return this.pos.isInBorder();
 	}
 }

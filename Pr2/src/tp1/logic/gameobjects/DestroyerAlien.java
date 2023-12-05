@@ -48,7 +48,6 @@ public class DestroyerAlien extends AlienShip{
 	
 	@Override
 	public void automaticMove() {
-		
 		super.automaticMove();
 		
 		if(this.isAlive())
@@ -62,28 +61,24 @@ public class DestroyerAlien extends AlienShip{
 	}
 
 	public boolean bombEnabled() {
-		
 		return this.bombEnabled;
 	}
 
 	public void deleteBomb() {
-		
 		this.bombEnabled = true;
 	}
 
 	@Override
 	public void computerAction() {
 		
-		if(this.bombEnabled && this.canGenerateRandomShoot()) {
+		if(this.bombEnabled() && this.canGenerateRandomShoot()) {
 			
 			this.game.addObject(new Bomb(this.pos, this.game, this));
 			this.bombEnabled = false; 
 		}
-			
 	}
 	
-	private boolean canGenerateRandomShoot(){
-		
+	private boolean canGenerateRandomShoot() {
 		return game.getRandom().nextDouble() < game.getLevel().getShootFrequency();
 	}
 	

@@ -22,11 +22,6 @@ public class Bomb extends EnemyWeapon {
 	public String getSymbol() {
 		return Messages.BOMB_SYMBOL;
 	}
-
-	@Override
-	public void onDelete() {
-		this.destroyerAlien.deleteBomb();
-	}
 	
 	@Override
 	protected int getDamage() {
@@ -36,5 +31,10 @@ public class Bomb extends EnemyWeapon {
 	@Override
 	protected int getArmour() {
 		return LIFE;
+	}
+	
+	@Override
+	public void onDelete() {
+		this.destroyerAlien.deleteBomb();
 	}
 }

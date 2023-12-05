@@ -21,11 +21,12 @@ public class UCMShip extends Ship{
 	
 	@Override
 	public String getSymbol() {
+		String symbol = Messages.UCMSHIP_SYMBOL;
+
+		if(!this.isAlive())
+			symbol = Messages.UCMSHIP_DEAD_SYMBOL;
 		
-		if(this.isAlive())
-			return Messages.UCMSHIP_SYMBOL;
-		
-		return Messages.UCMSHIP_DEAD_SYMBOL;
+		return symbol;
 	}
 	
 	@Override
@@ -55,7 +56,6 @@ public class UCMShip extends Ship{
 	
 	@Override
 	public void performMovement(Move move) {
-		
 		super.performMovement(move);
 	}
 	
