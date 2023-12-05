@@ -19,5 +19,5 @@ public abstract class Weapon extends GameObject {
 		if(isOut())
 			this.onDelete();
 	}
-	// prueba
+
 }
