@@ -13,7 +13,9 @@ public class ShockWave extends UCMWeapon{
 	}
 
 	@Override
-	protected String getSymbol() {return "";}
+	protected String getSymbol() {
+		return "";
+	}
 
 	@Override
 	protected int getDamage() {
@@ -26,10 +28,7 @@ public class ShockWave extends UCMWeapon{
 	}
 
 	@Override
-	public void onDelete() {
-		game.enableShockWave();
-		life = 0;
-	}
+	public void onDelete() {}
 
 	@Override
 	public void automaticMove() {}

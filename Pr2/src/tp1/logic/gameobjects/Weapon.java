@@ -17,7 +17,12 @@ public abstract class Weapon extends GameObject {
 	public void automaticMove () {
 		performMovement(dir);
 		if(isOut())
-			this.onDelete();
+			this.die();
 	}
 
+	protected void die() {
+		life = 0;
+		onDelete();
+	}
+	
 }

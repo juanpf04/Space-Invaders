@@ -20,24 +20,14 @@ public class Bomb extends EnemyWeapon {
 	
 	@Override
 	public String getSymbol() {
-		
 		return Messages.BOMB_SYMBOL;
 	}
 
 	@Override
 	public void onDelete() {
-		
 		this.destroyerAlien.deleteBomb();
-		this.life = 0;
 	}
-
-	@Override
-	public void automaticMove () {
-		if(!this.destroyerAlien.bombEnabled()) {
-			super.automaticMove();
-		}
-	}
-
+	
 	@Override
 	protected int getDamage() {
 		return DAMAGE;

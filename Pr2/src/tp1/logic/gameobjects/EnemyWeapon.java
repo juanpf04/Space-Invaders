@@ -10,16 +10,13 @@ public abstract class EnemyWeapon extends Weapon {
 		super(game, pos, life, dir);
 	}
 	
-	
 	@Override
 	public boolean performAttack(GameItem other)
 	{
 		boolean attacked = other.receiveAttack(this);
-		if(attacked) {
-			life = 0;
-			if(!isAlive())
-				onDelete();
-		}
+		if(attacked)
+			die();
+				
 		return attacked;
 	}
 	
@@ -27,13 +24,10 @@ public abstract class EnemyWeapon extends Weapon {
 	public boolean receiveAttack(UCMWeapon weapon)
 	{
 		boolean attacked = weapon.isOnPosition(this.pos);
-		if(attacked) {
-			life -= weapon.getDamage();
-			if(!isAlive())
-				onDelete();
-		}
+		if(attacked)
+			die();
+			
 		return attacked;
 	}
-	
 	
 }

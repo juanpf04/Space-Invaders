@@ -120,11 +120,11 @@ public class UCMShip extends Ship{
 	}
 	
 	public boolean receiveAttack(EnemyWeapon other) {
-		boolean recieveAttack = other.isOnPosition(this.pos);
+		boolean receiveAttack = other.isOnPosition(this.pos);
 		
-		if(recieveAttack) life -= other.getDamage();
+		if(receiveAttack) life -= other.getDamage();
 		
-		return recieveAttack;
+		return receiveAttack;
 	}
 
 	@Override

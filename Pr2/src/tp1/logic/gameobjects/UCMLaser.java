@@ -14,9 +14,10 @@ public class UCMLaser extends UCMWeapon{
 	
 	public static final int DAMAGE = 1;
 	public static final int LIFE = 1;
+	public static final Move DIRECTION = Move.UP;
 	
 	public UCMLaser(GameWorld game, Position pos) {
-		super(game, pos, LIFE,Move.UP);
+		super(game, pos, LIFE, DIRECTION);
 	}
 	
 	@Override
@@ -37,13 +38,13 @@ public class UCMLaser extends UCMWeapon{
 	@Override
 	public void onDelete() {
 		game.enableLaser();
-		this.life = 0;
 	}
+	
 	@Override 
 	public boolean performAttack(GameItem other)
 	{
-		boolean attacked = other.receiveAttack(this); // preguntar el DAMAGE
-		if(attacked) this.onDelete();
+		boolean attacked = other.receiveAttack(this); 
+		if(attacked) die();
 		return attacked;
 	}
 }
