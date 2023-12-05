@@ -14,6 +14,6 @@ public interface GameWorld {
 	public void enableShockWave();
 	public void enableLaser();
 	public int getRemainingAliens();
-	public void checkLaserAttack(AlienShip alienShip);
+	public void checkAttack(AlienShip alienShip);
 	
 }

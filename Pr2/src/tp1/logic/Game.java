@@ -188,7 +188,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 
 	@Override
-	public void checkLaserAttack(AlienShip alienShip) {
+	public void checkAttack(AlienShip alienShip) {
 		this.container.performAttack(alienShip);
 	}
 }

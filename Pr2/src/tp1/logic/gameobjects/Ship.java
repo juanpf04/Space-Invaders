@@ -6,11 +6,8 @@ import tp1.logic.Position;
 
 public abstract class Ship extends GameObject{
 	
-	protected Move dir;
-	
 	public Ship(GameWorld game, Position pos, int lives, Move dir) {
-		super(game, pos,  lives);
-		this.dir = dir;
+		super(game, pos,  lives, dir);
 	}
 
 	public abstract String getInfo();

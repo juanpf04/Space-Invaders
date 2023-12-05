@@ -5,12 +5,9 @@ import tp1.logic.Move;
 import tp1.logic.Position;
 
 public abstract class Weapon extends GameObject {
-	
-	protected Move dir;
-	
+
 	public Weapon(GameWorld game, Position pos, int life, Move dir) {
-		super(game, pos, life);
-		this.dir = dir;
+		super(game, pos, life, dir);
 	}
 
 	@Override
