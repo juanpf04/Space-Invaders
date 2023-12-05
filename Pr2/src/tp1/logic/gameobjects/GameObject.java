@@ -35,7 +35,6 @@ public abstract class GameObject implements GameItem {
 		return !this.pos.posValida();
 	}
 
-	
 	@Override
 	public boolean isOnPosition(Position pos) {
 		

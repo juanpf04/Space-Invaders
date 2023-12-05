@@ -91,7 +91,15 @@ public class Game implements GameModel, GameStatus, GameWorld {
 
 	@Override
 	public String positionToString(int col, int row) {
-		return container.toString(new Position(col, row));
+		Position pos = new Position(col, row);
+		String symbol = "";
+		
+		if(this.player.isOnPosition(pos))
+			symbol = this.player.getSymbol();
+		else
+			symbol = container.toString(pos);
+		
+		return symbol;
 	}
 
 	@Override
