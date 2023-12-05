@@ -14,7 +14,7 @@ public class UCMShip extends Ship{
 	
 	public UCMShip(GameWorld game, Position pos) {
 		
-		super(game, pos, LIVES, DAMAGE, null);
+		super(game, pos, LIVES, null);
 		this.shockWaveEnabled = false;
 		this.laserEnabled = true;
 	}
@@ -122,7 +122,7 @@ public class UCMShip extends Ship{
 	public boolean receiveAttack(EnemyWeapon other) {
 		boolean receiveAttack = other.isOnPosition(this.pos);
 		
-		if(receiveAttack) life -= other.getDamage();
+		if(receiveAttack) this.loseLife(other.getDamage());
 		
 		return receiveAttack;
 	}

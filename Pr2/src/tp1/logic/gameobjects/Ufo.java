@@ -16,7 +16,7 @@ public class Ufo extends EnemyShip{
 	private boolean enabled;
 	
 	public Ufo(GameWorld game) {
-		super(game, new Position(Game.DIM_X, 0), LIVES, DAMAGE, Move.LEFT);
+		super(game, new Position(Game.DIM_X, 0), LIVES, Move.LEFT);
 		this.enabled = false;
 	}
 

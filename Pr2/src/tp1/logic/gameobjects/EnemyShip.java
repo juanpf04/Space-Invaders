@@ -7,8 +7,8 @@ import tp1.view.Messages;
 
 public abstract class EnemyShip extends Ship {
 	
-	public EnemyShip(GameWorld game, Position pos, int lives, int damage, Move dir) {
-		super(game, pos, lives, damage, dir);
+	public EnemyShip(GameWorld game, Position pos, int lives, Move dir) {
+		super(game, pos, lives, dir);
 	}
 	
 	protected abstract int getPoints();
@@ -21,7 +21,7 @@ public abstract class EnemyShip extends Ship {
 	public boolean receiveAttack(UCMWeapon weapon) {
 		boolean attacked = weapon.isOnPosition(this.pos);
 		if(attacked) {
-			life -= weapon.getDamage();
+			this.loseLife(weapon.getDamage());
 			if(!isAlive())
 				onDelete();
 		}

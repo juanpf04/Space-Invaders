@@ -26,18 +26,15 @@ public abstract class GameObject implements GameItem {
 	}
 
 	protected void performMovement(Move move) {
-		
 		this.pos = this.pos.newPos(move);
 	}
 	
 	public boolean isOut() {
-	
 		return !this.pos.posValida();
 	}
 
 	@Override
 	public boolean isOnPosition(Position pos) {
-		
 		return this.pos.equals(pos);
 	}
 	

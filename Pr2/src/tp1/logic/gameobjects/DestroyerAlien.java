@@ -17,7 +17,7 @@ public class DestroyerAlien extends AlienShip{
 	//TODO fill your code
 	public DestroyerAlien(Position pos, GameWorld game, AlienManager alienManager) {
 		
-		super(game, pos, LIVES, DAMAGE, Move.LEFT, alienManager);
+		super(game, pos, LIVES, Move.LEFT, alienManager);
 		this.bombEnabled = true;
 	}
 	

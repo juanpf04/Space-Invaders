@@ -11,8 +11,8 @@ public abstract class AlienShip extends EnemyShip{
 	protected int cyclesToMove;
 	protected int speed;
 	
-	public AlienShip(GameWorld game, Position pos, int lives, int damage, Move dir, AlienManager alienManager) {
-		super(game, pos, lives, damage, dir);
+	public AlienShip(GameWorld game, Position pos, int lives, Move dir, AlienManager alienManager) {
+		super(game, pos, lives, dir);
 		this.alienManager = alienManager;
 		this.speed = game.getLevel().getNumCyclesToMoveOneCell();
 		this.cyclesToMove = this.speed;
