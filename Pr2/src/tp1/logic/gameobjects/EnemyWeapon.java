@@ -20,6 +20,7 @@ public abstract class EnemyWeapon extends Weapon {
 		return attacked;
 	}
 	
+	
 	@Override
 	public boolean receiveAttack(UCMWeapon weapon)
 	{
