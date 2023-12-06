@@ -38,7 +38,7 @@ public class ExplosiveAlien extends RegularAlien {
 	@Override
 	public void onDelete() {
 		super.onDelete();
-		//game.addObject();
+		//game.addObject(new Burst(this.pos, this.game));
 	}
 
 }
