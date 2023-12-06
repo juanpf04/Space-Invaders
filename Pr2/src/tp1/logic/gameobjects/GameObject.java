@@ -20,7 +20,7 @@ public abstract class GameObject implements GameItem {
 	
 	@Override
 	public boolean isAlive() {
-		return this.life > 0;
+		return this.getLife() > 0;
 	}
 
 	protected int getLife() {

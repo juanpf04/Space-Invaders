@@ -40,14 +40,4 @@ public class UCMLaser extends UCMWeapon{
 		game.enableLaser();
 	}
 	
-	@Override 
-	public boolean performAttack(GameItem other)
-	{
-		boolean attacked = other.receiveAttack(this); 
-		if(attacked) 
-			die();
-		
-		return attacked;
-	}
-	
 }
