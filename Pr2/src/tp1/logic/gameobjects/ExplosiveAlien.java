@@ -17,7 +17,7 @@ public class ExplosiveAlien extends RegularAlien {
 
 	@Override
 	protected AlienShip copy(GameWorld game, Position pos, AlienManager am) {
-		return new ExplosiveAlien(pos, game, alienManager);
+		return new ExplosiveAlien(pos, game, am);
 	}
 
 	@Override
