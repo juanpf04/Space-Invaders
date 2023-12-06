@@ -45,10 +45,14 @@ public class ResetCommand extends Command{
 		public Command parse(String[] commandWords) {
 			Command command = null;
 			
-			if(commandWords.length == 2 && this.matchCommandName(commandWords[0])
-					&& null!=InitialConfiguration.valueOfIgnoreCase(commandWords[1])) // cambiar a exception) 
-				command = new ResetCommand(InitialConfiguration.valueOfIgnoreCase(commandWords[1]));
-			
+			if(commandWords.length == 2 && this.matchCommandName(commandWords[0])) {
+				
+				if(null != InitialConfiguration.valueOfIgnoreCase(commandWords[1])) // cambiar por excepcion
+					command = new ResetCommand(InitialConfiguration.valueOfIgnoreCase(commandWords[1]));
+			}
+			else if(commandWords.length == 1 && this.matchCommandName(commandWords[0]))
+				command = new ResetCommand(InitialConfiguration.NONE);
+				
 			return command;
 		}
 
