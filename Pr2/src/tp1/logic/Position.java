@@ -79,5 +79,10 @@ public class Position {
 		
 		return this.getRow() == Game.DIM_Y - 1;
 	}
+	
+	public boolean adjacent(Position pos) {
+		return pos.getCol()-this.getCol() == 1 || pos.getRow()-this.getRow() == 1; // falta hacer valor absoluto
+		
+	}
 
 }
