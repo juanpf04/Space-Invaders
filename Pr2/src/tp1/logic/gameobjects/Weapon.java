@@ -22,4 +22,15 @@ public abstract class Weapon extends GameObject {
 		onDelete();
 	}
 	
+	@Override
+	public boolean performAttack(GameItem other) {
+		boolean attacked = this.isAlive() && other.isAlive() && other.isOnPosition(this.pos);
+		
+		if(attacked) 
+			this.weaponAttack(other);
+		
+		return attacked;
+	}
+
+	protected abstract void weaponAttack(GameItem other);
 }

@@ -34,11 +34,12 @@ public class ShockWave extends UCMWeapon{
 	public void automaticMove() {}
 	
 	@Override 
-	public boolean performAttack(GameItem other)
-	{
-		boolean attacked = other.receiveAttack(this); // esta mal
+	public boolean performAttack(GameItem other) {
+		boolean attacked = this.isAlive() && other.isAlive() && other.receiveAttack(this); 
 		if(attacked) life--;
 		
 		return attacked;
 	}
+	
+	
 }

@@ -11,12 +11,14 @@ public abstract class UCMWeapon extends Weapon {
 	}
 	
 	@Override
+	protected void weaponAttack(GameItem other) {
+		if(other.receiveAttack(this))
+				die();
+	}
+	
+	@Override
 	public boolean receiveAttack(EnemyWeapon other) {
-		boolean receiveAttack = other.isOnPosition(this.pos);
-	
-		if(receiveAttack) 
-			die();
-	
-		return receiveAttack;
+		die();
+		return true;
 	}
 }
