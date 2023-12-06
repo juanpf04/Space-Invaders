@@ -20,6 +20,6 @@ public abstract class EnemyWeapon extends Weapon {
 	public boolean receiveAttack(UCMWeapon weapon) {
 		die();
 		return true;
-	}
+	}//
 	
 }
