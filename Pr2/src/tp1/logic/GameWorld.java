@@ -9,12 +9,15 @@ public interface GameWorld {
 
 	public Level getLevel();
 	public Random getRandom();
+	public int getRemainingAliens();
+	
 	public void addObject(GameObject object);
 	public void receivePoints(int points);
+	
 	public void enableShockWave();
 	public void enableLaser();
-	public int getRemainingAliens();
-	public void checkAttack(AlienShip alienShip);
 	public void enableSuperLaser();
+	
+	public void checkAttack(AlienShip alienShip);
 	
 }

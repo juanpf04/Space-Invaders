@@ -8,7 +8,7 @@ public class ListCommand extends NoParamsCommand{
 		  		
 		@Override
 		public ExecutionResult execute(GameModel game) {
-			System.out.println(game.infoToString());
+			System.out.println(game.list());
 			return new ExecutionResult(false);
 		}
 

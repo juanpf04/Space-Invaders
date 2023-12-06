@@ -54,6 +54,11 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 	
 	@Override
+	public String list() {
+		return this.infoToString();
+	}
+	
+	@Override
 	public String infoToString() {		// cambiar en un futuro
 		StringBuilder list = new StringBuilder();
 
