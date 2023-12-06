@@ -81,7 +81,7 @@ public class Position {
 	}
 	
 	public boolean adjacent(Position pos) {
-		return pos.getCol()-this.getCol() == 1 || pos.getRow()-this.getRow() == 1; // falta hacer valor absoluto
+		return Math.abs(pos.getCol()-this.getCol()) == 1 || Math.abs(pos.getRow()-this.getRow()) == 1; 
 		
 	}
 
