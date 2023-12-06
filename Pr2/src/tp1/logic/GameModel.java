@@ -7,7 +7,8 @@ public interface GameModel {
 	// PLAYER ACTIONS
 	public boolean move(Move move);
 	public boolean shootLaser();
-	public boolean shootShockWave();
+	public boolean shockWave();
+	public boolean shootSuperLaser();
 	public void reset();
 	public void exit();
 	public String infoToString(); // tb esta en status

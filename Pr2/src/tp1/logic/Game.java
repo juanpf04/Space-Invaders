@@ -54,10 +54,11 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 	
 	@Override
-	public String infoToString() {
+	public String infoToString() {		// cambiar en un futuro
 		StringBuilder list = new StringBuilder();
-										// cambiar en un futuro
-		list.append(Messages.ucmShipDescription(Messages.UCMSHIP_DESCRIPTION, UCMShip.DAMAGE, UCMShip.LIVES)).append(Messages.LINE_SEPARATOR)
+
+		list
+		.append(Messages.ucmShipDescription(Messages.UCMSHIP_DESCRIPTION, UCMShip.DAMAGE, UCMShip.LIVES)).append(Messages.LINE_SEPARATOR)
 		.append(Messages.alienDescription(Messages.REGULAR_ALIEN_DESCRIPTION, RegularAlien.POINTS, RegularAlien.DAMAGE, RegularAlien.LIVES)).append(Messages.LINE_SEPARATOR)
 		.append(Messages.alienDescription(Messages.DESTROYER_ALIEN_DESCRIPTION, DestroyerAlien.POINTS, DestroyerAlien.DAMAGE, DestroyerAlien.LIVES)).append(Messages.LINE_SEPARATOR)	
 		.append(Messages.alienDescription(Messages.UFO_DESCRIPTION, Ufo.POINTS, Ufo.DAMAGE, Ufo.LIVES)).append(Messages.LINE_SEPARATOR); 
@@ -136,17 +137,46 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	
 	@Override
 	public boolean move(Move move) {
-		boolean canMove = this.player.validPos(move) && this.player.canMove(move);
-		
-		if(canMove) 
-			this.player.performMovement(move);
-		
-		return canMove;
+		return this.player.move(move);
+	}
+	
+	
+	// SHOCKWAVE
+	
+	@Override
+	public void enableShockWave() {
+		this.player.enableShockWave();
 	}
 	
 	@Override
-	public boolean shootShockWave() {
-		return this.player.shootShockWave();
+	public boolean shockWave() {
+		return this.player.shockWave();
+	}
+	
+	
+	// SUPERLASER
+	
+	@Override
+	public void enableSuperLaser() {
+		this.player.enableSuperLaser();
+	}
+	
+	@Override
+	public boolean shootSuperLaser() {
+		boolean shoot = points > 4 && this.player.shootSuperLaser();
+		
+		if(shoot)
+			points -= 5;
+		
+		return shoot;
+	}
+	
+	
+	// LASER
+	
+	@Override
+	public void enableLaser() {
+		this.player.enableLaser();
 	}
 	
 	@Override
@@ -166,7 +196,6 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	
 	@Override
 	public void receivePoints(int points) {
-		
 		this.points += points;
 	}
 	
@@ -175,16 +204,6 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	    this.currentCycle++;
 	    this.container.computerActions();
 	    this.container.automaticMoves();
-	}
-
-	@Override
-	public void enableShockWave() {
-		this.player.enableShockWave();
-	}
-
-	@Override
-	public void enableLaser() {
-		this.player.enableLaser();
 	}
 
 	@Override

@@ -47,14 +47,6 @@ public class DestroyerAlien extends AlienShip{
 	}
 	
 	@Override
-	public void automaticMove() {
-		super.automaticMove();
-		
-		if(this.isAlive())
-			this.computerAction();
-	}
-	
-	@Override
 	public void onDelete() {
 		super.onDelete();	
 		this.alienManager.decreaseRemainingAliens();

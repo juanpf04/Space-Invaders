@@ -10,7 +10,7 @@ public class ShockWaveCommand extends NoParamsCommand{
 		public ExecutionResult execute(GameModel game) {
 			ExecutionResult result = new ExecutionResult(Messages.SHOCKWAVE_ERROR);
 			
-			if(game.shootShockWave()) {
+			if(game.shockWave()) {
 				game.update();
 				result = new ExecutionResult(true);
 			}

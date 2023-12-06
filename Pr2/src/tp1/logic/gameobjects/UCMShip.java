@@ -11,12 +11,14 @@ public class UCMShip extends Ship{
 	public static final int LIVES = 3;
 	private boolean shockWaveEnabled;
 	private boolean laserEnabled;
+	private boolean superLaserEnabled;
 	
 	public UCMShip(GameWorld game, Position pos) {
 		
 		super(game, pos, LIVES, null);
 		this.shockWaveEnabled = false;
 		this.laserEnabled = true;
+		this.superLaserEnabled = true;
 	}
 	
 	@Override
@@ -54,29 +56,39 @@ public class UCMShip extends Ship{
 		return super.getLife();
 	}
 	
-	@Override
-	public void performMovement(Move move) {
-		super.performMovement(move);
+	public boolean move(Move move) {
+		boolean canMove = this.validPos(move) && this.canMove(move);
+		
+		if(canMove) 
+			this.performMovement(move);
+		
+		return canMove;
 	}
 	
-	public boolean canMove(Move move) {
+	private boolean canMove(Move move) {
 		
 		return	!move.equals(Move.UP) 
 				&& !move.equals(Move.DOWN);
 	}
 	
-	public boolean validPos(Move move) {
+	private boolean validPos(Move move) {
 		
 		return pos.validPos(move);
 	}
 	
-	private boolean shockWaveIsEnable() {
-		return this.shockWaveEnabled;
+	public boolean receiveAttack(EnemyWeapon other) {
+		this.loseLife(other.getDamage());
+		return true;
 	}
+
+	@Override
+	public void automaticMove() {}
+
+	@Override
+	public void onDelete() {}
 	
-	public void enableShockWave() {
-		this.shockWaveEnabled = true;
-	}
+	
+	// LASER
 
 	private boolean laserIsEnable() {
 		return this.laserEnabled;
@@ -90,20 +102,51 @@ public class UCMShip extends Ship{
 		boolean shoot = this.laserIsEnable();
 		
 		if(shoot) {
-			UCMLaser ucmLaser = new UCMLaser(this.game, this.pos);
-			this.game.addObject(ucmLaser);
+			this.game.addObject(new UCMLaser(this.game, this.pos));
 			this.laserEnabled = false;			
 		}
 		
 		return shoot;
 	}
+	
+	
+	// SUPERLASER
+	
+	private boolean superLaserIsEnable() {
+		return this.superLaserEnabled;
+	}
+	
+	public void enableSuperLaser() {
+		this.superLaserEnabled = true;
+	}
+	
+	public boolean shootSuperLaser() {
+		boolean shoot = this.superLaserIsEnable();
+		
+		if(shoot) {
+			this.game.addObject(new SuperLaser(this.game, this.pos));
+			this.superLaserEnabled = false;			
+		}
+		
+		return shoot;
+	}
+	
+	
+	// SHOCKWAVE
 
-	public boolean shootShockWave() {
+	private boolean shockWaveIsEnable() {
+		return this.shockWaveEnabled;
+	}
+	
+	public void enableShockWave() {
+		this.shockWaveEnabled = true;
+	}
+	
+	public boolean shockWave() {
 		boolean shoot = this.shockWaveIsEnable();
 		
 		if(shoot) {
-			ShockWave shockWave = new ShockWave(this.game);
-			this.game.addObject(shockWave);
+			this.game.addObject(new ShockWave(this.game));
 			this.shockWaveEnabled = false;			
 		}
 		
@@ -118,16 +161,5 @@ public class UCMShip extends Ship{
 		
 		return state;
 	}
-	
-	public boolean receiveAttack(EnemyWeapon other) {
-		this.loseLife(other.getDamage());
-		return true;
-	}
-
-	@Override
-	public void automaticMove() {}
-
-	@Override
-	public void onDelete() {}
 
 }
