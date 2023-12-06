@@ -1,5 +1,7 @@
 package tp1.logic;
 
+import tp1.control.InitialConfiguration;
+
 /**
  * 
  * Represents the allowed movements in the game
@@ -50,13 +52,9 @@ public enum Move {
 		return move;
 	}
 	
-	public static boolean validMove(String dir) {
-		
-		for(Move m: Move.values()) {
-			
-			if(dir.equalsIgnoreCase(m.name())) return true;
-		}
-		
-		return false;
+	public static Move valueOfIgnoreCase(String param) {
+		for (Move m : Move.values())
+			if (m.name().equalsIgnoreCase(param)) return m;
+	    return null;
 	}
 }

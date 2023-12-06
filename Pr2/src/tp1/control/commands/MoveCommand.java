@@ -52,8 +52,9 @@ public class MoveCommand extends Command {
 	public Command parse(String[] commandWords) {
 		Command command = null;
 		
-		if(commandWords.length == 2 && this.matchCommandName(commandWords[0]) && Move.validMove(commandWords[1])) 
-			command = new MoveCommand(Move.valueOf(commandWords[1].toUpperCase()));
+		if(commandWords.length == 2 && this.matchCommandName(commandWords[0]) 
+				&& null!=Move.valueOfIgnoreCase(commandWords[1])) // cambiar a exception
+			command = new MoveCommand(Move.valueOfIgnoreCase(commandWords[1]));
 		
 		return command;
 	}

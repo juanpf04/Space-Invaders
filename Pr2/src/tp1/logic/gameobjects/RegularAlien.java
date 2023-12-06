@@ -6,23 +6,25 @@ import tp1.logic.Move;
 import tp1.logic.Position;
 import tp1.view.Messages;
 
-/**
- * 
- * Class representing a regular alien
- *
- */
-public class RegularAlien extends AlienShip{
+public class RegularAlien extends AlienShip {
 
 	public static final int DAMAGE = 0;
 	public static final int LIVES = 2;
 	public static final int POINTS = 5;
 
-	public RegularAlien( Position pos, GameWorld game, AlienManager alienManager) {
+	public RegularAlien(Position pos, GameWorld game, AlienManager alienManager) {
 		super(game, pos, LIVES, Move.LEFT, alienManager);
 	}
 	
+	public RegularAlien() {}
+
 	@Override
-	public String getSymbol() {
+	protected AlienShip copy(GameWorld game, Position pos, AlienManager am){
+		return new RegularAlien(pos, game, am);
+	}
+	
+	@Override
+	protected String getSymbol() {
 		return Messages.status(Messages.REGULAR_ALIEN_SYMBOL, getLife());
 	}
 	
@@ -37,12 +39,12 @@ public class RegularAlien extends AlienShip{
 	}
 	
 	@Override
-	public int getPoints() {
+	protected int getPoints() {
 		return POINTS;
 	}
 
 	@Override
-	public String getDescription() {
+	protected String getDescription() {
 		return Messages.REGULAR_ALIEN_DESCRIPTION;
 	}
 	

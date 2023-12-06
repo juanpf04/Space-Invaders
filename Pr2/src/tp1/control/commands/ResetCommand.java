@@ -1,14 +1,23 @@
 package tp1.control.commands;
 
 import tp1.control.ExecutionResult;
+import tp1.control.InitialConfiguration;
 import tp1.logic.GameModel;
 import tp1.view.Messages;
 
-public class ResetCommand extends NoParamsCommand{
-		  		
+public class ResetCommand extends Command{
+		  	
+		private InitialConfiguration conf;
+		
+		public ResetCommand() {}
+
+		protected ResetCommand(InitialConfiguration conf) {
+			this.conf = conf;
+		}
+	
 		@Override
 		public ExecutionResult execute(GameModel game) {
-			game.reset();
+			game.reset(conf);
 			return new ExecutionResult(true);
 		}
 
@@ -30,6 +39,17 @@ public class ResetCommand extends NoParamsCommand{
 		@Override
 		protected String getHelp() {
 			return Messages.COMMAND_RESET_HELP;
+		}
+
+		@Override
+		public Command parse(String[] commandWords) {
+			Command command = null;
+			
+			if(commandWords.length == 2 && this.matchCommandName(commandWords[0])
+					&& null!=InitialConfiguration.valueOfIgnoreCase(commandWords[1])) // cambiar a exception) 
+				command = new ResetCommand(InitialConfiguration.valueOfIgnoreCase(commandWords[1]));
+			
+			return command;
 		}
 
 	}

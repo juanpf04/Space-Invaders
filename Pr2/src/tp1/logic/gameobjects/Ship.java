@@ -9,9 +9,11 @@ public abstract class Ship extends GameObject{
 	public Ship(GameWorld game, Position pos, int lives, Move dir) {
 		super(game, pos,  lives, dir);
 	}
-
+	
+	public Ship() {}
+	
 	public abstract String getInfo();
-	public abstract String getDescription();
+	protected abstract String getDescription();
 
 	protected void loseLife(int damage) {
 		this.life -= damage;

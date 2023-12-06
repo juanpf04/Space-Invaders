@@ -1,5 +1,7 @@
 package tp1.logic;
 
+import tp1.control.InitialConfiguration;
+
 public interface GameModel {
 
 	public boolean isFinished();
@@ -11,7 +13,7 @@ public interface GameModel {
 	public boolean shockWave();
 	public boolean shootSuperLaser();
 	
-	public void reset();
+	public void reset(InitialConfiguration conf);
 	public void exit();
 	
 	public String list();

@@ -7,7 +7,7 @@ import tp1.view.Messages;
 
 public class CommandGenerator {
 
-	private static final List<Command> availableCommands = Arrays.asList(
+	private static final List<Command> AVAILABLE_COMMANDS = Arrays.asList(
 		new HelpCommand(),
 		new MoveCommand(),
 		new ExitCommand(),
@@ -22,11 +22,11 @@ public class CommandGenerator {
 	public static Command parse(String[] commandWords) {		
 		Command command = null;
 		
-		for (Command c: availableCommands) {
+		for (Command c: AVAILABLE_COMMANDS) {
 			
 			command = c.parse(commandWords);
 			if(command != null)
-				return command;//
+				return command;
 		}
 		
 		return command;
@@ -34,11 +34,9 @@ public class CommandGenerator {
 		
 	public static String commandHelp() {
 		StringBuilder commands = new StringBuilder();	
-		
-		for (Command c: availableCommands) {
-			
+	
+		for (Command c: AVAILABLE_COMMANDS) 
 			commands.append(c.helpText());
-		}
 		
 		return commands.toString();
 	}

@@ -11,6 +11,8 @@ public abstract class EnemyShip extends Ship {
 		super(game, pos, lives, dir);
 	}
 	
+	public EnemyShip() {}
+	
 	protected abstract int getPoints();
 	
 	@Override

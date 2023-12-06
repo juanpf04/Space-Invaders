@@ -11,6 +11,7 @@ import tp1.logic.gameobjects.GameObject;
 import tp1.logic.gameobjects.UCMLaser;
 import tp1.logic.gameobjects.Ufo;
 import tp1.logic.Level;
+import tp1.control.InitialConfiguration;
 import tp1.logic.AlienManager;
 import tp1.logic.gameobjects.Ufo; 
 import tp1.logic.GameObjectContainer;
@@ -37,11 +38,11 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		
 		this.level = level;
 		this.seed = seed;
-		this.initGame();
+		this.initGame(InitialConfiguration.NONE);
 	}
 	
 	
-	private final void initGame() {
+	private final void initGame(InitialConfiguration conf) {
 		
 		this.random = new Random(this.seed);
 		this.currentCycle = 0;
@@ -49,7 +50,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		this.exit = false;
 		this.alienManager = new AlienManager(this);
 		this.player = new UCMShip(this, new Position(DIM_X / 2, DIM_Y - 1));
-		this.container = alienManager.initialize();
+		this.container = alienManager.initialize(conf);
 		this.container.add(player);
 	}
 	
@@ -195,8 +196,8 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 
 	@Override
-	public void reset() {
-		this.initGame();
+	public void reset(InitialConfiguration conf) {
+		this.initGame(conf);
 	} 
 	
 	@Override

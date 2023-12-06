@@ -32,7 +32,7 @@ public class UCMShip extends Ship{
 	}
 	
 	@Override
-	public String getDescription() {
+	protected String getDescription() {
 		return Messages.UCMSHIP_DESCRIPTION;
 	}
 	

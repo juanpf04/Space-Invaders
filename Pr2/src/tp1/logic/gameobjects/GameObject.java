@@ -18,6 +18,8 @@ public abstract class GameObject implements GameItem {
 		this.dir = dir;
 	}
 	
+	public GameObject() {}
+	
 	@Override
 	public boolean isAlive() {
 		return this.getLife() > 0;

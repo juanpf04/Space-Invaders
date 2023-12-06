@@ -14,13 +14,19 @@ public class DestroyerAlien extends AlienShip{
 	
 	private boolean bombEnabled;
 
-	//TODO fill your code
 	public DestroyerAlien(Position pos, GameWorld game, AlienManager alienManager) {
 		
 		super(game, pos, LIVES, Move.LEFT, alienManager);
 		this.bombEnabled = true;
 	}
 	
+	public DestroyerAlien() {}
+	
+	@Override
+	protected AlienShip copy(GameWorld game, Position pos, AlienManager am) {
+		return new DestroyerAlien(pos, game, am);
+	}
+
 	@Override
 	public String getSymbol() {
 		return Messages.status(Messages.DESTROYER_ALIEN_SYMBOL, getLife());
@@ -42,7 +48,7 @@ public class DestroyerAlien extends AlienShip{
 	}
 
 	@Override
-	public String getDescription() {
+	protected String getDescription() {
 		return Messages.REGULAR_ALIEN_DESCRIPTION;
 	}
 	

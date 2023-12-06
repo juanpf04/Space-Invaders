@@ -17,7 +17,11 @@ public abstract class AlienShip extends EnemyShip{
 		this.speed = game.getLevel().getNumCyclesToMoveOneCell();
 		this.cyclesToMove = this.speed;
 	}
+	
+	public AlienShip() {}
 
+	protected abstract AlienShip copy(GameWorld game, Position pos, AlienManager am);
+	
 	@Override
 	public void automaticMove() {
 		
