@@ -41,10 +41,11 @@ public class AlienManager {
 		if(conf == InitialConfiguration.NONE) {
 			initializeRegularAliens(container);
 			initializeDestroyerAliens(container);
-			initializeUfo(container);
 		}
 		else
 			costumedInitialization(container, conf);
+		
+		initializeUfo(container);
 		
 		return container;
 	}

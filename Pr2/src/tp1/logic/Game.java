@@ -5,8 +5,10 @@ import tp1.logic.gameobjects.UCMShip;
 import tp1.logic.gameobjects.AlienShip;
 import tp1.logic.gameobjects.Bomb;
 import tp1.logic.gameobjects.RegularAlien;
+import tp1.logic.gameobjects.ShipFactory;
 import tp1.logic.gameobjects.ShockWave;
 import tp1.logic.gameobjects.DestroyerAlien;
+import tp1.logic.gameobjects.ExplosiveAlien;
 import tp1.logic.gameobjects.GameObject;
 import tp1.logic.gameobjects.UCMLaser;
 import tp1.logic.gameobjects.Ufo;
@@ -41,7 +43,6 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		this.initGame(InitialConfiguration.NONE);
 	}
 	
-	
 	private final void initGame(InitialConfiguration conf) {
 		
 		this.random = new Random(this.seed);
@@ -54,22 +55,26 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		this.container.add(player);
 	}
 	
+	
+	// GAME MODEL
+	
 	@Override
 	public String list() {
 		return this.infoToString();
 	}
 	
+	
+	// GAME STATUS
+	
 	@Override
-	public String infoToString() {		// cambiar en un futuro
-		StringBuilder list = new StringBuilder();
+	public String infoToString() {
+		StringBuilder info = new StringBuilder();
 
-		list
-		.append(Messages.ucmShipDescription(Messages.UCMSHIP_DESCRIPTION, UCMShip.DAMAGE, UCMShip.LIVES)).append(Messages.LINE_SEPARATOR)
-		.append(Messages.alienDescription(Messages.REGULAR_ALIEN_DESCRIPTION, RegularAlien.POINTS, RegularAlien.DAMAGE, RegularAlien.LIVES)).append(Messages.LINE_SEPARATOR)
-		.append(Messages.alienDescription(Messages.DESTROYER_ALIEN_DESCRIPTION, DestroyerAlien.POINTS, DestroyerAlien.DAMAGE, DestroyerAlien.LIVES)).append(Messages.LINE_SEPARATOR)	
-		.append(Messages.alienDescription(Messages.UFO_DESCRIPTION, Ufo.POINTS, Ufo.DAMAGE, Ufo.LIVES)).append(Messages.LINE_SEPARATOR); 
+		info
+		.append(this.player.getInfo()).append(Messages.LINE_SEPARATOR)
+		.append(ShipFactory.getInfo()); 
 		
-		return list.toString();
+		return info.toString();
 	} 
 	
 	@Override
@@ -86,6 +91,8 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		return state.toString();
 	} 
 
+	
+	// GAME WORLD
 	
 	public int getCycle() {
 		return this.currentCycle;

@@ -25,7 +25,7 @@ public class RegularAlien extends AlienShip {
 	
 	@Override
 	protected String getSymbol() {
-		return Messages.status(Messages.REGULAR_ALIEN_SYMBOL, getLife());
+		return Messages.REGULAR_ALIEN_SYMBOL;
 	}
 	
 	@Override

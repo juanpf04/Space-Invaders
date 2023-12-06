@@ -28,8 +28,8 @@ public class DestroyerAlien extends AlienShip{
 	}
 
 	@Override
-	public String getSymbol() {
-		return Messages.status(Messages.DESTROYER_ALIEN_SYMBOL, getLife());
+	protected String getSymbol() {
+		return Messages.DESTROYER_ALIEN_SYMBOL;
 	}
 	
 	@Override

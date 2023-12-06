@@ -4,6 +4,7 @@ import tp1.logic.AlienManager;
 import tp1.logic.GameWorld;
 import tp1.logic.Move;
 import tp1.logic.Position;
+import tp1.view.Messages;
 
 public abstract class AlienShip extends EnemyShip{
 
@@ -57,4 +58,10 @@ public abstract class AlienShip extends EnemyShip{
 	protected boolean isInBorder() {
 		return this.pos.isInBorder();
 	}
+	
+	@Override
+	public String toString() {
+		return Messages.status(getSymbol(), getLife());
+	}
+	
 }
