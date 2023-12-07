@@ -42,6 +42,12 @@ public abstract class GameObject implements GameItem {
 		return this.pos.equals(pos);
 	}
 	
+	@Override
+	public boolean isAdjacent(Position pos) {
+		return this.pos.adjacent(pos); 
+		
+	}
+	
 	protected abstract String getSymbol();
 	protected abstract int getDamage();
 	protected abstract int getArmour();

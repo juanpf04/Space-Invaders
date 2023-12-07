@@ -87,5 +87,9 @@ public class GameObjectContainer {
 			i++;
 		}
 	}
+
+	public int size() {
+		return objects.size();
+	}
 	
 }

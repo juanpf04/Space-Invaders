@@ -1,5 +1,7 @@
 package tp1.logic;
 
+import java.lang.Math;
+
 import tp1.logic.Move;
 import java.util.Objects;
 import tp1.logic.Game;
@@ -81,7 +83,7 @@ public class Position {
 	}
 	
 	public boolean adjacent(Position pos) {
-		return Math.abs(pos.getCol()-this.getCol()) == 1 || Math.abs(pos.getRow()-this.getRow()) == 1; 
+		return Math.abs(pos.getCol()-this.getCol()) == 1 && Math.abs(pos.getRow()-this.getRow()) < 2 || Math.abs(pos.getCol()-this.getCol()) < 2 &&Math.abs(pos.getRow()-this.getRow()) == 1; 
 		
 	}
 

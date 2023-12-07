@@ -223,4 +223,9 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	public void checkAttack(AlienShip alienShip) {
 		this.container.performAttack(alienShip);
 	}
+
+	@Override
+	public int containerSize() {
+		return this.container.size();
+	}
 }
