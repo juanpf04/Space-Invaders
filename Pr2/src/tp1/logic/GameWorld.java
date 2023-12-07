@@ -7,6 +7,7 @@ import tp1.logic.gameobjects.GameObject;
 
 public interface GameWorld {
 
+	public int getPoints();
 	public Level getLevel();
 	public Random getRandom();
 	public int getRemainingAliens();

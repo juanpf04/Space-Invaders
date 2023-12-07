@@ -95,12 +95,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	
 	@Override
 	public boolean shootSuperLaser() {
-		boolean shoot = points > 4 && this.player.shootSuperLaser();
-		
-		if(shoot)
-			points -= 5;
-		
-		return shoot;
+		return this.player.shootSuperLaser();
 	}
 	
 	
@@ -220,6 +215,11 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		this.points += points;
 	}
 
+	@Override
+	public int getPoints() {
+		return this.points;
+	}
+	
 	@Override
 	public void checkAttack(AlienShip alienShip) {
 		this.container.performAttack(alienShip);
