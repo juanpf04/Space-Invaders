@@ -6,7 +6,7 @@ import tp1.logic.Move;
 import tp1.logic.Position;
 import tp1.view.Messages;
 
-public class DestroyerAlien extends AlienShip{
+public class DestroyerAlien extends AlienShip {
 	
 	public static final int DAMAGE = 1;
 	public static final int LIVES = 1;
@@ -68,7 +68,6 @@ public class DestroyerAlien extends AlienShip{
 
 	@Override
 	public void computerAction() {
-		
 		if(this.bombEnabled() && this.canGenerateRandomShoot()) {
 			
 			this.game.addObject(new Bomb(this.pos, this.game, this));

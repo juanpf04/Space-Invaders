@@ -34,16 +34,21 @@ public class GameObjectContainer {
 	}
 
 	private void deleteDeads() {
-		int i = 0;
-		while ( i < objects.size()) {
-			
+		for (int i=objects.size()-1;i>=0;i--) {
 			GameObject object = objects.get(i);
-			
 			if (!object.isAlive()) 
 				this.remove(object);
-			else 
-				i++;
 		}
+//		int i = 0;
+//		while ( i < objects.size()) {
+//			
+//			GameObject object = objects.get(i);
+//			
+//			if (!object.isAlive()) 
+//				this.remove(object);
+//			else 
+//				i++;
+//		}
 	}
 	
 	public void computerActions() {

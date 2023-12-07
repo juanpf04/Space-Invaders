@@ -21,4 +21,5 @@ public abstract class UCMWeapon extends Weapon {
 		die();
 		return true;
 	}
+	
 }

@@ -7,7 +7,7 @@ import tp1.logic.Position;
 import tp1.view.Messages;
 
 
-public class Ufo extends EnemyShip{
+public class Ufo extends EnemyShip {
 
 	public static final int DAMAGE = 0;
 	public static final int LIVES = 1;

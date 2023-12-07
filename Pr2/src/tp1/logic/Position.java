@@ -41,49 +41,41 @@ public class Position {
 		Position other = (Position) obj;
 		return this.getCol() == other.getCol() && this.getRow() == other.getRow();
 	}
-
-//	public boolean equals(Position pos) {
-//		
-//		return this.col == pos.getCol() && this.row == pos.getRow();
-//	}
 	
 	public Position newPos(Move move) {
 		return new Position(this.getCol() + move.getX(), this.getRow() + move.getY());
 	}
 
 	public boolean posValida() {
-		
-		return this.getCol() < Game.DIM_X && this.getRow() < Game.DIM_Y && this.getCol() >= 0 && this.getRow() >= 0;
+		return this.getCol() < Game.DIM_X && this.getRow() < Game.DIM_Y
+			&& this.getCol() >= 0 && this.getRow() >= 0;
 	}
 	
 	
 	private int getCol() {
-		
 		return this.col;
 	}
 
 	private int getRow() {
-		
 		return this.row;
 	}
 	
 	public boolean validPos(Move move) {
-		
 		return this.newPos(move).posValida();
 	}
 	
 	public boolean isInBorder() {
-		
-		return this.getCol() == 0 || this.getCol() == Game.DIM_X - 1;
+		return this.getCol() == 0 
+			|| this.getCol() == Game.DIM_X - 1;
 	}
 
 	public boolean inFinalRow() {
-		
 		return this.getRow() == Game.DIM_Y - 1;
 	}
 	
 	public boolean adjacent(Position pos) {
-		return Math.abs(pos.getCol()-this.getCol()) == 1 && Math.abs(pos.getRow()-this.getRow()) < 2 || Math.abs(pos.getCol()-this.getCol()) < 2 &&Math.abs(pos.getRow()-this.getRow()) == 1; 
+		return Math.abs(pos.getCol()-this.getCol()) == 1 && Math.abs(pos.getRow()-this.getRow()) < 2 
+			|| Math.abs(pos.getCol()-this.getCol()) < 2 && Math.abs(pos.getRow()-this.getRow()) == 1; 
 		
 	}
 

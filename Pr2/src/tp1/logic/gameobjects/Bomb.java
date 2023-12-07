@@ -37,4 +37,5 @@ public class Bomb extends EnemyWeapon {
 	public void onDelete() {
 		this.destroyerAlien.deleteBomb();
 	}
+	
 }

@@ -10,7 +10,7 @@ import tp1.view.Messages;
  * Class that represents the laser fired by {@link UCMShip}
  *
  */
-public class UCMLaser extends UCMWeapon{
+public class UCMLaser extends UCMWeapon {
 	
 	public static final int DAMAGE = 1;
 	public static final int LIFE = 1;

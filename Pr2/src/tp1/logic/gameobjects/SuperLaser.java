@@ -11,7 +11,6 @@ public class SuperLaser extends UCMLaser {
 	
 	public SuperLaser(GameWorld game, Position pos) {
 		super(game, pos);
-		
 	}
 
 	@Override
@@ -28,4 +27,5 @@ public class SuperLaser extends UCMLaser {
 	public void onDelete() {
 		game.enableSuperLaser();
 	}
+	
 }

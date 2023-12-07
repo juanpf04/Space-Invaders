@@ -55,7 +55,6 @@ public class AlienManager {
 	}
 	
 	private void initializeRegularAliens (GameObjectContainer container) {
-
 		for(int i = 0; i < this.level.getNumRegularAliens()/this.level.getNumRowsRegularAliens(); i++) {
 			for(int j = 0; j < this.level.getNumRowsRegularAliens(); j++) {
 				container.add(new RegularAlien(new Position(2 + i, 1 + j) , this.game, this));
@@ -94,41 +93,34 @@ public class AlienManager {
 	}
 
 	public boolean onBorder() {
-	
 		return this.onBorder;
 	}
 
 	public boolean squadInFinalRow() {
-		
 		return this.squadInFinalRow;
 	}
 	
 	public void isInFinalRow() {
-		
 		this.squadInFinalRow = true;
 	}
 	
 	public void decreaseOnBorder() {
-		
 		this.shipsOnBorder--;
 		if(this.shipsOnBorder == 0)
 			this.onBorder = false;
 	}
 
 	public int getRemainingAliens() {
-		
 		return this.remainingAliens;
 	}
 
 	public void decreaseRemainingAliens() {
-		
 		this.remainingAliens--;
 		if(this.onBorder())
 			this.decreaseOnBorder();
 	}
 
 	public void disableOnBorder() {
-		
 		this.onBorder = false;
 	}
 

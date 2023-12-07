@@ -19,6 +19,7 @@ public abstract class EnemyShip extends Ship {
 	public String getInfo() {
 		return Messages.alienDescription(getDescription(), getPoints(), getDamage(), getArmour());
 	}
+	
 	@Override
 	public boolean receiveAttack(UCMWeapon weapon) {
 		this.loseLife(weapon.getDamage());
@@ -43,4 +44,5 @@ public abstract class EnemyShip extends Ship {
 	public void onDelete() {
 		this.game.receivePoints(getPoints());
 	}
+	
 }

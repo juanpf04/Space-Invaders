@@ -23,8 +23,6 @@ public class Game implements GameModel, GameStatus, GameWorld {
 
 	public static final int DIM_X = 9;
 	public static final int DIM_Y = 8;
-	
-	
 
 	private Random random;
 	private Level level;
@@ -59,100 +57,21 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	// GAME MODEL
 	
 	@Override
-	public String list() {
-		return this.infoToString();
-	}
-	
-	
-	// GAME STATUS
-	
-	@Override
-	public String infoToString() {
-		StringBuilder info = new StringBuilder();
-
-		info
-		.append(this.player.getInfo()).append(Messages.LINE_SEPARATOR)
-		.append(ShipFactory.getInfo()); 
-		
-		return info.toString();
-	} 
-	
-	@Override
-	public String stateToString() {
-		StringBuilder state = new StringBuilder();
-		
-		state
-		.append(Messages.numberOfCycles(this.getCycle())).append(Messages.LINE_SEPARATOR)
-		.append(Messages.life(this.player.getLife())).append(Messages.LINE_SEPARATOR)
-		.append(Messages.points(this.points)).append(Messages.LINE_SEPARATOR)
-		.append(Messages.shockWaveStatus(this.player.shockWaveState())).append(Messages.LINE_SEPARATOR)	
-		.append(Messages.remainingAliens(this.getRemainingAliens())).append(Messages.LINE_SEPARATOR);
-		
-		return state.toString();
-	} 
-
-	
-	// GAME WORLD
-	
-	public int getCycle() {
-		return this.currentCycle;
-	}
-	
-	@Override
-	public int getRemainingAliens() {
-		return this.alienManager.getRemainingAliens();
-	}
-
-	@Override
-	public String positionToString(int col, int row) {
-		Position pos = new Position(col, row);
-		String symbol = "";
-		
-		if(this.player.isOnPosition(pos))
-			symbol = this.player.getSymbol();
-		else
-			symbol = container.toString(pos);
-		
-		return symbol;
-	}
-
-	@Override
 	public boolean isFinished() {
 		return this.exit || this.playerWin() || this.aliensWin();
 	}
 	
 	@Override
-	public void exit() {
-		this.exit = true;
-	}
-	
-	@Override
-	public boolean playerWin() {
-		return this.player.isAlive() 
-				&& this.getRemainingAliens() == 0;
-	}
-
-	@Override
-	public boolean aliensWin() {
-		return this.getRemainingAliens() > 0 
-				&& !this.player.isAlive() || this.alienManager.squadInFinalRow();
-	}
-
-	@Override
-	public Random getRandom() {
-		return this.random;
-	}
-
-	@Override
-	public Level getLevel() {
-		return this.level;
+	public void update() {
+	    this.currentCycle++;
+	    this.container.computerActions();
+	    this.container.automaticMoves();
 	}
 	
 	@Override
 	public boolean move(Move move) {
 		return this.player.move(move);
 	}
-	
 	
 	// SHOCKWAVE
 	
@@ -197,26 +116,106 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		return this.player.shootLaser();
 	}
 	
-	@Override
-	public void addObject(GameObject object) {
-	    this.container.add(object);
-	}
-
+	
+	
 	@Override
 	public void reset(InitialConfiguration conf) {
 		this.initGame(conf);
 	} 
 	
 	@Override
-	public void receivePoints(int points) {
-		this.points += points;
+	public void exit() {
+		this.exit = true;
 	}
 	
 	@Override
-	public void update() {
-	    this.currentCycle++;
-	    this.container.computerActions();
-	    this.container.automaticMoves();
+	public String list() {
+		return this.infoToString();
+	}
+	
+	
+	// GAME STATUS
+	
+	@Override
+	public String positionToString(int col, int row) {
+		Position pos = new Position(col, row);
+		String symbol = "";
+		
+		if(this.player.isOnPosition(pos))
+			symbol = this.player.getSymbol();
+		else
+			symbol = container.toString(pos);
+		
+		return symbol;
+	}
+	
+	@Override
+	public String infoToString() {
+		StringBuilder info = new StringBuilder();
+
+		info
+		.append(this.player.getInfo()).append(Messages.LINE_SEPARATOR)
+		.append(ShipFactory.getInfo()); 
+		
+		return info.toString();
+	} 
+	
+	@Override
+	public String stateToString() {
+		StringBuilder state = new StringBuilder();
+		
+		state
+		.append(Messages.numberOfCycles(this.getCycle())).append(Messages.LINE_SEPARATOR)
+		.append(Messages.life(this.player.getLife())).append(Messages.LINE_SEPARATOR)
+		.append(Messages.points(this.points)).append(Messages.LINE_SEPARATOR)
+		.append(Messages.shockWaveStatus(this.player.shockWaveState())).append(Messages.LINE_SEPARATOR)	
+		.append(Messages.remainingAliens(this.getRemainingAliens())).append(Messages.LINE_SEPARATOR);
+		
+		return state.toString();
+	} 
+
+	@Override
+	public boolean playerWin() {
+		return this.player.isAlive() 
+				&& this.getRemainingAliens() == 0;
+	}
+
+	@Override
+	public boolean aliensWin() {
+		return this.getRemainingAliens() > 0 
+				&& !this.player.isAlive() || this.alienManager.squadInFinalRow();
+	}
+	
+	
+	// GAME WORLD
+	
+	public int getCycle() {
+		return this.currentCycle;
+	}
+	
+	@Override
+	public int getRemainingAliens() {
+		return this.alienManager.getRemainingAliens();
+	}
+
+	@Override
+	public Random getRandom() {
+		return this.random;
+	}
+
+	@Override
+	public Level getLevel() {
+		return this.level;
+	}
+	
+	@Override
+	public void addObject(GameObject object) {
+	    this.container.add(object);
+	}
+	
+	@Override
+	public void receivePoints(int points) {
+		this.points += points;
 	}
 
 	@Override
@@ -228,4 +227,5 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	public int containerSize() {
 		return this.container.size();
 	}
+	
 }

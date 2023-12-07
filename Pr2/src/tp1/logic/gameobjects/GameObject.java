@@ -45,7 +45,6 @@ public abstract class GameObject implements GameItem {
 	@Override
 	public boolean isAdjacent(Position pos) {
 		return this.pos.adjacent(pos); 
-		
 	}
 	
 	protected abstract String getSymbol();

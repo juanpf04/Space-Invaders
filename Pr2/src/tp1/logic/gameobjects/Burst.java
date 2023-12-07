@@ -4,8 +4,10 @@ import tp1.logic.GameWorld;
 import tp1.logic.Move;
 import tp1.logic.Position;
 
-public class Burst extends EnemyWeapon{
+public class Burst extends EnemyWeapon {
 
+	public static final int DAMAGE = 1;
+	
 	public Burst(GameWorld game, Position pos) {
 		super(game, pos, game.containerSize(), Move.NONE);
 	}
@@ -17,12 +19,12 @@ public class Burst extends EnemyWeapon{
 
 	@Override
 	protected int getDamage() {
-		return 1;
+		return DAMAGE;
 	}
 
 	@Override
 	protected int getArmour() {
-		return 8;
+		return game.containerSize();
 	}
 
 	@Override

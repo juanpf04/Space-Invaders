@@ -5,7 +5,7 @@ import tp1.logic.GameWorld;
 import tp1.view.Messages;
 import tp1.logic.Move;
 
-public class UCMShip extends Ship{
+public class UCMShip extends Ship {
 	
 	public static final int DAMAGE = 1;
 	public static final int LIVES = 3;
@@ -14,7 +14,6 @@ public class UCMShip extends Ship{
 	private boolean superLaserEnabled;
 	
 	public UCMShip(GameWorld game, Position pos) {
-		
 		super(game, pos, LIVES, null);
 		this.shockWaveEnabled = false;
 		this.laserEnabled = true;
@@ -66,13 +65,11 @@ public class UCMShip extends Ship{
 	}
 	
 	private boolean canMove(Move move) {
-		
-		return	!move.equals(Move.UP) 
-				&& !move.equals(Move.DOWN);
+		return !move.equals(Move.UP) 
+			&& !move.equals(Move.DOWN);
 	}
 	
 	private boolean validPos(Move move) {
-		
 		return pos.validPos(move);
 	}
 	

@@ -52,9 +52,9 @@ public enum Move {
 		return move;
 	}
 	
-	public static Move valueOfIgnoreCase(String param) {
+	public static Move valueOfIgnoreCase(String dir) {
 		for (Move m : Move.values())
-			if (m.name().equalsIgnoreCase(param)) return m;
+			if (m.name().equalsIgnoreCase(dir)) return m;
 	    return null;
 	}
 }
