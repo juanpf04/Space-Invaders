@@ -14,4 +14,6 @@ public interface GameItem {
 	public boolean isOnPosition(Position pos);
 	public boolean isAdjacent(Position pos);
 
+	boolean receiveAttack(Burst burst);
+
 }

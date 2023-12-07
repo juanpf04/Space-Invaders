@@ -12,7 +12,7 @@ public abstract class Weapon extends GameObject {
 
 	@Override
 	public void automaticMove () {
-		performMovement(dir);
+		performMovement();
 		if(isOut())
 			this.die();
 	}

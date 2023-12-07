@@ -28,7 +28,7 @@ public abstract class AlienShip extends EnemyShip {
 		
 		if(this.cyclesToMove == 0)
 		{
-			this.performMovement(this.dir);
+			this.performMovement();
 			this.cyclesToMove = this.speed; 
 			if(this.isInBorder())
 				this.alienManager.shipOnBorder();	
@@ -41,9 +41,10 @@ public abstract class AlienShip extends EnemyShip {
 	}
 	
 	protected void descent() {
-		
-		this.performMovement(Move.DOWN);
-		this.dir = this.dir.flip();
+		Move move = this.dir;
+		this.dir = Move.DOWN;
+		this.performMovement();
+		this.dir = move.flip();
 		this.game.checkAttack(this);
 		if(this.isAlive())
 			this.alienManager.decreaseOnBorder();

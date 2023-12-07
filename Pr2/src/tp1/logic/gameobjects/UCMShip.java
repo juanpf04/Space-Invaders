@@ -15,7 +15,7 @@ public class UCMShip extends Ship {
 	private boolean superLaserEnabled;
 	
 	public UCMShip(GameWorld game, Position pos) {
-		super(game, pos, LIVES, null);
+		super(game, pos, LIVES, Move.NONE);
 		this.shockWaveEnabled = false;
 		this.laserEnabled = true;
 		this.superLaserEnabled = true;
@@ -60,7 +60,10 @@ public class UCMShip extends Ship {
 		boolean canMove = this.validPos(move) && this.canMove(move);
 		
 		if(canMove) 
-			this.performMovement(move);
+			dir = move;
+		
+		this.performMovement();
+		dir = Move.NONE;
 		
 		return canMove;
 	}

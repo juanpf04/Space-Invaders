@@ -31,8 +31,8 @@ public abstract class EnemyShip extends Ship {
 	}
 	
 	@Override
-	public boolean receiveAttack(EnemyWeapon weapon) {
-		this.loseLife(weapon.getDamage());
+	public boolean receiveAttack(Burst burst) {
+		this.loseLife(burst.getDamage());
 		
 		if(!isAlive())
 				onDelete();
