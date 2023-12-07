@@ -19,6 +19,8 @@ public class Ufo extends EnemyShip {
 		super(game, new Position(Game.DIM_X, 0), LIVES, Move.LEFT);
 		this.enabled = false;
 	}
+	
+	public Ufo() {}
 
 	@Override
 	public String getSymbol() {

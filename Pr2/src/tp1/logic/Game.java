@@ -152,10 +152,12 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	@Override
 	public String infoToString() {
 		StringBuilder info = new StringBuilder();
-
+		Ufo ufo = new Ufo(); 
+		
 		info
+		.append(ShipFactory.getInfo()) 
 		.append(this.player.getInfo()).append(Messages.LINE_SEPARATOR)
-		.append(ShipFactory.getInfo()); 
+		.append(ufo.getInfo()).append(Messages.LINE_SEPARATOR);
 		
 		return info.toString();
 	} 

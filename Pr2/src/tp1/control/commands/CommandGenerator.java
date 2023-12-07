@@ -10,12 +10,12 @@ public class CommandGenerator {
 	private static final List<Command> AVAILABLE_COMMANDS = Arrays.asList(
 		new HelpCommand(),
 		new MoveCommand(),
-		new ExitCommand(),
 		new NoneCommand(),
-		new ListCommand(),
-		new ResetCommand(),
 		new ShootCommand(),
 		new ShockWaveCommand(),
+		new ListCommand(),
+		new ExitCommand(),
+		new ResetCommand(),
 		new SuperLaserCommand()
 	);
 
