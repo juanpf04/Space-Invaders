@@ -21,6 +21,8 @@ public class UCMShip extends Ship {
 		this.superLaserEnabled = true;
 	}
 	
+	public UCMShip() {}
+
 	@Override
 	public String getSymbol() {
 		String symbol = Messages.UCMSHIP_SYMBOL;
