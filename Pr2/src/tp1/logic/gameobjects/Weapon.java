@@ -33,4 +33,10 @@ public abstract class Weapon extends GameObject {
 	}
 
 	protected abstract void weaponAttack(GameItem other);
+	
+	@Override
+	public boolean receiveAttack(Burst burst) {
+		this.die();
+		return true;	
+	}
 }

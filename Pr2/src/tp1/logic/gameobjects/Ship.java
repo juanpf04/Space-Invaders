@@ -19,4 +19,14 @@ public abstract class Ship extends GameObject{
 		this.life -= damage;
 	}
 		
+	@Override
+	public boolean receiveAttack(Burst burst) {
+		this.loseLife(burst.getDamage());
+		
+		if(!isAlive())
+				onDelete();
+		
+		return true;	
+	}
+	
 }
