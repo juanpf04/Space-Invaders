@@ -68,7 +68,7 @@ public class DestroyerAlien extends AlienShip {
 
 	@Override
 	public void computerAction() {
-		if(this.bombEnabled() && this.canGenerateRandomShoot()) {
+		if(this.bombEnabled() && this.canGenerateRandomShoot() && !this.alienManager.onBorder()) {
 			
 			this.game.addObject(new Bomb(this.pos, this.game, this));
 			this.bombEnabled = false; 
