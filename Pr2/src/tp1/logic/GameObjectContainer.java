@@ -74,12 +74,12 @@ public class GameObjectContainer {
 	}
 
 	public void checkAttack(GameObject other) {
-		int i = objects.size()-1;
+		int i = 0;
 
-		while ( i >= 0 && other.isAlive()) {
+		while ( i < objects.size() && other.isAlive()) {
 			GameObject object = objects.get(i);
 			other.performAttack(object);
-			i--;
+			i++;
 		}
 	}
 
