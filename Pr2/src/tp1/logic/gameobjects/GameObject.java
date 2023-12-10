@@ -29,8 +29,8 @@ public abstract class GameObject implements GameItem {
 		return this.life;
 	}
 
-	protected void performMovement(Move move) {
-		this.pos = this.pos.newPos(move);
+	protected void performMovement() {
+		this.pos = this.pos.newPos(this.dir);
 	}
 	
 	public boolean isOut() {
@@ -67,6 +67,6 @@ public abstract class GameObject implements GameItem {
 	public boolean receiveAttack(EnemyWeapon weapon) {return false;}
 
 	@Override
-	public boolean receiveAttack(UCMWeapon weapon) {return false;} 
-
+	public boolean receiveAttack(UCMWeapon weapon) {return false;}  
+	
 }

@@ -31,16 +31,6 @@ public abstract class EnemyShip extends Ship {
 	}
 	
 	@Override
-	public boolean receiveAttack(EnemyWeapon weapon) {
-		this.loseLife(weapon.getDamage());
-		
-		if(!isAlive())
-				onDelete();
-		
-		return true;	
-	}
-	
-	@Override
 	public void onDelete() {
 		this.game.receivePoints(getPoints());
 	}

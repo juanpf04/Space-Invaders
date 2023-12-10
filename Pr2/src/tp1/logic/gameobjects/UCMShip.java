@@ -9,17 +9,20 @@ public class UCMShip extends Ship {
 	
 	public static final int DAMAGE = 1;
 	public static final int LIVES = 3;
+	public static final int SUPERLASER_COST = 5;
 	private boolean shockWaveEnabled;
 	private boolean laserEnabled;
 	private boolean superLaserEnabled;
 	
 	public UCMShip(GameWorld game, Position pos) {
-		super(game, pos, LIVES, null);
+		super(game, pos, LIVES, Move.NONE);
 		this.shockWaveEnabled = false;
 		this.laserEnabled = true;
 		this.superLaserEnabled = true;
 	}
 	
+	public UCMShip() {}
+
 	@Override
 	public String getSymbol() {
 		String symbol = Messages.UCMSHIP_SYMBOL;
@@ -59,7 +62,10 @@ public class UCMShip extends Ship {
 		boolean canMove = this.validPos(move) && this.canMove(move);
 		
 		if(canMove) 
-			this.performMovement(move);
+			dir = move;
+		
+		this.performMovement();
+		dir = Move.NONE;
 		
 		return canMove;
 	}
@@ -118,11 +124,13 @@ public class UCMShip extends Ship {
 	}
 	
 	public boolean shootSuperLaser() {
-		boolean shoot = this.superLaserIsEnable();
+		boolean shoot = this.superLaserIsEnable() 
+				&& this.game.getPoints() >= SUPERLASER_COST;
 		
 		if(shoot) {
 			this.game.addObject(new SuperLaser(this.game, this.pos));
-			this.superLaserEnabled = false;			
+			this.superLaserEnabled = false;		
+			this.game.receivePoints(-SUPERLASER_COST);
 		}
 		
 		return shoot;
