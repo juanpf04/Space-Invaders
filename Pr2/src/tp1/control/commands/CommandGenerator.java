@@ -3,6 +3,7 @@ package tp1.control.commands;
 import java.util.Arrays;
 import java.util.List;
 
+import tp1.exception.CommandParseException;
 import tp1.view.Messages;
 
 public class CommandGenerator {
@@ -19,7 +20,7 @@ public class CommandGenerator {
 		new SuperLaserCommand()
 	);
 
-	public static Command parse(String[] commandWords) {		
+	 public static Command parse(String[] commandWords) throws CommandParseException {		
 		Command command = null;
 		
 		for (Command c: AVAILABLE_COMMANDS) {
@@ -29,6 +30,8 @@ public class CommandGenerator {
 				return command;
 		}
 		
+		throw new CommandParseException(Messages.UNKNOWN_COMMAND);
+		 
 		return command;
 	}
 		

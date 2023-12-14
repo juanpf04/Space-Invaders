@@ -7,9 +7,9 @@ import tp1.view.Messages;
 public class NoneCommand extends NoParamsCommand {
 		
 	@Override
-	public ExecutionResult execute(GameModel game) {
+	public boolean execute(GameModel game) {
 		game.update();
-		return new ExecutionResult(true);
+		return true;
 	}
 	
 	@Override
@@ -33,13 +33,8 @@ public class NoneCommand extends NoParamsCommand {
 	}
 	
 	@Override
-	public Command parse(String[] commandWords) {
-		Command command = super.parse(commandWords);
-		
-		if(commandWords[0].length() == 0)
-			command =  this;
-		
-		return command;
+	protected boolean matchCommandName(String name) {
+	    return super.matchCommandName(name) || name.isEmpty();
 	}
 
 }

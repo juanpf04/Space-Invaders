@@ -1,15 +1,20 @@
 package tp1.control.commands;
 
-public abstract class NoParamsCommand extends Command {
+import tp1.exception.CommandParseException;
+import tp1.view.Messages;
 
+public abstract class NoParamsCommand extends Command {
+	
 	@Override
-	public Command parse(String[] commandWords) {
-		Command command = null;
-		
-		if(commandWords.length == 1 && this.matchCommandName(commandWords[0]))
-			command = this;
-		
-		return command;
-	}
+	public Command parse(String[] commandWords) throws CommandParseException {
+	 	if (matchCommandName(commandWords[0])) {
+	 		if(commandWords.length == 1)
+	 			return this;
+	 		else
+	 			throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
+	 	}
+	 	else
+	 		return null;	
+	 }
 	
 }
