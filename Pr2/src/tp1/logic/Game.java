@@ -69,8 +69,8 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 	
 	@Override
-	public boolean move(Move move) {
-		return this.player.move(move);
+	public void move(Move move) {
+		this.player.move(move);
 	}
 	
 	// SHOCKWAVE
@@ -81,8 +81,8 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 	
 	@Override
-	public boolean shockWave() {
-		return this.player.shockWave();
+	public void shockWave() {
+		this.player.shockWave();
 	}
 	
 	
@@ -94,8 +94,8 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 	
 	@Override
-	public boolean shootSuperLaser() {
-		return this.player.shootSuperLaser();
+	public void shootSuperLaser() {
+		this.player.shootSuperLaser();
 	}
 	
 	
@@ -107,8 +107,8 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 	
 	@Override
-	public boolean shootLaser() {
-		return this.player.shootLaser();
+	public void shootLaser() {
+		this.player.shootLaser();
 	}
 	
 	
