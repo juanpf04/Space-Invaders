@@ -178,9 +178,9 @@ public class UCMShip extends Ship {
 		return state;
 	}
 
-	public static Object allowedMoves(String string) {
+	public static String allowedMoves(String string) { // hechar un vistazo, no hace lo que queremos
 		
-		return ALLOWED_MOVES;
+		return ALLOWED_MOVES.toString();
 	}
 
 }
