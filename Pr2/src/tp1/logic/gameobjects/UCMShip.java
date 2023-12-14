@@ -167,4 +167,9 @@ public class UCMShip extends Ship {
 		return state;
 	}
 
+	public static Object allowedMoves(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
