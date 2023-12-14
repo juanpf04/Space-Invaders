@@ -1,6 +1,5 @@
 package tp1.control.commands;
 
-import tp1.control.ExecutionResult;
 import tp1.control.InitialConfiguration;
 import tp1.logic.GameModel;
 import tp1.view.Messages;
@@ -16,9 +15,9 @@ public class ResetCommand extends Command {
 	}
 	
 	@Override
-	public ExecutionResult execute(GameModel game) {
+	public boolean execute(GameModel game) {
 		game.reset(conf);
-		return new ExecutionResult(true);
+		return true;
 	}
 	
 	@Override

@@ -31,8 +31,6 @@ public class CommandGenerator {
 		}
 		
 		throw new CommandParseException(Messages.UNKNOWN_COMMAND);
-		 
-		return command;
 	}
 		
 	public static String commandHelp() {

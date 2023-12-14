@@ -1,6 +1,5 @@
 package tp1.control.commands;
 
-import tp1.control.ExecutionResult;
 import tp1.exception.CommandExecuteException;
 import tp1.exception.CommandParseException;
 import tp1.logic.GameModel;

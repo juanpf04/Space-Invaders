@@ -1,6 +1,5 @@
 package tp1.control.commands;
 
-import tp1.control.ExecutionResult;
 import tp1.logic.GameModel;
 import tp1.logic.Move;
 import tp1.view.Messages;
@@ -36,12 +35,12 @@ public class MoveCommand extends Command {
 	}
 
 	@Override
-	public ExecutionResult execute(GameModel game) {
-		ExecutionResult result = new ExecutionResult(Messages.MOVEMENT_ERROR);
+	public boolean execute(GameModel game) {
+		boolean result = false;
 		
 		if(game.move(move)) {
 			game.update();
-			result = new ExecutionResult(true);
+			result = true;
 		}
 		
 		return result;
