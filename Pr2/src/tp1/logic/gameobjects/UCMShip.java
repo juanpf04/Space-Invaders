@@ -1,6 +1,10 @@
 package tp1.logic.gameobjects;
 
 import tp1.logic.Position;
+
+import java.util.Arrays;
+import java.util.List;
+
 import tp1.logic.GameWorld;
 import tp1.view.Messages;
 import tp1.logic.Move;
@@ -10,6 +14,13 @@ public class UCMShip extends Ship {
 	public static final int DAMAGE = 1;
 	public static final int LIVES = 3;
 	public static final int SUPERLASER_COST = 5;
+	private static final List<Move> ALLOWED_MOVES = Arrays.asList(
+		Move.LLEFT,
+		Move.LEFT,
+		Move.NONE,
+		Move.RIGHT,
+		Move.RRIGHT
+	);
 	private boolean shockWaveEnabled;
 	private boolean laserEnabled;
 	private boolean superLaserEnabled;
@@ -168,8 +179,8 @@ public class UCMShip extends Ship {
 	}
 
 	public static Object allowedMoves(String string) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return ALLOWED_MOVES;
 	}
 
 }

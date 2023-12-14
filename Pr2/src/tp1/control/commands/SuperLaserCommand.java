@@ -1,6 +1,8 @@
 package tp1.control.commands;
 
 import tp1.exception.CommandExecuteException;
+import tp1.exception.LaserInFlightException;
+import tp1.exception.NotEnoughtPointsException;
 import tp1.logic.GameModel;
 import tp1.view.Messages;
 
@@ -10,10 +12,18 @@ public class SuperLaserCommand extends NoParamsCommand {
 	public boolean execute(GameModel game) throws CommandExecuteException {
 		boolean result = false; 
 		
-		if(game.shootSuperLaser()) {
-			game.update();
-			result = true;
+		try {
+			game.shootSuperLaser();
+		} catch (LaserInFlightException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotEnoughtPointsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		game.update();
+		result = true;
+		
 		
 		return result;
 	}

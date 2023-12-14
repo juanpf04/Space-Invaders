@@ -2,6 +2,7 @@ package tp1.control.commands;
 
 import tp1.control.InitialConfiguration;
 import tp1.exception.CommandParseException;
+import tp1.exception.InitializationException;
 import tp1.logic.GameModel;
 import tp1.view.Messages;
 
@@ -17,7 +18,12 @@ public class ResetCommand extends Command {
 	
 	@Override
 	public boolean execute(GameModel game) {
-		game.reset(conf);
+		try {
+			game.reset(conf);
+		} catch (InitializationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return true;
 	}
 	
