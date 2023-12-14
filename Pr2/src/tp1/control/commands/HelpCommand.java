@@ -1,5 +1,6 @@
 package tp1.control.commands;
 
+import tp1.exception.CommandExecuteException;
 import tp1.logic.GameModel;
 import tp1.view.Messages;
 
@@ -26,7 +27,7 @@ public class HelpCommand extends NoParamsCommand {
 	}
 
 	@Override
-	public boolean execute(GameModel game) {
+	public boolean execute(GameModel game) throws CommandExecuteException {
 		System.out.println(Messages.HELP_AVAILABLE_COMMANDS);
 		System.out.println(CommandGenerator.commandHelp());
 		return false;

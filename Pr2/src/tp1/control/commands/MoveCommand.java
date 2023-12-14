@@ -1,5 +1,7 @@
 package tp1.control.commands;
 
+import tp1.exception.CommandExecuteException;
+import tp1.exception.CommandParseException;
 import tp1.logic.GameModel;
 import tp1.logic.Move;
 import tp1.view.Messages;
@@ -35,7 +37,7 @@ public class MoveCommand extends Command {
 	}
 
 	@Override
-	public boolean execute(GameModel game) {
+	public boolean execute(GameModel game) throws CommandExecuteException {
 		boolean result = false;
 		
 		if(game.move(move)) {
@@ -48,7 +50,7 @@ public class MoveCommand extends Command {
 
 
 	@Override
-	public Command parse(String[] commandWords) {
+	public Command parse(String[] commandWords) throws CommandParseException {
 		Command command = null;
 		
 		if(commandWords.length == 2 && this.matchCommandName(commandWords[0]) 
