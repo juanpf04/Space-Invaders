@@ -5,6 +5,7 @@ import tp1.logic.gameobjects.RegularAlien;
 import tp1.logic.gameobjects.ShipFactory;
 import tp1.logic.gameobjects.Ufo;
 import tp1.control.InitialConfiguration;
+import tp1.exception.InitializationException;
 import tp1.logic.GameObjectContainer;
 import tp1.logic.GameWorld;
 
@@ -34,7 +35,7 @@ public class AlienManager {
 		
 	// INITIALIZER METHODS
 	
-	public  GameObjectContainer initialize(InitialConfiguration conf) {
+	public GameObjectContainer initialize(InitialConfiguration conf) throws InitializationException {
 		this.remainingAliens = 0;
 		GameObjectContainer container = new GameObjectContainer();
 		
