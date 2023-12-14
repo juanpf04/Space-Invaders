@@ -18,7 +18,7 @@ public abstract class GameObject implements GameItem {
 		this.dir = dir;
 	}
 	
-	public GameObject() {}
+	protected GameObject() {}
 	
 	@Override
 	public boolean isAlive() {

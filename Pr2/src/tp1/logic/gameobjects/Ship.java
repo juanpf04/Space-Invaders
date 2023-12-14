@@ -10,7 +10,7 @@ public abstract class Ship extends GameObject{
 		super(game, pos,  lives, dir);
 	}
 	
-	public Ship() {}
+	protected Ship() {}
 	
 	public abstract String getInfo();
 	protected abstract String getDescription();

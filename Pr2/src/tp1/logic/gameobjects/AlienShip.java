@@ -19,7 +19,7 @@ public abstract class AlienShip extends EnemyShip {
 		this.cyclesToMove = this.speed;
 	}
 	
-	public AlienShip() {}
+	protected AlienShip() {}
 
 	protected abstract AlienShip copy(GameWorld game, Position pos, AlienManager am);
 	

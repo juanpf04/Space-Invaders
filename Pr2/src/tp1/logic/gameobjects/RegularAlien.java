@@ -16,7 +16,7 @@ public class RegularAlien extends AlienShip {
 		super(game, pos, LIVES, Move.LEFT, alienManager);
 	}
 	
-	public RegularAlien() {}
+	protected RegularAlien() {}
 
 	@Override
 	protected AlienShip copy(GameWorld game, Position pos, AlienManager am){

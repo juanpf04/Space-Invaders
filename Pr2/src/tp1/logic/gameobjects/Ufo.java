@@ -20,7 +20,7 @@ public class Ufo extends EnemyShip {
 		this.enabled = false;
 	}
 	
-	public Ufo() {}
+	protected Ufo() {}
 
 	@Override
 	public String getSymbol() {

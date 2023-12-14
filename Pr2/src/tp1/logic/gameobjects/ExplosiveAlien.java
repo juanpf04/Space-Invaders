@@ -13,7 +13,7 @@ public class ExplosiveAlien extends RegularAlien {
 		super(pos, game, alienManager);
 	}
 	
-	public ExplosiveAlien() {}
+	protected ExplosiveAlien() {}
 
 	@Override
 	protected AlienShip copy(GameWorld game, Position pos, AlienManager am) {

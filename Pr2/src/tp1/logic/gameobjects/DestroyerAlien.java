@@ -20,7 +20,7 @@ public class DestroyerAlien extends AlienShip {
 		this.bombEnabled = true;
 	}
 	
-	public DestroyerAlien() {}
+	protected DestroyerAlien() {}
 	
 	@Override
 	protected AlienShip copy(GameWorld game, Position pos, AlienManager am) {

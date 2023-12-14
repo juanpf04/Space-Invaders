@@ -21,7 +21,7 @@ public class UCMShip extends Ship {
 		this.superLaserEnabled = true;
 	}
 	
-	public UCMShip() {}
+	protected UCMShip() {}
 
 	@Override
 	public String getSymbol() {
