@@ -18,7 +18,7 @@ public class GameModelException extends Exception{
 		super(cause); 
 	}
 	
-	public GameModelException(String message, Throwable cause, 
+	protected GameModelException(String message, Throwable cause, 
 			boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}

@@ -18,7 +18,7 @@ public class NotEnoughtPointsException extends GameModelException {
 		super(cause); 
 	}
 	
-	public NotEnoughtPointsException(String message, Throwable cause, 
+	protected NotEnoughtPointsException(String message, Throwable cause, 
 			boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}

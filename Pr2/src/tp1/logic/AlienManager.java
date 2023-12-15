@@ -6,8 +6,6 @@ import tp1.logic.gameobjects.ShipFactory;
 import tp1.logic.gameobjects.Ufo;
 import tp1.control.InitialConfiguration;
 import tp1.exception.InitializationException;
-import tp1.logic.GameObjectContainer;
-import tp1.logic.GameWorld;
 
 /**
  * 

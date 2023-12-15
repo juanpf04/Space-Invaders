@@ -1,13 +1,12 @@
 package tp1.control.commands;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import tp1.control.InitialConfiguration;
+import tp1.exception.CommandExecuteException;
 import tp1.exception.CommandParseException;
-import tp1.exception.InitializationException;
+import tp1.exception.GameModelException;
 import tp1.logic.GameModel;
-import tp1.logic.Move;
 import tp1.view.Messages;
 
 public class ResetCommand extends Command {
@@ -21,14 +20,13 @@ public class ResetCommand extends Command {
 	}
 	
 	@Override
-	public boolean execute(GameModel game) {
+	public boolean execute(GameModel game) throws CommandExecuteException {
 		try {
 			game.reset(conf);
-		} catch (InitializationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return true;
+		} catch (GameModelException e) {
+			throw new CommandExecuteException(e.getMessage());
 		}
-		return true;
 	}
 	
 	@Override
@@ -60,8 +58,6 @@ public class ResetCommand extends Command {
 	 		if(commandWords.length == 2)
 				try {
 					return new ResetCommand(InitialConfiguration.readFromFile(commandWords[1]));
-				} catch (FileNotFoundException e) {
-					throw new CommandParseException(e.getMessage(),e.getCause());
 				} catch (IOException e) {
 					throw new CommandParseException(e.getMessage(),e.getCause());
 				}

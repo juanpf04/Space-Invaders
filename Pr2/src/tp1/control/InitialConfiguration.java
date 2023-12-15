@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import tp1.view.Messages;
+
 public class InitialConfiguration {
 	
 	private List<String> descriptions;
@@ -33,7 +35,10 @@ public class InitialConfiguration {
 				input.add(l); // peta y manda excepcion
 				l = in.readLine();
 			}
+		} catch (FileNotFoundException e){
+			throw new FileNotFoundException(Messages.FILE_NOT_FOUND.formatted(filename));
 		}
+		
 		
 		return new InitialConfiguration(input);
 	}

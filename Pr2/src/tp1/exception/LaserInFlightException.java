@@ -18,7 +18,7 @@ public class LaserInFlightException extends GameModelException {
 		super(cause); 
 	}
 	
-	public LaserInFlightException(String message, Throwable cause, 
+	protected LaserInFlightException(String message, Throwable cause, 
 			boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}

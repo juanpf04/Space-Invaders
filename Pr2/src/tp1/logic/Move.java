@@ -1,8 +1,5 @@
 package tp1.logic;
 
-import tp1.control.InitialConfiguration;
-import tp1.view.Messages;
-
 /**
  * 
  * Represents the allowed movements in the game

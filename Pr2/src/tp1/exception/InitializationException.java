@@ -18,7 +18,7 @@ public class InitializationException extends GameModelException {
 		super(cause); 
 	}
 	
-	public InitializationException(String message, Throwable cause, 
+	protected InitializationException(String message, Throwable cause, 
 			boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}

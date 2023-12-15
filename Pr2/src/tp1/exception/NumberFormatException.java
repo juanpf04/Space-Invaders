@@ -18,7 +18,7 @@ public class NumberFormatException extends Exception{
 		super(cause); 
 	}
 	
-	public NumberFormatException(String message, Throwable cause, 
+	protected NumberFormatException(String message, Throwable cause, 
 			boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}

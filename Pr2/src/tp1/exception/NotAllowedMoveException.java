@@ -18,7 +18,7 @@ public class NotAllowedMoveException extends GameModelException {
 		super(cause); 
 	}
 	
-	public NotAllowedMoveException(String message, Throwable cause, 
+	protected NotAllowedMoveException(String message, Throwable cause, 
 			boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}

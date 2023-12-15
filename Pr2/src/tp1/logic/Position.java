@@ -2,11 +2,9 @@ package tp1.logic;
 
 import java.lang.Math;
 
-import tp1.logic.Move;
 import tp1.view.Messages;
 
 import java.util.Objects;
-import tp1.logic.Game;
 /**
  * 
  * Immutable class to encapsulate and manipulate positions in the game board

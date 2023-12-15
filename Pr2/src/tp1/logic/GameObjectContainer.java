@@ -5,8 +5,6 @@ import java.util.List;
 
 import tp1.logic.gameobjects.AlienShip;
 import tp1.logic.gameobjects.GameObject;
-import tp1.logic.gameobjects.ShockWave;
-import tp1.logic.gameobjects.Weapon;
 
 public class GameObjectContainer {
 

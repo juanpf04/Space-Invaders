@@ -18,7 +18,7 @@ public class NoShockWaveException extends GameModelException {
 		super(cause); 
 	}
 	
-	public NoShockWaveException(String message, Throwable cause, 
+	protected NoShockWaveException(String message, Throwable cause, 
 			boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}

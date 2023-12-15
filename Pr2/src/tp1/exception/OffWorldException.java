@@ -18,7 +18,7 @@ public class OffWorldException extends GameModelException {
 		super(cause); 
 	}
 	
-	public OffWorldException(String message, Throwable cause, 
+	protected OffWorldException(String message, Throwable cause, 
 			boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 	}
