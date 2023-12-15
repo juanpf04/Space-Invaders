@@ -14,7 +14,6 @@ import tp1.logic.gameobjects.UCMLaser;
 import tp1.logic.gameobjects.Ufo;
 import tp1.logic.Level;
 import tp1.control.InitialConfiguration;
-import tp1.exception.InitializationException;
 import tp1.logic.AlienManager;
 import tp1.logic.gameobjects.Ufo; 
 import tp1.logic.GameObjectContainer;
@@ -50,12 +49,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		this.exit = false;
 		this.alienManager = new AlienManager(this);
 		this.player = new UCMShip(this, new Position(DIM_X / 2, DIM_Y - 1));
-		try {
-			this.container = alienManager.initialize(conf);
-		} catch (InitializationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.container = alienManager.initialize(conf);
 		this.container.add(player);
 	}
 	

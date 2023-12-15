@@ -27,6 +27,7 @@ public class InitialConfiguration {
 		try (BufferedReader in = 
 				new BufferedReader(new FileReader(filename))) {
 			String l = in.readLine();
+			
 			while(!l.isEmpty()) {
 				input.add(l);
 				l = in.readLine();
