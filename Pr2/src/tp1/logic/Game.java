@@ -3,23 +3,12 @@ package tp1.logic;
 import java.util.Random;
 import tp1.logic.gameobjects.UCMShip;
 import tp1.logic.gameobjects.AlienShip;
-import tp1.logic.gameobjects.Bomb;
-import tp1.logic.gameobjects.RegularAlien;
 import tp1.logic.gameobjects.ShipFactory;
-import tp1.logic.gameobjects.ShockWave;
-import tp1.logic.gameobjects.DestroyerAlien;
-import tp1.logic.gameobjects.ExplosiveAlien;
 import tp1.logic.gameobjects.GameObject;
-import tp1.logic.gameobjects.UCMLaser;
-import tp1.logic.gameobjects.Ufo;
-import tp1.logic.Level;
 import tp1.control.InitialConfiguration;
 import tp1.exception.InitializationException;
 import tp1.exception.NotAllowedMoveException;
 import tp1.exception.OffWorldException;
-import tp1.logic.AlienManager;
-import tp1.logic.gameobjects.Ufo; 
-import tp1.logic.GameObjectContainer;
 import tp1.view.Messages;
 
 public class Game implements GameModel, GameStatus, GameWorld {
