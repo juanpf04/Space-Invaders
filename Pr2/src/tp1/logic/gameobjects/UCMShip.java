@@ -178,9 +178,12 @@ public class UCMShip extends Ship {
 		return state;
 	}
 
-	public static String allowedMoves(String string) { // hechar un vistazo, no hace lo que queremos
+	public static String allowedMoves(String separator) { 
+		StringBuilder allowedMoves = new StringBuilder();
+		for(Move m: ALLOWED_MOVES)
+			allowedMoves.append(m.name().toLowerCase() + separator);
 		
-		return ALLOWED_MOVES.toString();
+		return allowedMoves.substring(0, allowedMoves.length()-separator.length());
 	}
 
 }
