@@ -23,16 +23,19 @@ public class InitialConfiguration {
 	
 	public static InitialConfiguration readFromFile(String filename) 
 			throws FileNotFoundException, IOException {
-		List<String> input = Arrays.asList();
+		List<String> input = Arrays.asList(); // lo crea vacío
+		
 		try (BufferedReader in = 
 				new BufferedReader(new FileReader(filename))) {
 			String l = in.readLine();
 			
 			while(!l.isEmpty()) {
-				input.add(l);
+				input.add(l); // peta y manda excepcion
 				l = in.readLine();
 			}
 		}
+		
+		
 		return new InitialConfiguration(input);
 	}
 	
