@@ -72,7 +72,7 @@ public class UCMShip extends Ship {
 	}
 	
 	public void move(Move move) throws OffWorldException, NotAllowedMoveException {
-		if(!this.canMove(move))
+		if(!this.allowedMove(move))
 			throw new NotAllowedMoveException(Messages.DIRECTION_ERROR + move.name()
 					+ Messages.LINE_SEPARATOR + Messages.ALLOWED_MOVES_MESSAGE); 
 		if(!this.validPos(move))
@@ -84,13 +84,14 @@ public class UCMShip extends Ship {
 
 	}
 	
-	private boolean canMove(Move move) {
-		return !move.equals(Move.UP) 
-			&& !move.equals(Move.DOWN);
+	private boolean allowedMove(Move move) {
+		for(Move m: ALLOWED_MOVES)
+			if(move.equals(m)) return true;
+		return false;
 	}
 	
 	private boolean validPos(Move move) {
-		return move != null && pos.validPos(move);
+		return pos.validPos(move);
 	}
 	
 	public boolean receiveAttack(EnemyWeapon other) {
