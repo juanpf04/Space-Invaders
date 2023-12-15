@@ -41,18 +41,14 @@ public class MoveCommand extends Command {
 
 	@Override
 	public boolean execute(GameModel game) throws CommandExecuteException {
-		boolean result = false;
 		
 		try {
 			game.move(move);
 			game.update();
-			result = true;
+			return true;
 		} catch (GameModelException e) {
-			e.printStackTrace();
-			
+			throw new CommandExecuteException(e.getMessage());
 		}
-		
-		return result;
 	}
 
 
@@ -62,8 +58,13 @@ public class MoveCommand extends Command {
 		if (matchCommandName(commandWords[0])) {
 			if(commandWords.length == 1)
 				throw new CommandParseException(Messages.COMMAND_PARAMETERS_MISSING);
-	 		if(commandWords.length == 2) 
-	 			return new MoveCommand(Move.valueOfIgnoreCase(commandWords[1]));
+	 		if(commandWords.length == 2) {
+	 			try {
+	 				return new MoveCommand(Move.valueOfIgnoreCase(commandWords[1]));
+	 			} catch (IllegalArgumentException e) {	 				
+	 				throw new CommandParseException(e.getMessage());
+	 			}
+	 		}	 			
 	 		else
 	 			throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
 	 	}

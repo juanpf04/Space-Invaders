@@ -1,6 +1,7 @@
 package tp1.logic;
 
 import tp1.control.InitialConfiguration;
+import tp1.view.Messages;
 
 /**
  * 
@@ -52,9 +53,9 @@ public enum Move {
 		return move;
 	}
 	
-	public static Move valueOfIgnoreCase(String dir) {
+	public static Move valueOfIgnoreCase(String dir) throws IllegalArgumentException {
 		for (Move m : Move.values())
 			if (m.name().equalsIgnoreCase(dir)) return m;
-	    return null;
+	    throw new IllegalArgumentException(Messages.DIRECTION_ERROR + dir);
 	}
 }
