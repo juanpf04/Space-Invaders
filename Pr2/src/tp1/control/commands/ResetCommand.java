@@ -7,6 +7,7 @@ import tp1.control.InitialConfiguration;
 import tp1.exception.CommandParseException;
 import tp1.exception.InitializationException;
 import tp1.logic.GameModel;
+import tp1.logic.Move;
 import tp1.view.Messages;
 
 public class ResetCommand extends Command {
@@ -52,20 +53,23 @@ public class ResetCommand extends Command {
 	
 	@Override
 	public Command parse(String[] commandWords) throws CommandParseException {
-		Command command = null;
 		
-		if(commandWords.length == 2 && this.matchCommandName(commandWords[0]))
-			try {
-				command = new ResetCommand(InitialConfiguration.readFromFile(commandWords[1]));
-			} catch (FileNotFoundException e) {
-				throw new CommandParseException(e.getMessage());
-			} catch (IOException e) {
-				throw new CommandParseException(e.getMessage());
-			}
-		else if(commandWords.length == 1 && this.matchCommandName(commandWords[0]))
-			command = new ResetCommand(InitialConfiguration.NONE);
-			
-		return command;
+		if (matchCommandName(commandWords[0])) {
+			if(commandWords.length == 1)
+				return new ResetCommand(InitialConfiguration.NONE);
+	 		if(commandWords.length == 2)
+				try {
+					return new ResetCommand(InitialConfiguration.readFromFile(commandWords[1]));
+				} catch (FileNotFoundException e) {
+					throw new CommandParseException(e.getMessage(),e.getCause());
+				} catch (IOException e) {
+					throw new CommandParseException(e.getMessage(),e.getCause());
+				}
+			else
+	 			throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
+	 	}
+	 	else
+	 		return null;	
 	}
 
 }

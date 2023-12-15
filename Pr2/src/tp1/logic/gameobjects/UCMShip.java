@@ -5,6 +5,8 @@ import tp1.logic.Position;
 import java.util.Arrays;
 import java.util.List;
 
+import tp1.exception.NotAllowedMoveException;
+import tp1.exception.OffWorldException;
 import tp1.logic.GameWorld;
 import tp1.view.Messages;
 import tp1.logic.Move;
@@ -69,16 +71,16 @@ public class UCMShip extends Ship {
 		return super.getLife();
 	}
 	
-	public boolean move(Move move) {
-		boolean canMove = this.validPos(move) && this.canMove(move);
+	public void move(Move move) throws OffWorldException, NotAllowedMoveException {
+		if(!this.validPos(move))
+				throw new OffWorldException(Messages.OFF_WORLD_MESSAGE.formatted(move.name(), this.pos.toString()));
+		if(!this.canMove(move))
+			throw new NotAllowedMoveException(Messages.DIRECTION_ERROR + move.name()); // añadir mas cosas
 		
-		if(canMove) 
-			dir = move;
-		
+		dir = move;
 		this.performMovement();
 		dir = Move.NONE;
-		
-		return canMove;
+
 	}
 	
 	private boolean canMove(Move move) {
@@ -87,7 +89,7 @@ public class UCMShip extends Ship {
 	}
 	
 	private boolean validPos(Move move) {
-		return pos.validPos(move);
+		return move != null && pos.validPos(move);
 	}
 	
 	public boolean receiveAttack(EnemyWeapon other) {

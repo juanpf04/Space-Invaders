@@ -49,6 +49,7 @@ public class MoveCommand extends Command {
 			result = true;
 		} catch (GameModelException e) {
 			e.printStackTrace();
+			
 		}
 		
 		return result;
@@ -57,13 +58,17 @@ public class MoveCommand extends Command {
 
 	@Override
 	public Command parse(String[] commandWords) throws CommandParseException {
-		Command command = null;
 		
-		if(commandWords.length == 2 && this.matchCommandName(commandWords[0]) 
-				&& null!=Move.valueOfIgnoreCase(commandWords[1])) // cambiar a exception
-			command = new MoveCommand(Move.valueOfIgnoreCase(commandWords[1]));
-		
-		return command;
+		if (matchCommandName(commandWords[0])) {
+			if(commandWords.length == 1)
+				throw new CommandParseException(Messages.COMMAND_PARAMETERS_MISSING);
+	 		if(commandWords.length == 2) 
+	 			return new MoveCommand(Move.valueOfIgnoreCase(commandWords[1]));
+	 		else
+	 			throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
+	 	}
+	 	else
+	 		return null;	
 	}
 
 }

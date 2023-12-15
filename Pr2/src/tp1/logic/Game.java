@@ -15,6 +15,8 @@ import tp1.logic.gameobjects.Ufo;
 import tp1.logic.Level;
 import tp1.control.InitialConfiguration;
 import tp1.exception.InitializationException;
+import tp1.exception.NotAllowedMoveException;
+import tp1.exception.OffWorldException;
 import tp1.logic.AlienManager;
 import tp1.logic.gameobjects.Ufo; 
 import tp1.logic.GameObjectContainer;
@@ -74,7 +76,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 	
 	@Override
-	public void move(Move move) {
+	public void move(Move move) throws OffWorldException, NotAllowedMoveException {
 		this.player.move(move);
 	}
 	
