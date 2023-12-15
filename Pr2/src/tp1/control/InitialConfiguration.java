@@ -1,6 +1,7 @@
 package tp1.control;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,11 +23,16 @@ public class InitialConfiguration {
 	
 	public static InitialConfiguration readFromFile(String filename) 
 			throws FileNotFoundException, IOException {
+		List<String> input = Arrays.asList();
 		try (BufferedReader in = 
-				new BufferedReader(new FileReader(filename + ".txt"))) {
-				 String l = in.readLine();
+				new BufferedReader(new FileReader(filename))) {
+			String l = in.readLine();
+			while(!l.isEmpty()) {
+				input.add(l);
+				l = in.readLine();
+			}
 		}
-		return null;
+		return new InitialConfiguration(input);
 	}
 	
 }

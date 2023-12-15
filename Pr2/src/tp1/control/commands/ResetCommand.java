@@ -58,11 +58,9 @@ public class ResetCommand extends Command {
 			try {
 				command = new ResetCommand(InitialConfiguration.readFromFile(commandWords[1]));
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw new CommandParseException(e.getMessage());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw new CommandParseException(e.getMessage());
 			}
 		else if(commandWords.length == 1 && this.matchCommandName(commandWords[0]))
 			command = new ResetCommand(InitialConfiguration.NONE);
