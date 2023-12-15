@@ -5,7 +5,10 @@ import tp1.logic.Position;
 import java.util.Arrays;
 import java.util.List;
 
+import tp1.exception.LaserInFlightException;
+import tp1.exception.NoShockWaveException;
 import tp1.exception.NotAllowedMoveException;
+import tp1.exception.NotEnoughtPointsException;
 import tp1.exception.OffWorldException;
 import tp1.logic.GameWorld;
 import tp1.view.Messages;
@@ -116,15 +119,13 @@ public class UCMShip extends Ship {
 		this.laserEnabled = true;
 	}
 	
-	public boolean shootLaser() {
-		boolean shoot = this.laserIsEnable();
+	public void shootLaser() throws LaserInFlightException {
+		if(!this.laserIsEnable())
+			throw new LaserInFlightException(Messages.LASER_ERROR + Messages.LINE_SEPARATOR
+					+ Messages.LASER_ALREADY_SHOT);
 		
-		if(shoot) {
-			this.game.addObject(new UCMLaser(this.game, this.pos));
-			this.laserEnabled = false;			
-		}
-		
-		return shoot;
+		this.game.addObject(new UCMLaser(this.game, this.pos));
+		this.laserEnabled = false;			
 	}
 	
 	
@@ -138,17 +139,17 @@ public class UCMShip extends Ship {
 		this.superLaserEnabled = true;
 	}
 	
-	public boolean shootSuperLaser() {
-		boolean shoot = this.superLaserIsEnable() 
-				&& this.game.getPoints() >= SUPERLASER_COST;
+	public void shootSuperLaser() throws LaserInFlightException, NotEnoughtPointsException {
+		if(!this.superLaserIsEnable()) 
+			throw new LaserInFlightException(Messages.SUPERLASER_ERROR + Messages.LINE_SEPARATOR
+					+ Messages.LASER_ALREADY_SHOT);
+		if(this.game.getPoints() < SUPERLASER_COST)
+			throw new NotEnoughtPointsException(Messages.SUPERLASER_ERROR + Messages.LINE_SEPARATOR
+					+ Messages.NOT_ENOUGH_POINTS_ERROR.formatted(this.game.getPoints(),SUPERLASER_COST));
 		
-		if(shoot) {
-			this.game.addObject(new SuperLaser(this.game, this.pos));
-			this.superLaserEnabled = false;		
-			this.game.receivePoints(-SUPERLASER_COST);
-		}
-		
-		return shoot;
+		this.game.addObject(new SuperLaser(this.game, this.pos));
+		this.superLaserEnabled = false;		
+		this.game.receivePoints(-SUPERLASER_COST);
 	}
 	
 	
@@ -162,15 +163,12 @@ public class UCMShip extends Ship {
 		this.shockWaveEnabled = true;
 	}
 	
-	public boolean shockWave() {
-		boolean shoot = this.shockWaveIsEnable();
-		
-		if(shoot) {
-			this.game.addObject(new ShockWave(this.game));
-			this.shockWaveEnabled = false;			
-		}
-		
-		return shoot;
+	public void shockWave() throws NoShockWaveException {
+		if(!this.shockWaveIsEnable())
+			throw new NoShockWaveException(Messages.SHOCKWAVE_ERROR);
+	
+		this.game.addObject(new ShockWave(this.game));
+		this.shockWaveEnabled = false;			
 	}
 
 	public String shockWaveState() {

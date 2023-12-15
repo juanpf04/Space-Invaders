@@ -7,7 +7,10 @@ import tp1.logic.gameobjects.ShipFactory;
 import tp1.logic.gameobjects.GameObject;
 import tp1.control.InitialConfiguration;
 import tp1.exception.InitializationException;
+import tp1.exception.LaserInFlightException;
+import tp1.exception.NoShockWaveException;
 import tp1.exception.NotAllowedMoveException;
+import tp1.exception.NotEnoughtPointsException;
 import tp1.exception.OffWorldException;
 import tp1.view.Messages;
 
@@ -30,10 +33,14 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		
 		this.level = level;
 		this.seed = seed;
-		this.initGame(InitialConfiguration.NONE);
+		try {
+			this.initGame(InitialConfiguration.NONE); // revisar
+		} catch (InitializationException e) {
+			
+		}
 	}
 	
-	private final void initGame(InitialConfiguration conf) {
+	private final void initGame(InitialConfiguration conf) throws InitializationException {
 		
 		this.random = new Random(this.seed);
 		this.currentCycle = 0;
@@ -41,11 +48,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		this.exit = false;
 		this.alienManager = new AlienManager(this);
 		this.player = new UCMShip(this, new Position(DIM_X / 2, DIM_Y - 1));
-		try {
-			this.container = alienManager.initialize(conf);
-		} catch (InitializationException e) {
-			
-		}
+		this.container = alienManager.initialize(conf);
 		this.container.add(player);
 	}
 	
@@ -77,7 +80,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 	
 	@Override
-	public void shockWave() {
+	public void shockWave() throws NoShockWaveException {
 		this.player.shockWave();
 	}
 	
@@ -90,7 +93,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 	
 	@Override
-	public void shootSuperLaser() {
+	public void shootSuperLaser() throws LaserInFlightException, NotEnoughtPointsException {
 		this.player.shootSuperLaser();
 	}
 	
@@ -103,14 +106,14 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	}
 	
 	@Override
-	public void shootLaser() {
+	public void shootLaser() throws LaserInFlightException {
 		this.player.shootLaser();
 	}
 	
 	
 	
 	@Override
-	public void reset(InitialConfiguration conf) {
+	public void reset(InitialConfiguration conf) throws InitializationException {
 		this.initGame(conf);
 	} 
 	
