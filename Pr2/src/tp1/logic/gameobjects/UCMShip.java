@@ -183,7 +183,7 @@ public class UCMShip extends Ship {
 		for(Move m: ALLOWED_MOVES)
 			allowedMoves.append(m.name().toLowerCase() + separator);
 		
-		return allowedMoves.substring(0, allowedMoves.length()-separator.length());
+		return allowedMoves.substring(0, allowedMoves.length() - separator.length());
 	}
 
 }
