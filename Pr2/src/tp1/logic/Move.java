@@ -56,6 +56,6 @@ public enum Move {
 	public static Move valueOfIgnoreCase(String dir) throws IllegalArgumentException {
 		for (Move m : Move.values())
 			if (m.name().equalsIgnoreCase(dir)) return m;
-	    throw new IllegalArgumentException(Messages.DIRECTION_ERROR + dir);
+	    throw new IllegalArgumentException();
 	}
 }
