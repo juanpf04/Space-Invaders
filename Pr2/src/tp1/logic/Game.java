@@ -86,11 +86,6 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	// SUPERLASER
 	
 	@Override
-	public void enableSuperLaser() {
-		this.player.enableSuperLaser();
-	}
-	
-	@Override
 	public void shootSuperLaser() throws LaserInFlightException, NotEnoughtPointsException {
 		this.player.shootSuperLaser();
 	}

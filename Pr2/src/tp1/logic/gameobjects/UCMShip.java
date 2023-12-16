@@ -28,13 +28,11 @@ public class UCMShip extends Ship {
 	);
 	private boolean shockWaveEnabled;
 	private boolean laserEnabled;
-	private boolean superLaserEnabled;
 	
 	public UCMShip(GameWorld game, Position pos) {
 		super(game, pos, LIVES, Move.NONE);
 		this.shockWaveEnabled = false;
 		this.laserEnabled = true;
-		this.superLaserEnabled = true;
 	}
 	
 	protected UCMShip() {}
@@ -129,22 +127,14 @@ public class UCMShip extends Ship {
 	
 	// SUPERLASER
 	
-	private boolean superLaserIsEnable() {
-		return this.superLaserEnabled;
-	}
-	
-	public void enableSuperLaser() {
-		this.superLaserEnabled = true;
-	}
-	
 	public void shootSuperLaser() throws LaserInFlightException, NotEnoughtPointsException {
-		if(!this.superLaserIsEnable()) 
+		if(!this.laserIsEnable()) 
 			throw new LaserInFlightException(Messages.LASER_ALREADY_SHOT);
 		if(this.game.getPoints() < SUPERLASER_COST)
 			throw new NotEnoughtPointsException(Messages.NOT_ENOUGH_POINTS_ERROR.formatted(this.game.getPoints(),SUPERLASER_COST));
 		
 		this.game.addObject(new SuperLaser(this.game, this.pos));
-		this.superLaserEnabled = false;		
+		this.laserEnabled = false;		
 		this.game.receivePoints(-SUPERLASER_COST);
 	}
 	

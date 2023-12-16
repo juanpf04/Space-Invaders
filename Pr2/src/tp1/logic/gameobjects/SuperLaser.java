@@ -22,9 +22,4 @@ public class SuperLaser extends UCMLaser {
 		return DAMAGE;
 	}
 	
-	@Override
-	public void onDelete() {
-		game.enableSuperLaser();
-	}
-	
 }

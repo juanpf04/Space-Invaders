@@ -8,6 +8,7 @@ import tp1.view.Messages;
 public class ExplosiveAlien extends RegularAlien {
 	
 	public static final int POINTS = 12;
+	public static final int DAMAGE = 1;
 
 	public ExplosiveAlien(Position pos, GameWorld game, AlienManager alienManager) {
 		super(pos, game, alienManager);
@@ -23,6 +24,11 @@ public class ExplosiveAlien extends RegularAlien {
 	@Override
 	protected int getPoints() {
 		return POINTS;
+	}
+	
+	@Override
+	protected int getDamage() {
+		return DAMAGE;
 	}
 
 	@Override
