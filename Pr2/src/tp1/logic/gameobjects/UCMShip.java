@@ -76,8 +76,7 @@ public class UCMShip extends Ship {
 	
 	public void move(Move move) throws OffWorldException, NotAllowedMoveException {
 		if(!this.allowedMove(move))
-			throw new NotAllowedMoveException(Messages.DIRECTION_ERROR + move.name()
-					+ Messages.LINE_SEPARATOR + Messages.ALLOWED_MOVES_MESSAGE); 
+			throw new NotAllowedMoveException(Messages.ALLOWED_MOVES_MESSAGE); 
 		if(!this.validPos(move))
 				throw new OffWorldException(Messages.OFF_WORLD_MESSAGE.formatted(move.name(), this.pos.toString()));
 		
