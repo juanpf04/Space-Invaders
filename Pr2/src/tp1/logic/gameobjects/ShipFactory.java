@@ -3,6 +3,7 @@ package tp1.logic.gameobjects;
 import java.util.Arrays;
 import java.util.List;
 
+import tp1.exception.InitializationException;
 import tp1.logic.AlienManager;
 import tp1.logic.GameWorld;
 import tp1.logic.Position;
@@ -24,12 +25,12 @@ public class ShipFactory {
 			new Ufo()
 	);
 	
-	public static AlienShip spawnAlienShip(String input, GameWorld game, Position pos, AlienManager am) {
+	public static AlienShip spawnAlienShip(String input, GameWorld game, Position pos, AlienManager am) throws InitializationException {
 		for (AlienShip a: AVAILABLE_ALIEN_SHIPS) 
 			if(input.equalsIgnoreCase(a.getSymbol()))
 				return a.copy(game, pos, am);
 		
-		return null;
+		throw new InitializationException(Messages.UNKNOWN_SHIP.formatted(input));
 	}
 	
 	public static String getInfo() {

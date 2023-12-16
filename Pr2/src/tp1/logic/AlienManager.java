@@ -4,6 +4,7 @@ import tp1.logic.gameobjects.DestroyerAlien;
 import tp1.logic.gameobjects.RegularAlien;
 import tp1.logic.gameobjects.ShipFactory;
 import tp1.logic.gameobjects.Ufo;
+import tp1.view.Messages;
 import tp1.control.InitialConfiguration;
 import tp1.exception.InitializationException;
 
@@ -71,13 +72,24 @@ public class AlienManager {
 		}
 	}
 	
-	private void costumedInitialization(GameObjectContainer container, InitialConfiguration conf) {
+	private void costumedInitialization(GameObjectContainer container, InitialConfiguration conf) throws InitializationException {
 		for (String shipDescription : conf.getShipDescription()) {
 			String[] words = shipDescription.toLowerCase().trim().split("\\s+");
 	
-			container.add(ShipFactory.spawnAlienShip(words[0], game,
-					new Position(Integer.valueOf(words[1]), Integer.valueOf(words[2])), this));
-			this.remainingAliens++;
+			if(words.length != 3)
+					throw new InitializationException(Messages.INCORRECT_ENTRY.formatted(shipDescription));
+			
+			try {
+				Position pos =new Position(Integer.valueOf(words[1]), Integer.valueOf(words[2]));
+				if(!pos.posValida())
+					throw new InitializationException(Messages.OFF_WORLD_POSITION.formatted(pos.toString()));
+				
+				container.add(ShipFactory.spawnAlienShip(words[0], game, pos, this));
+				this.remainingAliens++;
+				
+			} catch (NumberFormatException e) {
+				throw new InitializationException(Messages.INVALID_POSITION.formatted(words[1], words[2]));
+			}
 		}
 	}
 

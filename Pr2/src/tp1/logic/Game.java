@@ -35,9 +35,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		this.seed = seed;
 		try {
 			this.initGame(InitialConfiguration.NONE); // revisar
-		} catch (InitializationException e) {
-			
-		}
+		} catch (InitializationException e) {}
 	}
 	
 	private final void initGame(InitialConfiguration conf) throws InitializationException {

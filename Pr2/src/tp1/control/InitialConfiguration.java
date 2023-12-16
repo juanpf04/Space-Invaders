@@ -1,9 +1,10 @@
 package tp1.control;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
+
 
 import tp1.view.Messages;
 
@@ -26,19 +27,19 @@ public class InitialConfiguration {
 	public static InitialConfiguration readFromFile(String filename) 
 			throws FileNotFoundException, IOException {
 		
-		List<String> input = Arrays.asList(); // lo creo vacío
+		List<String> input = new ArrayList<String>(); 
 		
 		try (BufferedReader in = new BufferedReader(new FileReader(filename))) {
+			
 			String l = in.readLine();
 			
-			while(!l.isEmpty()) { // mientras que el fichero no este vacio, lo guardo
-				input.add(l); // peta y manda excepcion
+			while(l != null) { 
+				input.add(l);
 				l = in.readLine();
 			}
-		} catch (FileNotFoundException e){
+		} catch (FileNotFoundException e) {
 			throw new FileNotFoundException(Messages.FILE_NOT_FOUND.formatted(filename));
 		}
-		
 		
 		return new InitialConfiguration(input);
 	}
