@@ -49,7 +49,7 @@ public class DestroyerAlien extends AlienShip {
 
 	@Override
 	protected String getDescription() {
-		return Messages.REGULAR_ALIEN_DESCRIPTION;
+		return Messages.DESTROYER_ALIEN_DESCRIPTION;
 	}
 	
 	@Override

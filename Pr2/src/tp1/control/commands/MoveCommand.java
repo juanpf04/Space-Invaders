@@ -2,7 +2,6 @@ package tp1.control.commands;
 
 import tp1.exception.CommandExecuteException;
 import tp1.exception.CommandParseException;
-import tp1.exception.GameModelException;
 import tp1.exception.NotAllowedMoveException;
 import tp1.exception.OffWorldException;
 import tp1.logic.GameModel;

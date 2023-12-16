@@ -128,10 +128,10 @@ public class UCMShip extends Ship {
 	// SUPERLASER
 	
 	public void shootSuperLaser() throws LaserInFlightException, NotEnoughtPointsException {
-		if(!this.laserIsEnable()) 
-			throw new LaserInFlightException(Messages.LASER_ALREADY_SHOT);
 		if(this.game.getPoints() < SUPERLASER_COST)
 			throw new NotEnoughtPointsException(Messages.NOT_ENOUGH_POINTS_ERROR.formatted(this.game.getPoints(),SUPERLASER_COST));
+		if(!this.laserIsEnable()) 
+			throw new LaserInFlightException(Messages.LASER_ALREADY_SHOT);
 		
 		this.game.addObject(new SuperLaser(this.game, this.pos));
 		this.laserEnabled = false;		
