@@ -121,8 +121,7 @@ public class UCMShip extends Ship {
 	
 	public void shootLaser() throws LaserInFlightException {
 		if(!this.laserIsEnable())
-			throw new LaserInFlightException(Messages.LASER_ERROR + Messages.LINE_SEPARATOR
-					+ Messages.LASER_ALREADY_SHOT);
+			throw new LaserInFlightException(Messages.LASER_ALREADY_SHOT);
 		
 		this.game.addObject(new UCMLaser(this.game, this.pos));
 		this.laserEnabled = false;			
@@ -141,11 +140,9 @@ public class UCMShip extends Ship {
 	
 	public void shootSuperLaser() throws LaserInFlightException, NotEnoughtPointsException {
 		if(!this.superLaserIsEnable()) 
-			throw new LaserInFlightException(Messages.SUPERLASER_ERROR + Messages.LINE_SEPARATOR
-					+ Messages.LASER_ALREADY_SHOT);
+			throw new LaserInFlightException(Messages.LASER_ALREADY_SHOT);
 		if(this.game.getPoints() < SUPERLASER_COST)
-			throw new NotEnoughtPointsException(Messages.SUPERLASER_ERROR + Messages.LINE_SEPARATOR
-					+ Messages.NOT_ENOUGH_POINTS_ERROR.formatted(this.game.getPoints(),SUPERLASER_COST));
+			throw new NotEnoughtPointsException(Messages.NOT_ENOUGH_POINTS_ERROR.formatted(this.game.getPoints(),SUPERLASER_COST));
 		
 		this.game.addObject(new SuperLaser(this.game, this.pos));
 		this.superLaserEnabled = false;		
@@ -165,7 +162,7 @@ public class UCMShip extends Ship {
 	
 	public void shockWave() throws NoShockWaveException {
 		if(!this.shockWaveIsEnable())
-			throw new NoShockWaveException(Messages.SHOCKWAVE_ERROR);
+			throw new NoShockWaveException();
 	
 		this.game.addObject(new ShockWave(this.game));
 		this.shockWaveEnabled = false;			

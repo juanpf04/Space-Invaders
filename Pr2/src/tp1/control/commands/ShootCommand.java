@@ -14,7 +14,7 @@ public class ShootCommand extends NoParamsCommand {
 			game.update();
 			return true;
 		} catch (GameModelException e) {
-			throw new CommandExecuteException(e.getMessage());
+			throw new CommandExecuteException(Messages.LASER_ERROR, e);
 		}
 	}
 
