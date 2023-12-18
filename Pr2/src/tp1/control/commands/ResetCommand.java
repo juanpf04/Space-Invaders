@@ -5,7 +5,7 @@ import java.io.IOException;
 import tp1.control.InitialConfiguration;
 import tp1.exception.CommandExecuteException;
 import tp1.exception.CommandParseException;
-import tp1.exception.InitializationException;
+import tp1.exception.GameModelException;
 import tp1.logic.GameModel;
 import tp1.view.Messages;
 
@@ -24,7 +24,7 @@ public class ResetCommand extends Command {
 		try {
 			game.reset(conf);
 			return true;
-		} catch (InitializationException e) {
+		} catch (GameModelException e) {
 			throw new CommandExecuteException(Messages.INITIAL_CONFIGURATION_ERROR, e);
 		}
 	}
@@ -55,14 +55,14 @@ public class ResetCommand extends Command {
 		if (matchCommandName(commandWords[0])) {
 			if(commandWords.length == 1)
 				return new ResetCommand(InitialConfiguration.NONE);
-	 		if(commandWords.length == 2)
-				try {
-					return new ResetCommand(InitialConfiguration.readFromFile(commandWords[1]));
-				} catch (IOException e) {
-					throw new CommandParseException(e.getMessage());
-				}
-			else
+	 		if(commandWords.length > 2)
 	 			throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
+	 			
+			try {
+				return new ResetCommand(InitialConfiguration.readFromFile(commandWords[1]));
+			} catch (IOException e) {
+				throw new CommandParseException(e.getMessage());
+			}
 	 	}
 	 	else
 	 		return null;	

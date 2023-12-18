@@ -2,6 +2,11 @@ package tp1.exception;
 
 public class LaserInFlightException extends GameModelException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public LaserInFlightException() { 
 		super();
 	}

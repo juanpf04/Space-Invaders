@@ -21,11 +21,10 @@ public class CommandGenerator {
 	);
 
 	 public static Command parse(String[] commandWords) throws CommandParseException {		
-		Command command = null;
 		
 		for (Command c: AVAILABLE_COMMANDS) {
 			
-			command = c.parse(commandWords);
+			Command command = c.parse(commandWords);
 			if(command != null)
 				return command;
 		}

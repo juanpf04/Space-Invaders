@@ -34,4 +34,5 @@ public abstract class Command {
 	  public String helpText(){
 	    return getDetails() + " : " + getHelp() + "\n";
 	  }
+	  
 }

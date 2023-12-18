@@ -2,6 +2,11 @@ package tp1.exception;
 
 public class CommandParseException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public CommandParseException() { 
 		super();
 	}
