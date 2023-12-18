@@ -2,6 +2,11 @@ package tp1.exception;
 
 public class NumberFormatException extends Exception{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public NumberFormatException() { 
 		super();
 	}

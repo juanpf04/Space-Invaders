@@ -1,5 +1,7 @@
 package tp1.logic;
 
+import tp1.view.Messages;
+
 /**
  * 
  * Represents the allowed movements in the game
@@ -53,6 +55,6 @@ public enum Move {
 	public static Move valueOfIgnoreCase(String dir) throws IllegalArgumentException {
 		for (Move m : Move.values())
 			if (m.name().equalsIgnoreCase(dir)) return m;
-	    throw new IllegalArgumentException();
+	    throw new IllegalArgumentException(Messages.ALLOWED_MOVES_MESSAGE);
 	}
 }

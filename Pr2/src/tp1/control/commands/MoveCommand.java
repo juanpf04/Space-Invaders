@@ -62,8 +62,7 @@ public class MoveCommand extends Command {
 	 			try {
 	 				return new MoveCommand(Move.valueOfIgnoreCase(commandWords[1]));
 	 			} catch (IllegalArgumentException e) {	 				
-	 				throw new CommandParseException(Messages.DIRECTION_ERROR + commandWords[1] 
-	 						+ Messages.LINE_SEPARATOR + Messages.ALLOWED_MOVES_MESSAGE);
+	 				throw new CommandParseException(Messages.DIRECTION_ERROR + commandWords[1], e);
 	 			}
 	 		}	 			
 	 		else
