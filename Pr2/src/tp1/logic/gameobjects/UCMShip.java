@@ -20,9 +20,8 @@ public class UCMShip extends Ship {
 	public static final int LIVES = 3;
 	public static final int SUPERLASER_COST = 5;
 	private static final List<Move> ALLOWED_MOVES = Arrays.asList(
+			Move.LEFT,
 		Move.LLEFT,
-		Move.LEFT,
-		Move.NONE,
 		Move.RIGHT,
 		Move.RRIGHT
 	);
