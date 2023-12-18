@@ -55,7 +55,7 @@ Command >
 [DEBUG] Executing: m r
 
 Wrong direction: r
-Allowed UCMShip moves: <lleft|left|none|right|rright>
+Allowed UCMShip moves: <left|lleft|right|rright>
 Command > 
 [DEBUG] Executing: s
 
@@ -86,7 +86,7 @@ Command >
 [DEBUG] Executing: m l
 
 Wrong direction: l
-Allowed UCMShip moves: <lleft|left|none|right|rright>
+Allowed UCMShip moves: <left|lleft|right|rright>
 Command > 
 [DEBUG] Executing: m left
 

@@ -230,6 +230,10 @@ public class Messages {
 	public static final String points(int points) {
 		return Messages.POINTS.formatted(points);
 	}
+	
+	public static final String ON = "ON";
+	
+	public static final String OFF = "OFF";
 
 	public static final String SHOCKWAVE_STATUS = "ShockWave: %s";
 	

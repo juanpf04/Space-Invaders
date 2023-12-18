@@ -20,7 +20,7 @@ public class UCMShip extends Ship {
 	public static final int LIVES = 3;
 	public static final int SUPERLASER_COST = 5;
 	private static final List<Move> ALLOWED_MOVES = Arrays.asList(
-			Move.LEFT,
+		Move.LEFT,
 		Move.LLEFT,
 		Move.RIGHT,
 		Move.RRIGHT
@@ -140,7 +140,7 @@ public class UCMShip extends Ship {
 	
 	// SHOCKWAVE
 
-	private boolean shockWaveIsEnable() {
+	public boolean shockWaveIsEnable() {
 		return this.shockWaveEnabled;
 	}
 	
@@ -154,15 +154,6 @@ public class UCMShip extends Ship {
 	
 		this.game.addObject(new ShockWave(this.game));
 		this.shockWaveEnabled = false;			
-	}
-
-	public String shockWaveState() {
-		String state = "OFF";
-		
-		if(this.shockWaveIsEnable())
-			state = "ON";
-		
-		return state;
 	}
 
 	public static String allowedMoves(String separator) { 

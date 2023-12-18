@@ -148,8 +148,8 @@ public class Game implements GameModel, GameStatus, GameWorld {
 		state
 		.append(Messages.numberOfCycles(this.getCycle())).append(Messages.LINE_SEPARATOR)
 		.append(Messages.life(this.player.getLife())).append(Messages.LINE_SEPARATOR)
-		.append(Messages.points(this.points)).append(Messages.LINE_SEPARATOR)
-		.append(Messages.shockWaveStatus(this.player.shockWaveState())).append(Messages.LINE_SEPARATOR)	
+		.append(Messages.points(this.getPoints())).append(Messages.LINE_SEPARATOR)
+		.append(Messages.shockWaveStatus(this.shockWaveState())).append(Messages.LINE_SEPARATOR)	
 		.append(Messages.remainingAliens(this.getRemainingAliens())).append(Messages.LINE_SEPARATOR);
 		
 		return state.toString();
@@ -212,6 +212,15 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	@Override
 	public int containerSize() {
 		return this.container.size();
+	}
+	
+	public String shockWaveState() {
+		String state = Messages.OFF;
+		
+		if(this.player.shockWaveIsEnable())
+			state = Messages.ON;
+		
+		return state;
 	}
 	
 }

@@ -81,7 +81,7 @@ Command >
 [DEBUG] Executing: m l
 
 Wrong direction: l
-Allowed UCMShip moves: <lleft|left|none|right|rright>
+Allowed UCMShip moves: <left|lleft|right|rright>
 Command > 
 [DEBUG] Executing: m
 
@@ -90,7 +90,7 @@ Command >
 [DEBUG] Executing: m up
 
 Wrong direction: UP
-Allowed UCMShip moves: <lleft|left|none|right|rright>
+Allowed UCMShip moves: <left|lleft|right|rright>
 Command > 
 [DEBUG] Executing: jump
 
@@ -1132,7 +1132,7 @@ Command >
 
 Available commands: 
 [h]elp : shows this help
-[m]ove <lleft|left|none|right|rright> : moves the UCMShip in the indicated direction
+[m]ove <left|lleft|right|rright> : moves the UCMShip in the indicated direction
 [n]one | "" : user does not perform any action
 [s]hoot : player shoots a laser
 shock[w]ave : player shoots a shockwave
