@@ -2,6 +2,11 @@ package tp1.exception;
 
 public class OffWorldException extends GameModelException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public OffWorldException() { 
 		super();
 	}

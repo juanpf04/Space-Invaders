@@ -2,6 +2,11 @@ package tp1.exception;
 
 public class NotEnoughtPointsException extends GameModelException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public NotEnoughtPointsException() { 
 		super();
 	}
