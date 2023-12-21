@@ -1627,4 +1627,5 @@ Remaining aliens: 6
 |      |      |      |      | ^__^ |      |      |      |      |
  ───────────────────────────────────────────────────────────────
 
-Command > 
+Command > [ERROR] Error: No line found
+
