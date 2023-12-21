@@ -29,13 +29,11 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	private int points;
 	private boolean exit;
 	
-	public Game(Level level, long seed) {
+	public Game(Level level, long seed) throws InitializationException {
 		
 		this.level = level;
 		this.seed = seed;
-		try {
-			this.initGame(InitialConfiguration.NONE); // revisar
-		} catch (InitializationException e) {}
+		this.initGame(InitialConfiguration.NONE);
 	}
 	
 	private final void initGame(InitialConfiguration conf) throws InitializationException {
