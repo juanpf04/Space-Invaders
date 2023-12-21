@@ -55,21 +55,20 @@ public class MoveCommand extends Command {
 
 	@Override
 	public Command parse(String[] commandWords) throws CommandParseException {
-		
-		if (matchCommandName(commandWords[0])) {
-			if(commandWords.length == 1)
-				throw new CommandParseException(Messages.COMMAND_PARAMETERS_MISSING);
-	 		if(commandWords.length > 2) 
-	 			throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
-	 			
- 			try {
- 				return new MoveCommand(Move.valueOfIgnoreCase(commandWords[1]));
- 			} catch (IllegalArgumentException e) {	 				
- 				throw new CommandParseException(Messages.DIRECTION_ERROR + commandWords[1], e);
- 			}		
-	 	}
-	 	else
-	 		return null;	
+		try {
+			if (matchCommandName(commandWords[0])) {
+				if(commandWords.length == 1)
+					throw new CommandParseException(Messages.COMMAND_PARAMETERS_MISSING);
+		 		if(commandWords.length > 2) 
+		 			throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
+		 			
+	 				return new MoveCommand(Move.valueOfIgnoreCase(commandWords[1]));			
+		 	}
+		 	else
+		 		return null;	
+		} catch (IllegalArgumentException e) {	 				
+			throw new CommandParseException(Messages.DIRECTION_ERROR + commandWords[1], e);
+		}
 	}
 
 }
