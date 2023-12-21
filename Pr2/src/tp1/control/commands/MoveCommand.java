@@ -2,6 +2,7 @@ package tp1.control.commands;
 
 import tp1.exception.CommandExecuteException;
 import tp1.exception.CommandParseException;
+import tp1.exception.GameModelException;
 import tp1.exception.NotAllowedMoveException;
 import tp1.exception.OffWorldException;
 import tp1.logic.GameModel;
@@ -48,7 +49,7 @@ public class MoveCommand extends Command {
 			throw new CommandExecuteException(Messages.DIRECTION_ERROR + move.name(), e);
 		} catch (OffWorldException e) {
 			throw new CommandExecuteException(Messages.MOVEMENT_ERROR, e);
-		}
+		} 
 	}
 
 

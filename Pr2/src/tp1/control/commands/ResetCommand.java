@@ -1,5 +1,6 @@
 package tp1.control.commands;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import tp1.control.InitialConfiguration;
@@ -51,21 +52,22 @@ public class ResetCommand extends Command {
 	
 	@Override
 	public Command parse(String[] commandWords) throws CommandParseException {
-		
-		if (matchCommandName(commandWords[0])) {
-			if(commandWords.length == 1)
-				return new ResetCommand(InitialConfiguration.NONE);
-	 		if(commandWords.length > 2)
-	 			throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);
-	 			
-			try {
-				return new ResetCommand(InitialConfiguration.readFromFile(commandWords[1]));
-			} catch (IOException e) {
-				throw new CommandParseException(e.getMessage());
-			}
-	 	}
-	 	else
-	 		return null;	
+		try {
+			if (matchCommandName(commandWords[0])) {
+				if(commandWords.length == 1)
+					return new ResetCommand(InitialConfiguration.NONE);
+		 		if(commandWords.length > 2)
+		 			throw new CommandParseException(Messages.COMMAND_INCORRECT_PARAMETER_NUMBER);		 			
+			
+		 		return new ResetCommand(InitialConfiguration.readFromFile(commandWords[1]));
+		 	}
+		 	else
+		 		return null;
+		} catch (FileNotFoundException e) {
+			throw new CommandParseException(Messages.FILE_NOT_FOUND.formatted(commandWords[1]));
+		} catch (IOException e) {
+			throw new CommandParseException(Messages.READ_ERROR.formatted(commandWords[1]));
+		}
 	}
 
 }

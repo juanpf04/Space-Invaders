@@ -1357,7 +1357,7 @@ Command >
 [DEBUG] Executing: r conf_6
 
 Invalid initial configuration
-Unknown ship: "s"
+Unknown ship: "S"
 Command > 
 [DEBUG] Executing: r conf_5
 
@@ -1367,7 +1367,7 @@ Command >
 [DEBUG] Executing: r conf_2
 
 Invalid initial configuration
-Invalid position (a, 3)
+Invalid position (A, 3)
 Command > 
 [DEBUG] Executing: r conf_4
 

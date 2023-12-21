@@ -37,9 +37,7 @@ public class InitialConfiguration {
 				input.add(l);
 				l = in.readLine();
 			}
-		} catch (FileNotFoundException e) {
-			throw new FileNotFoundException(Messages.FILE_NOT_FOUND.formatted(filename));
-		}
+		} 
 		
 		return new InitialConfiguration(input);
 	}
