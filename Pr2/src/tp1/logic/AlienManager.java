@@ -73,23 +73,24 @@ public class AlienManager {
 	}
 	
 	private void costumedInitialization(GameObjectContainer container, InitialConfiguration conf) throws InitializationException {
-		for (String shipDescription : conf.getShipDescription()) {
-			String[] words = shipDescription.trim().split("\\s+");
-	
-			if(words.length != 3)
-					throw new InitializationException(Messages.INCORRECT_ENTRY.formatted(shipDescription));
-			
-			try {
+		String[] words = null;
+		try {
+			for (String shipDescription : conf.getShipDescription()) {
+				words = shipDescription.trim().split("\\s+");
+		
+				if(words.length != 3)
+						throw new InitializationException(Messages.INCORRECT_ENTRY.formatted(shipDescription));
+				
 				Position pos = new Position(Integer.valueOf(words[1]), Integer.valueOf(words[2]));
 				if(!pos.posValida())
 					throw new InitializationException(Messages.OFF_WORLD_POSITION.formatted(pos));
-				
+					
 				container.add(ShipFactory.spawnAlienShip(words[0], game, pos, this));
 				this.remainingAliens++;
-				
-			} catch (NumberFormatException e) {
-				throw new InitializationException(Messages.INVALID_POSITION.formatted(words[1], words[2]));
+					
 			}
+		} catch (NumberFormatException e) {
+			throw new InitializationException(Messages.INVALID_POSITION.formatted(words[1], words[2]));
 		}
 	}
 
