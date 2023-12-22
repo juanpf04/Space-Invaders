@@ -5,9 +5,6 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import tp1.view.Messages;
-
 public class InitialConfiguration {
 	
 	private List<String> descriptions;

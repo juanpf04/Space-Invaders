@@ -29,7 +29,7 @@ public class Game implements GameModel, GameStatus, GameWorld {
 	private int points;
 	private boolean exit;
 	
-	public Game(Level level, long seed) throws InitializationException {
+	public Game(Level level, long seed) throws InitializationException { // catch Exception on main
 		
 		this.level = level;
 		this.seed = seed;

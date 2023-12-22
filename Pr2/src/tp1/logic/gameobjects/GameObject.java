@@ -69,4 +69,6 @@ public abstract class GameObject implements GameItem {
 	@Override
 	public boolean receiveAttack(UCMWeapon weapon) {return false;}  
 	
+	@Override
+	public boolean receiveAttack(Burst burst) {return false;}
 }
